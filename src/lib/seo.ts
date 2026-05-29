@@ -1,20 +1,21 @@
 import type { MetaDescriptor } from "react-router";
 
-const SITE_URL = "https://cvpr2026-bigmac-workshop.limitlab.xyz";
-const DEFAULT_IMAGE = `${SITE_URL}/bigmac-ogp.jpg`;
+const SITE_URL = "https://eccv2026-limit-workshop.limitlab.xyz";
+const DEFAULT_IMAGE = `${SITE_URL}/limit-ogp.jpg`;
 const DEFAULT_IMAGE_ALT =
-  "BigMAC Workshop at CVPR 2026 wordmark on a dark gradient background";
+  "LIMIT Workshop at ECCV 2026 wordmark on a dark gradient background";
 const SITE_NAME =
-  "BigMAC: Big Model Adaptation for Computer Vision @ CVPR 2026";
+  "LIMIT: Representation Learning with Very Limited Resources @ ECCV 2026";
 const DEFAULT_DESCRIPTION =
-  "Official site for the CVPR 2026 Workshop on Big Model Adaptation for Computer Vision.";
+  "Official site for the ECCV 2026 Workshop on Representation Learning with Very Limited Resources (LIMIT).";
 const DEFAULT_KEYWORDS = [
-  "BigMAC Workshop",
-  "CVPR 2026",
-  "Big Model Adaptation",
-  "Foundation Models",
-  "Big Models",
-  "Adaptation",
+  "LIMIT Workshop",
+  "ECCV 2026",
+  "Representation Learning",
+  "Limited Resources",
+  "Few-Shot Learning",
+  "Self-Supervised Learning",
+  "Computer Vision",
   "LIMIT Lab",
 ];
 

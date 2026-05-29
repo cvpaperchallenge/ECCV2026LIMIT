@@ -16,14 +16,14 @@ export function Footer() {
           <p className="text-sm text-muted-foreground">ICCV 2025</p>
         </div> */}
 
-        {/* Past BigMAC Workshop */}
+        {/* Past LIMIT Workshop */}
         <div className="flex flex-col gap-4">
           <h3 className="font-bold text-lg">Past Workshops</h3>
           <Link
-            to="https://bigmac-vision.github.io/"
+            to="https://limit-workshop.github.io/"
             className="text-sm text-muted-foreground hover:text-primary transition-colors font-medium"
           >
-            ICCV 2023 BigMAC
+            ICCV 2025 LIMIT
           </Link>
         </div>
 
@@ -132,11 +132,11 @@ export function Footer() {
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           <Link to="/" className="flex items-center space-x-2 group">
             <span className="font-bold text-xl group-hover:text-primary transition-colors">
-              BigMAC Workshop
+              LIMIT Workshop
             </span>
           </Link>
           <p className="text-center text-sm text-muted-foreground font-medium">
-            &copy; {new Date().getFullYear()} BigMAC Workshop. All rights
+            &copy; {new Date().getFullYear()} LIMIT Workshop. All rights
             reserved.
           </p>
           <p className="text-center text-sm text-muted-foreground md:text-right font-medium">

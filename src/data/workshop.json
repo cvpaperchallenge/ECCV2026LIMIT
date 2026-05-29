@@ -1,54 +1,50 @@
 {
   "home": {
-    "title": "Your Workshop Title",
-    "tagline": "Add a catchy tagline here",
-    "subtitle": "Conference Name 2026 Workshop",
+    "title": "LIMIT: Representation Learning with Very Limited Resources",
+    "tagline": "When Data, Modalities, Labels, and Computing Resources are Scarce",
+    "subtitle": "ECCV 2026 Workshop",
     "eventInfo": {
-      "date": "Month Day, Year, Time",
-      "location": "Venue Name - Room Number"
+      "date": "September 8-9, 2026 (TBD)",
+      "location": "Malmö, Sweden"
     },
     "overview": {
-      "mission": "Replace this with your workshop's mission statement. Describe the main goals, themes, and objectives of your workshop. Explain why this workshop is important and what attendees can expect to learn or discuss.",
+      "mission": "This workshop aims to bring together researchers and practitioners to discuss the latest advances and challenges in representation learning under limited-resource settings. We focus on innovative approaches for learning with scarce data, labels, modalities, and computing resources, including self-supervised, semi-supervised, few-shot, and synthetic data-driven methods.",
       "keyTopics": [
-        "First key topic or research area",
-        "Second key topic or research area",
-        "Third key topic or research area",
-        "Fourth key topic or research area",
-        "Fifth key topic or research area"
+        "Recognition, generation, reconstruction, any visual/multi-modal tasks in limited situations",
+        "{Self, Semi, Weakly, Un}-supervised learning with very limited resources",
+        "{Zero, One, Few}-shot learning with very limited resources",
+        "Training convnets, transformers, diffusion, foundation models with relatively fewer resources",
+        "Synthetic training with procedural, artificially generated images"
       ]
     },
     "importantDates": [
       {
-        "title": "Early Registration Deadline",
-        "date": "January 15, 2026"
-      },
-      {
         "title": "Paper Submission Deadline",
-        "date": "March 15, 2026"
+        "date": "July 6, 2026"
       },
       {
-        "title": "Notification of Acceptance",
-        "date": "April 10, 2026"
+        "title": "Author Notification",
+        "date": "TBD"
       },
       {
         "title": "Camera-Ready Deadline",
-        "date": "May 1, 2026"
+        "date": "TBD"
       },
       {
         "title": "Workshop Date",
-        "date": "June 20, 2026"
+        "date": "September 8-9, 2026 (TBD)"
       }
     ],
     "latestNews": [
       {
         "title": "Workshop page open",
-        "date": "Month Day, Year",
-        "content": "Welcome to our workshop website! We will be updating this page regularly with new information about speakers, schedule, and submission guidelines."
+        "date": "May 29, 2026",
+        "content": "We are excited to announce that the LIMIT Workshop page for ECCV 2026 is now live. We will continue to add information, so please check back regularly for updates."
       },
       {
         "title": "Call for Papers announced",
-        "date": "Month Day, Year",
-        "content": "We are now accepting paper submissions. Please check the Call for Papers page for detailed submission guidelines and important dates."
+        "date": "May 29, 2026",
+        "content": "We are now accepting paper submissions. The submission deadline is July 6, 2026, 23:59 AoE. Please check the Call for Papers section for detailed submission guidelines."
       }
     ]
   },
@@ -58,82 +54,82 @@
     "importantDates": [
       {
         "title": "Paper Submission Deadline",
-        "date": "Month Day, Year",
+        "date": "July 6, 2026",
         "description": "Submit your papers by this date"
       },
       {
-        "title": "Notification of Acceptance",
-        "date": "Month Day, Year",
+        "title": "Author Notification",
+        "date": "TBD",
         "description": "Authors will be notified of acceptance"
       },
       {
         "title": "Camera-Ready Deadline",
-        "date": "Month Day, Year",
+        "date": "TBD",
         "description": "Final versions due"
       },
       {
         "title": "Workshop Date",
-        "date": "Month Day, Year, Time",
+        "date": "September 8-9, 2026 (TBD)",
         "description": "Workshop day"
       }
     ],
     "workshopProgram": {
       "day1": {
-        "date": "Month Day, Year",
-        "location": "Conference Venue - Room Number",
+        "date": "September 2026 (TBD)",
+        "location": "Malmö, Sweden (Room TBD)",
         "schedule": [
           {
-            "time": "09:00 - 09:15",
+            "time": "09:00 - 09:10",
             "session": "Opening Remarks",
-            "presenter": "Organizer Name",
-            "slides": ""
-          },
-          {
-            "time": "09:15 - 09:45",
-            "session": "Keynote 1",
-            "presenter": "Speaker Name 1",
-            "slides": ""
-          },
-          {
-            "time": "09:45 - 10:15",
-            "session": "Keynote 2",
-            "presenter": "Speaker Name 2",
-            "slides": ""
-          },
-          {
-            "time": "10:15 - 10:30",
-            "session": "Coffee Break",
             "presenter": "",
             "slides": ""
           },
           {
-            "time": "10:30 - 11:30",
-            "session": "Oral Presentations",
-            "presenter": "Various Authors",
+            "time": "09:10 - 09:40",
+            "session": "Invited Talk 1",
+            "presenter": "Björn Ommer",
             "slides": ""
           },
           {
-            "time": "11:30 - 12:30",
-            "session": "Poster Session",
+            "time": "09:40 - 10:10",
+            "session": "Invited Talk 2",
+            "presenter": "Ranjay Krishna",
+            "slides": ""
+          },
+          {
+            "time": "10:10 - 10:20",
+            "session": "Short Break",
             "presenter": "",
             "slides": ""
           },
           {
-            "time": "12:30 - 13:30",
-            "session": "Lunch Break",
+            "time": "10:20 - 10:50",
+            "session": "Invited Talk 3",
+            "presenter": "Jia Deng",
+            "slides": ""
+          },
+          {
+            "time": "10:50 - 11:20",
+            "session": "Invited Talk 4",
+            "presenter": "Anna Kukleva",
+            "slides": ""
+          },
+          {
+            "time": "11:20 - 12:00",
+            "session": "Oral Session",
             "presenter": "",
             "slides": ""
           },
           {
-            "time": "13:30 - 14:30",
-            "session": "Panel Discussion",
-            "presenter": "All Speakers",
+            "time": "12:00 - 12:10",
+            "session": "Closing Remarks",
+            "presenter": "",
             "slides": ""
           },
           {
-            "time": "14:30 - 15:00",
-            "session": "Awards & Closing Remarks",
-            "presenter": "Organizer Name",
+            "time": "12:10 - 13:30",
+            "session": "Lunch & Poster Session",
+            "presenter": "",
             "slides": ""
           }
         ]
@@ -147,7 +143,7 @@
     "presenterGuidelines": {
       "oralPresentation": {
         "title": "Oral Presentation Guidelines",
-        "content": "Each oral presentation will be allocated 15 minutes including Q&A.",
+        "content": "Each oral presentation will be allocated 10 minutes including Q&A.",
         "guidelines": [
           "Prepare slides in 16:9 format",
           "Upload your presentation at least 30 minutes before your session",
@@ -159,7 +155,7 @@
         "title": "Poster Presentation Guidelines",
         "content": "Posters will be displayed during the designated poster session.",
         "guidelines": [
-          "Maximum poster size: 36\" x 48\" (91cm x 122cm)",
+          "Maximum poster size: A0 (841mm x 1189mm)",
           "Portrait orientation is recommended",
           "Set up your poster 30 minutes before the session starts",
           "Be present at your poster during the designated session time"
@@ -180,70 +176,74 @@
   },
   "callForPapers": {
     "title": "Call for Papers",
-    "subtitle": "Submit your work to the workshop",
+    "subtitle": "Submit your research to the LIMIT Workshop",
     "topics": {
       "core": [
-        "Replace with your workshop's main topic area 1",
-        "Replace with your workshop's main topic area 2",
-        "Replace with your workshop's main topic area 3",
-        "Replace with your workshop's main topic area 4",
-        "Replace with your workshop's main topic area 5"
+        "Building vision/spatial multi-modal models under limited-resources settings",
+        "Synthetic training strategies for vision/spatial multi-modal models",
+        "Issues (social bias, privacy and transparency) with real data and labels",
+        "Vision+X and multi-modality to accelerate a learning efficiency",
+        "Analysis for vision/spatial multi-modal models under the LIMIT philosophy"
       ]
     },
     "paperFormat": {
       "submissionGuidelines": [
-        "Papers must be submitted in PDF format",
-        "Maximum page limit: 8 pages (excluding references)",
-        "Use the conference template (e.g., CVPR, NeurIPS, etc.)",
-        "Papers must be anonymized for double-blind review",
-        "Supplementary materials are allowed but optional"
+        "Submissions must be handled electronically via the OpenReview submission website",
+        "Submissions must be anonymized",
+        "Formatted according to ECCV 2026 template",
+        "Maximum 8 pages for publication in the Springer proceedings"
       ],
-      "reviewProcess": "All submissions will be peer-reviewed by at least 2 reviewers. The review process is double-blind.",
-      "publication": "Accepted papers will be published on the workshop website and may be included in conference proceedings."
+      "reviewProcess": "All submissions will undergo a double-blind peer review process. Each paper will be reviewed by at least three reviewers from our program committee.",
+      "publication": "Accepted papers will be published in the Springer proceedings and presented at the workshop."
     },
     "submission": {
-      "description": "Submit your paper through our submission portal. Make sure to follow all submission guidelines and formatting requirements."
+      "description": "The OpenReview submission website is currently being prepared and will be made available shortly."
     },
-    "bestPaperAwards": "Best Paper and Best Student Paper awards will be announced at the workshop.",
+    "bestPaperAwards": "We will present Best Paper and Best Student Paper awards to recognize outstanding contributions. Award winners will receive certificates and will be highlighted during the workshop.",
     "faq": [
       {
-        "question": "Can I submit work that has been published elsewhere?",
-        "answer": "Please check the main conference's policy on dual submissions. Generally, work that has been published in archival venues is not allowed."
+        "question": "Can I submit a paper that is under review elsewhere?",
+        "answer": "No, submissions must be original and not under review at any other conference, workshop, or journal during the review period."
       },
       {
         "question": "What is the page limit for submissions?",
-        "answer": "The page limit is 8 pages excluding references. Supplementary materials are optional."
+        "answer": "The page limit is 8 pages for publication in the Springer proceedings."
       },
       {
         "question": "Is the review process double-blind?",
         "answer": "Yes, all submissions must be anonymized for double-blind review."
+      },
+      {
+        "question": "Do I need to attend the workshop if my paper is accepted?",
+        "answer": "Yes, at least one author of each accepted paper must register for and attend the workshop to present the work."
       }
     ]
   },
   "contact": {
     "title": "Contact Us",
-    "subtitle": "Get in touch with the workshop organizing team",
+    "subtitle": "Get in touch with the LIMIT Workshop organizing team",
     "contactInfo": [
       {
         "type": "Email",
         "icon": "Mail",
         "description": "For general inquiries, please contact us at:",
-        "value": "workshop[at]example.com"
+        "value": "ryousuke.yamada[at]aist.go.jp"
       },
       {
         "type": "Location",
         "icon": "MapPin",
         "description": "The workshop will be held at:",
-        "value": "Conference Venue - Room Number"
+        "value": "Malmö, Sweden (Room TBD)"
       },
       {
         "type": "Social Media",
         "icon": "SiTwitter",
         "description": "Follow us on social media:",
+        "value": "",
         "socialLinks": [
           {
             "name": "Twitter/X",
-            "url": "https://twitter.com/yourworkshop",
+            "url": "https://twitter.com/HsijKataoka",
             "icon": "SiTwitter"
           }
         ]
@@ -283,8 +283,8 @@
     },
     "faq": [
       {
-        "question": "How do I submit a paper?",
-        "answer": "Please use our submission portal linked in the Call for Papers page. Follow all formatting guidelines carefully."
+        "question": "Where can I submit my paper?",
+        "answer": "Please submit your paper via OpenReview. The submission link will be made available on this website."
       },
       {
         "question": "When will accepted papers be announced?",
@@ -292,7 +292,7 @@
       },
       {
         "question": "Is there a registration fee?",
-        "answer": "Please check the main conference website for registration information."
+        "answer": "Please check the main ECCV 2026 website for registration information."
       }
     ]
   }

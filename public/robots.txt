@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://cvpr2026-bigmac-workshop.limitlab.xyz/sitemap.xml
+Sitemap: https://eccv2026-limit-workshop.limitlab.xyz/sitemap.xml

@@ -39,11 +39,16 @@ import { downloadICS, isPast, daysUntil } from "@/lib/calendar";
 export const meta: Route.MetaFunction = () =>
   buildMeta({
     title:
-      "BigMAC Workshop @ CVPR 2026 | Big Model Adaptation for Computer Vision",
+      "LIMIT Workshop @ ECCV 2026 | Representation Learning with Very Limited Resources",
     description:
-      "BigMAC Workshop at CVPR 2026 spotlights big model adaptation for computer vision. Join us on June 2026 in Denver for keynotes, paper presentations, and community updates.",
+      "LIMIT Workshop at ECCV 2026 brings together researchers working on representation learning with scarce data, labels, modalities, and computing resources. Join us in September 2026 in Malmö, Sweden.",
     path: "/",
-    keywords: ["cvpr workshop 2026", "big model adaptation", "computer vision"],
+    keywords: [
+      "eccv workshop 2026",
+      "limited resources",
+      "representation learning",
+      "few-shot learning",
+    ],
   });
 
 function Home() {
@@ -60,18 +65,18 @@ function Home() {
   const structuredData = generateWorkshopStructuredData({
     name: workshopData.home.title,
     description: workshopData.home.overview.mission,
-    startDate: "2026-06-04T13:00:00", // Update this to match actual start time (ISO 8601 format)
-    endDate: "2026-06-04T17:00:00", // Update this to match actual end time
+    startDate: "2026-09-08T09:00:00",
+    endDate: "2026-09-08T17:00:00",
     location: {
       name: workshopData.home.eventInfo.location,
-      address: "Colorado Convention Center, Denver, CO, USA", // Update with actual address
+      address: "Malmö, Sweden",
     },
     organizer: {
-      name: "BigMAC Workshop Organizing Committee",
-      url: "https://cvpr2026-bigmac-workshop.limitlab.xyz", // Update with actual URL
+      name: "LIMIT Workshop Organizing Committee",
+      url: "https://eccv2026-limit-workshop.limitlab.xyz",
     },
-    image: "https://cvpr2026-bigmac-workshop.limitlab.xyz/bigmac-ogp.jpg", // Update with actual URL
-    url: "https://cvpr2026-bigmac-workshop.limitlab.xyz", // Update with actual URL
+    image: "https://eccv2026-limit-workshop.limitlab.xyz/limit-ogp.jpg",
+    url: "https://eccv2026-limit-workshop.limitlab.xyz",
     eventAttendanceMode: "OfflineEventAttendanceMode",
     eventStatus: "EventScheduled",
   });
@@ -107,13 +112,13 @@ function Home() {
               <div className="glass-strong flex flex-wrap items-center justify-center gap-4 rounded-2xl px-8 py-4 shadow-lg">
                 <div className="flex items-center gap-3 pl-2 pr-2">
                   <img
-                    src="/cvpr-logo-black.png"
-                    alt="CVPR 2026 logo"
+                    src="/eccv-logo-black.png"
+                    alt="ECCV 2026 logo"
                     className="h-12 dark:hidden"
                   />
                   <img
-                    src="/cvpr-logo-white.png"
-                    alt="CVPR 2026 logo"
+                    src="/eccv-logo-white.png"
+                    alt="ECCV 2026 logo"
                     className="hidden h-12 dark:block"
                   />
                 </div>
@@ -139,7 +144,7 @@ function Home() {
             <div className="flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-8 text-base md:text-lg">
               <div className="glass flex items-center gap-3 px-6 py-3 rounded-2xl shadow-md">
                 <Calendar className="h-5 w-5 text-primary" aria-hidden="true" />
-                <time className="font-medium" dateTime="2026-06-04T13:00">
+                <time className="font-medium" dateTime="2026-09-08T09:00">
                   {workshopData.home.eventInfo.date}
                 </time>
               </div>
@@ -243,18 +248,13 @@ function Home() {
           <div className="glass-strong flex items-start gap-4 rounded-2xl p-8 shadow-lg card-hover">
             <Info className="h-6 w-6 shrink-0 text-primary mt-1" />
             <p className="text-base leading-relaxed">
-              This workshop does NOT have a call for papers. Instead, we will
-              hold an invited poster session. If you would like to nominate your
-              paper for a poster presentation at our workshop, please add it{" "}
-              <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSdei0hTZJ8bA6gAUtcpY6UiJW05wwVl7e507RLSyGi2jHnOtA/viewform?usp=dialog"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:text-primary/80 font-semibold underline decoration-primary/30 underline-offset-4 transition-colors"
-              >
-                here
-              </a>
-              .
+              We are accepting paper submissions for the LIMIT Workshop at ECCV
+              2026. The submission deadline is{" "}
+              <span className="font-semibold text-primary">
+                Monday, July 6, 2026, 23:59 AoE
+              </span>
+              . Please check the topics of interest below and submit your work
+              via OpenReview (link coming soon).
             </p>
           </div>
 
@@ -295,19 +295,7 @@ function Home() {
               <div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
             </div>
             <p className="text-lg leading-relaxed text-foreground/90 max-w-4xl">
-              This workshop explores how large pretrained models are
-              revolutionizing computer vision. We examine emerging techniques
-              where models like Stable Diffusion enable image-to-3D
-              reconstruction, architectures like VGG Transformer (VGGT) leverage
-              pretrained DINO for enhanced visual understanding, and methods
-              like REA harness pretrained models for improved diffusion
-              generation. The workshop covers four key areas: emerging uses of
-              pretrained vision models for 3D and generative AI, prompting
-              techniques for vision models, the role of vision models in
-              multimodal LLMs, and post-pretraining adaptation strategies.
-              BigMAC brings together researchers to address the challenges and
-              opportunities in effectively adapting foundation models for
-              diverse downstream vision tasks.
+              {workshopData.home.overview.mission}
             </p>
           </div>
 
@@ -315,22 +303,21 @@ function Home() {
           <div className="glass rounded-2xl p-10 space-y-4 border shadow-lg">
             <h3 className="text-2xl font-bold">Broader Impact</h3>
             <p className="text-base leading-relaxed text-foreground/80">
-              The goal of this workshop is to explore and discuss ways of
-              effectively adapting and utilizing large pretrained models in
-              computer vision. The sheer parameter and training dataset sizes
-              mean that these foundation models often cannot be trained from
-              scratch by academia, yet they offer unprecedented opportunities
-              for downstream adaptation. These developments bring both
-              challenges and novel opportunities - from leveraging pretrained
-              diffusion models for 3D reconstruction to incorporating vision
-              encoders into multimodal systems. Rather than viewing model scale
-              as a barrier, we focus on innovative usage and adaptation
-              techniques and post-pretraining strategies that make these
-              powerful models accessible and useful for diverse applications. In
-              this workshop, we aim to bring together researchers from academia
-              and industry to discuss how the vision community can best harness
-              these pretrained foundations for advancing computer vision
-              research and applications.
+              Deep learning has achieved remarkable success across many domains,
+              but its reliance on massive datasets, abundant labels, and
+              significant computing resources limits accessibility and
+              applicability. Many real-world scenarios involve scarce data,
+              incomplete modalities, noisy or missing labels, and constrained
+              computational budgets. This workshop aims to bridge this gap by
+              exploring how representation learning can be made effective under
+              such limited-resource conditions. We bring together researchers
+              from academia and industry to discuss novel approaches including
+              self-supervised, semi-supervised, weakly-supervised, and
+              few-shot learning, as well as synthetic data generation and
+              efficient training strategies. By fostering collaboration across
+              these areas, we aim to advance computer vision research that is
+              more accessible, inclusive, and applicable to diverse real-world
+              problems.
             </p>
           </div>
 
@@ -365,10 +352,9 @@ function Home() {
           <div className="glass-strong flex items-start gap-4 rounded-2xl p-8 shadow-lg">
             <Info className="h-6 w-6 shrink-0 text-primary mt-1" />
             <p className="text-base leading-relaxed">
-              The following workshop program describes the tentative schedule in
-              the case that the workshop is held in the morning. Please note
-              that the program may change depending on the assigned time slot.
-              Please check back for updates.
+              The following workshop program is tentative and subject to change.
+              The exact date, time slot, and room assignment will be confirmed
+              closer to the event. Please check back for updates.
             </p>
           </div>
           <div className="glass rounded-2xl p-6 md:p-8 border shadow-lg overflow-hidden">
