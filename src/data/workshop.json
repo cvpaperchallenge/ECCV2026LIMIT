@@ -1,0 +1,299 @@
+{
+  "home": {
+    "title": "Your Workshop Title",
+    "tagline": "Add a catchy tagline here",
+    "subtitle": "Conference Name 2026 Workshop",
+    "eventInfo": {
+      "date": "Month Day, Year, Time",
+      "location": "Venue Name - Room Number"
+    },
+    "overview": {
+      "mission": "Replace this with your workshop's mission statement. Describe the main goals, themes, and objectives of your workshop. Explain why this workshop is important and what attendees can expect to learn or discuss.",
+      "keyTopics": [
+        "First key topic or research area",
+        "Second key topic or research area",
+        "Third key topic or research area",
+        "Fourth key topic or research area",
+        "Fifth key topic or research area"
+      ]
+    },
+    "importantDates": [
+      {
+        "title": "Early Registration Deadline",
+        "date": "January 15, 2026"
+      },
+      {
+        "title": "Paper Submission Deadline",
+        "date": "March 15, 2026"
+      },
+      {
+        "title": "Notification of Acceptance",
+        "date": "April 10, 2026"
+      },
+      {
+        "title": "Camera-Ready Deadline",
+        "date": "May 1, 2026"
+      },
+      {
+        "title": "Workshop Date",
+        "date": "June 20, 2026"
+      }
+    ],
+    "latestNews": [
+      {
+        "title": "Workshop page open",
+        "date": "Month Day, Year",
+        "content": "Welcome to our workshop website! We will be updating this page regularly with new information about speakers, schedule, and submission guidelines."
+      },
+      {
+        "title": "Call for Papers announced",
+        "date": "Month Day, Year",
+        "content": "We are now accepting paper submissions. Please check the Call for Papers page for detailed submission guidelines and important dates."
+      }
+    ]
+  },
+  "schedule": {
+    "title": "Schedule",
+    "subtitle": "Workshop program",
+    "importantDates": [
+      {
+        "title": "Paper Submission Deadline",
+        "date": "Month Day, Year",
+        "description": "Submit your papers by this date"
+      },
+      {
+        "title": "Notification of Acceptance",
+        "date": "Month Day, Year",
+        "description": "Authors will be notified of acceptance"
+      },
+      {
+        "title": "Camera-Ready Deadline",
+        "date": "Month Day, Year",
+        "description": "Final versions due"
+      },
+      {
+        "title": "Workshop Date",
+        "date": "Month Day, Year, Time",
+        "description": "Workshop day"
+      }
+    ],
+    "workshopProgram": {
+      "day1": {
+        "date": "Month Day, Year",
+        "location": "Conference Venue - Room Number",
+        "schedule": [
+          {
+            "time": "09:00 - 09:15",
+            "session": "Opening Remarks",
+            "presenter": "Organizer Name",
+            "slides": ""
+          },
+          {
+            "time": "09:15 - 09:45",
+            "session": "Keynote 1",
+            "presenter": "Speaker Name 1",
+            "slides": ""
+          },
+          {
+            "time": "09:45 - 10:15",
+            "session": "Keynote 2",
+            "presenter": "Speaker Name 2",
+            "slides": ""
+          },
+          {
+            "time": "10:15 - 10:30",
+            "session": "Coffee Break",
+            "presenter": "",
+            "slides": ""
+          },
+          {
+            "time": "10:30 - 11:30",
+            "session": "Oral Presentations",
+            "presenter": "Various Authors",
+            "slides": ""
+          },
+          {
+            "time": "11:30 - 12:30",
+            "session": "Poster Session",
+            "presenter": "",
+            "slides": ""
+          },
+          {
+            "time": "12:30 - 13:30",
+            "session": "Lunch Break",
+            "presenter": "",
+            "slides": ""
+          },
+          {
+            "time": "13:30 - 14:30",
+            "session": "Panel Discussion",
+            "presenter": "All Speakers",
+            "slides": ""
+          },
+          {
+            "time": "14:30 - 15:00",
+            "session": "Awards & Closing Remarks",
+            "presenter": "Organizer Name",
+            "slides": ""
+          }
+        ]
+      },
+      "day2": {
+        "date": "",
+        "location": "",
+        "schedule": []
+      }
+    },
+    "presenterGuidelines": {
+      "oralPresentation": {
+        "title": "Oral Presentation Guidelines",
+        "content": "Each oral presentation will be allocated 15 minutes including Q&A.",
+        "guidelines": [
+          "Prepare slides in 16:9 format",
+          "Upload your presentation at least 30 minutes before your session",
+          "Include your paper title, authors, and affiliations on the first slide",
+          "Leave 2-3 minutes for questions"
+        ]
+      },
+      "posterPresentation": {
+        "title": "Poster Presentation Guidelines",
+        "content": "Posters will be displayed during the designated poster session.",
+        "guidelines": [
+          "Maximum poster size: 36\" x 48\" (91cm x 122cm)",
+          "Portrait orientation is recommended",
+          "Set up your poster 30 minutes before the session starts",
+          "Be present at your poster during the designated session time"
+        ]
+      },
+      "technicalRequirements": {
+        "title": "Technical Requirements",
+        "content": "The following equipment will be provided for oral presentations:",
+        "requirements": [
+          "Projector with HDMI connection",
+          "Presenter remote",
+          "Microphone",
+          "Laser pointer"
+        ],
+        "note": "Please bring your own laptop or a USB drive with your presentation."
+      }
+    }
+  },
+  "callForPapers": {
+    "title": "Call for Papers",
+    "subtitle": "Submit your work to the workshop",
+    "topics": {
+      "core": [
+        "Replace with your workshop's main topic area 1",
+        "Replace with your workshop's main topic area 2",
+        "Replace with your workshop's main topic area 3",
+        "Replace with your workshop's main topic area 4",
+        "Replace with your workshop's main topic area 5"
+      ]
+    },
+    "paperFormat": {
+      "submissionGuidelines": [
+        "Papers must be submitted in PDF format",
+        "Maximum page limit: 8 pages (excluding references)",
+        "Use the conference template (e.g., CVPR, NeurIPS, etc.)",
+        "Papers must be anonymized for double-blind review",
+        "Supplementary materials are allowed but optional"
+      ],
+      "reviewProcess": "All submissions will be peer-reviewed by at least 2 reviewers. The review process is double-blind.",
+      "publication": "Accepted papers will be published on the workshop website and may be included in conference proceedings."
+    },
+    "submission": {
+      "description": "Submit your paper through our submission portal. Make sure to follow all submission guidelines and formatting requirements."
+    },
+    "bestPaperAwards": "Best Paper and Best Student Paper awards will be announced at the workshop.",
+    "faq": [
+      {
+        "question": "Can I submit work that has been published elsewhere?",
+        "answer": "Please check the main conference's policy on dual submissions. Generally, work that has been published in archival venues is not allowed."
+      },
+      {
+        "question": "What is the page limit for submissions?",
+        "answer": "The page limit is 8 pages excluding references. Supplementary materials are optional."
+      },
+      {
+        "question": "Is the review process double-blind?",
+        "answer": "Yes, all submissions must be anonymized for double-blind review."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch with the workshop organizing team",
+    "contactInfo": [
+      {
+        "type": "Email",
+        "icon": "Mail",
+        "description": "For general inquiries, please contact us at:",
+        "value": "workshop[at]example.com"
+      },
+      {
+        "type": "Location",
+        "icon": "MapPin",
+        "description": "The workshop will be held at:",
+        "value": "Conference Venue - Room Number"
+      },
+      {
+        "type": "Social Media",
+        "icon": "SiTwitter",
+        "description": "Follow us on social media:",
+        "socialLinks": [
+          {
+            "name": "Twitter/X",
+            "url": "https://twitter.com/yourworkshop",
+            "icon": "SiTwitter"
+          }
+        ]
+      }
+    ],
+    "contactForm": {
+      "fields": [
+        {
+          "id": "name",
+          "label": "Name",
+          "type": "text",
+          "placeholder": "Your name"
+        },
+        {
+          "id": "email",
+          "label": "Email",
+          "type": "email",
+          "placeholder": "Your email address"
+        },
+        {
+          "id": "subject",
+          "label": "Subject",
+          "type": "text",
+          "placeholder": "Message subject"
+        },
+        {
+          "id": "message",
+          "label": "Message",
+          "type": "textarea",
+          "placeholder": "Your message"
+        }
+      ],
+      "submitButton": {
+        "text": "Send Message",
+        "icon": "Send"
+      }
+    },
+    "faq": [
+      {
+        "question": "How do I submit a paper?",
+        "answer": "Please use our submission portal linked in the Call for Papers page. Follow all formatting guidelines carefully."
+      },
+      {
+        "question": "When will accepted papers be announced?",
+        "answer": "All decisions will be communicated by the notification date listed in the important dates."
+      },
+      {
+        "question": "Is there a registration fee?",
+        "answer": "Please check the main conference website for registration information."
+      }
+    ]
+  }
+}

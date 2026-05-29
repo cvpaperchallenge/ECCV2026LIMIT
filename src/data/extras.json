@@ -1,0 +1,140 @@
+{
+  "awards": {
+    "title": "Awards",
+    "subtitle": "Recognizing outstanding contributions",
+    "intro": "We are pleased to recognize exceptional papers presented at our workshop. Awards are determined by the program committee based on novelty, technical quality, and impact.",
+    "awards": [
+      {
+        "category": "Best Paper Award",
+        "paperTitle": "Example Paper Title",
+        "authors": "Author Name 1, Author Name 2, Author Name 3",
+        "paperLink": "#",
+        "summary": "Brief description of why this paper received the award."
+      }
+    ],
+    "honorableMentions": [
+      {
+        "paperTitle": "Honorable Mention Paper Title 1",
+        "authors": "Author Name 1, Author Name 2",
+        "paperLink": "#",
+        "summary": "Brief description of this paper's contributions."
+      },
+      {
+        "paperTitle": "Honorable Mention Paper Title 2",
+        "authors": "Author Name 3, Author Name 4",
+        "paperLink": "#",
+        "summary": "Brief description of this paper's contributions."
+      }
+    ],
+    "selection": {
+      "overview": "The awards committee evaluates all accepted papers based on reviewer feedback, presentation quality, and overall impact.",
+      "criteria": [
+        "Novelty and technical rigor",
+        "Clarity of presentation and reproducibility",
+        "Potential real-world impact"
+      ],
+      "committee": [
+        "Committee Member 1 (Affiliation)",
+        "Committee Member 2 (Affiliation)",
+        "Committee Member 3 (Affiliation)"
+      ]
+    },
+    "timeline": [
+      {
+        "phase": "Nominations",
+        "date": "Month Day, Year",
+        "description": "Area chairs and reviewers nominate standout submissions."
+      },
+      {
+        "phase": "Final Deliberation",
+        "date": "Month Day, Year",
+        "description": "Awards committee reviews shortlisted papers."
+      },
+      {
+        "phase": "Announcement",
+        "date": "Month Day, Year",
+        "description": "Winners announced at the workshop closing session."
+      }
+    ],
+    "cta": {
+      "text": "Questions about awards?",
+      "email": "workshop@example.com"
+    }
+  },
+  "supporters": {
+    "supporters": [
+      {
+        "name": "Sponsor Name 1",
+        "logo": "/supporters/sponsor1.jpg",
+        "website": "https://example.com"
+      },
+      {
+        "name": "Sponsor Name 2",
+        "logo": "/supporters/sponsor2.jpg",
+        "website": "https://example.com"
+      }
+    ]
+  },
+  "pastEvents": {
+    "title": "Past Events",
+    "subtitle": "Previous editions of the workshop",
+    "workshopHistory": [
+      {
+        "year": "2025",
+        "title": "Workshop 2025",
+        "location": "Conference 2025, Location",
+        "description": "Description of the 2025 workshop edition and its main themes.",
+        "website": "#"
+      },
+      {
+        "year": "2024",
+        "title": "Workshop 2024",
+        "location": "Conference 2024, Location",
+        "description": "Description of the 2024 workshop edition and its main themes.",
+        "website": "#"
+      }
+    ],
+    "pastPapers": [
+      {
+        "year": "2025",
+        "title": "Example Paper Title from 2025",
+        "authors": "A. Author, B. Author, C. Author",
+        "links": {
+          "paper": "#",
+          "video": "#"
+        }
+      },
+      {
+        "year": "2024",
+        "title": "Example Paper Title from 2024",
+        "authors": "D. Author, E. Author",
+        "links": {
+          "paper": "#",
+          "video": "#"
+        }
+      }
+    ],
+    "pastKeynotes": [
+      {
+        "title": "Example Keynote Title",
+        "speaker": "Speaker Name, Year",
+        "description": "Description of the keynote presentation and its main topics.",
+        "videoLink": "#"
+      }
+    ],
+    "resources": [
+      {
+        "title": "Workshop Datasets",
+        "description": "Benchmark datasets from previous workshops.",
+        "link": "#",
+        "type": "datasets"
+      },
+      {
+        "title": "Code Repositories",
+        "description": "Code implementations from accepted papers.",
+        "link": "#",
+        "type": "code"
+      }
+    ]
+  }
+}

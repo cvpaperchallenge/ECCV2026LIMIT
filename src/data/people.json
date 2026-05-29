@@ -1,0 +1,85 @@
+{
+  "organizers": {
+    "title": "Organizing Team",
+    "subtitle": "Meet the team behind the workshop",
+    "organizers": [
+      {
+        "name": "Organizer Name 1",
+        "affiliation": "University/Institution Name",
+        "photo": "/organizers/aida.nematzadeh-302x302.jpg",
+        "website": "https://example.com"
+      },
+      {
+        "name": "Organizer Name 2",
+        "affiliation": "University/Institution Name",
+        "photo": "/organizers/anna.kukleva-302x302.jpg",
+        "website": "https://example.com"
+      },
+      {
+        "name": "Organizer Name 3",
+        "affiliation": "University/Institution Name",
+        "photo": "/organizers/christian.rupprecht.jpg",
+        "website": "https://example.com"
+      },
+      {
+        "name": "Organizer Name 4",
+        "affiliation": "University/Institution Name",
+        "photo": "/organizers/connor.anderson.png",
+        "website": "https://example.com"
+      }
+    ],
+    "programChairs": []
+  },
+  "program": {
+    "title": "Program",
+    "subtitle": "Invited speakers and panel discussions",
+    "invitedSpeakers": [
+      {
+        "name": "Speaker Name 1",
+        "affiliation": "University/Company Name",
+        "photo": "/program/aditi.raghunathan-512x512.jpg",
+        "website": "https://example.com"
+      },
+      {
+        "name": "Speaker Name 2",
+        "affiliation": "University/Company Name",
+        "photo": "/program/alexei.efros-512x512.jpg",
+        "website": "https://example.com"
+      },
+      {
+        "name": "Speaker Name 3",
+        "affiliation": "University/Company Name",
+        "photo": "/program/andrea.vedaldi-512x512.jpg",
+        "website": "https://example.com"
+      },
+      {
+        "name": "Speaker Name 4",
+        "affiliation": "University/Company Name",
+        "photo": "/program/christian.rupprecht-512x512.jpg",
+        "website": "https://example.com"
+      },
+      {
+        "name": "TBA",
+        "affiliation": "TBA",
+        "photo": "/program/tba-512x512.jpg",
+        "website": ""
+      }
+    ],
+    "acceptedPapers": {
+      "oral": [],
+      "poster": []
+    },
+    "panelDiscussion": {
+      "title": "Panel: Workshop Topic Discussion",
+      "time": "Month Year (TBD)",
+      "description": "This panel brings together the invited speakers to discuss current challenges and future opportunities in the field. Add your panel description here.",
+      "panelists": [
+        "Speaker Name 1 - Affiliation",
+        "Speaker Name 2 - Affiliation",
+        "TBA"
+      ],
+      "moderator": "TBD"
+    },
+    "sessionStructure": []
+  }
+}
