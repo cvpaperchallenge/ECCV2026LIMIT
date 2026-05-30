@@ -3,7 +3,7 @@ import {
   Mail,
   MapPin,
   ExternalLink,
-  FileText,
+  // FileText,
   Info,
   CalendarPlus,
 } from "lucide-react";
@@ -11,14 +11,14 @@ import { SiSlack } from "react-icons/si";
 import { Link, useLocation } from "react-router";
 import { useEffect } from "react";
 
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "../../components/ui/table";
+// import {
+//   Table,
+//   TableBody,
+//   TableCell,
+//   TableHead,
+//   TableHeader,
+//   TableRow,
+// } from "../../components/ui/table";
 import {
   Card,
   CardContent,
@@ -31,7 +31,7 @@ import { Button } from "../../components/ui/button";
 import workshopData from "../../data/workshop.json";
 import peopleData from "../../data/people.json";
 import type { Route } from "./+types/Home";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+// import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { buildMeta } from "@/lib/seo";
 import { generateWorkshopStructuredData } from "@/lib/structured-data";
 import { downloadICS, isPast, daysUntil } from "@/lib/calendar";
@@ -399,8 +399,8 @@ function Home() {
           </div>
         </section>
 
-        {/* Program Section */}
-        <section id="program" className="space-y-8">
+        {/* Program Section - hidden until program is finalized */}
+        {/* <section id="program" className="space-y-8">
           <div className="space-y-3">
             <h2 className="font-bold">Workshop Program</h2>
             <div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
@@ -473,7 +473,7 @@ function Home() {
               <ScrollBar orientation="horizontal" />
             </ScrollArea>
           </div>
-        </section>
+        </section> */}
 
         {/* Invited Speakers Section */}
         <section id="speakers" className="space-y-8">

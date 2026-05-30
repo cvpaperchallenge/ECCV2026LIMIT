@@ -79,12 +79,6 @@ export function Footer() {
               Call for Papers
             </Link>
             <Link
-              to="/#program"
-              className="text-sm text-muted-foreground hover:text-primary transition-colors font-medium"
-            >
-              Program
-            </Link>
-            <Link
               to="/#speakers"
               className="text-sm text-muted-foreground hover:text-primary transition-colors font-medium"
             >
