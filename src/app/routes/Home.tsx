@@ -109,12 +109,12 @@ function Home() {
               <span className="text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground">
                 Held as part of
               </span>
-              <div className="glass-strong flex flex-wrap items-center justify-center gap-4 rounded-2xl px-8 py-4 shadow-lg">
+              <div className="flex flex-wrap items-center justify-center gap-4 rounded-2xl bg-white px-8 py-4 shadow-lg">
                 <div className="flex items-center gap-3 pl-2 pr-2">
                   <img
                     src="/eccv-navbar-logo.svg"
                     alt="ECCV 2026 | Malmö | Sept 8-13"
-                    className="h-12"
+                    className="h-20"
                   />
                 </div>
               </div>
