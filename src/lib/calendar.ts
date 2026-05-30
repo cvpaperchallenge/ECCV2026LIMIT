@@ -2,6 +2,9 @@
  * Calculate days until a date
  */
 export function daysUntil(dateString: string): number | null {
+  if (/tbd/i.test(dateString)) {
+    return null;
+  }
   const targetDate = new Date(dateString);
   if (isNaN(targetDate.getTime())) {
     return null;
