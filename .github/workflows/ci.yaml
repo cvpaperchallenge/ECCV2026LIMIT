@@ -2,7 +2,12 @@ name: lint-and-test
 permissions: {}
 on:
   pull_request:
-    paths: ["src**"]
+    paths:
+      - "src/**"
+      - "environments/**"
+      - ".github/workflows/**"
+      - "package.json"
+      - "yarn.lock"
 defaults:
   run:
     shell: bash
