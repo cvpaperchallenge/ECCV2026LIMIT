@@ -36,6 +36,10 @@ jobs:
         run: docker compose up -d
         working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}
 
+      - name: Install dependencies
+        run: docker compose exec -T frontend yarn install --frozen-lockfile
+        working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}
+
       - name: Run lint
         run: docker compose exec -T frontend yarn lint
         working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}
