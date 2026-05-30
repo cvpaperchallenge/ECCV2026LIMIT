@@ -8,7 +8,7 @@ import {
   CalendarPlus,
 } from "lucide-react";
 import { SiSlack } from "react-icons/si";
-import { Link, useLocation } from "react-router";
+import { useLocation } from "react-router";
 import { useEffect } from "react";
 
 // import {
@@ -307,11 +307,11 @@ function Home() {
               exploring how representation learning can be made effective under
               such limited-resource conditions. We bring together researchers
               from academia and industry to discuss novel approaches including
-              self-supervised, semi-supervised, weakly-supervised, and
-              few-shot learning, as well as synthetic data generation and
-              efficient training strategies. By fostering collaboration across
-              these areas, we aim to advance computer vision research that is
-              more accessible, inclusive, and applicable to diverse real-world
+              self-supervised, semi-supervised, weakly-supervised, and few-shot
+              learning, as well as synthetic data generation and efficient
+              training strategies. By fostering collaboration across these
+              areas, we aim to advance computer vision research that is more
+              accessible, inclusive, and applicable to diverse real-world
               problems.
             </p>
           </div>
