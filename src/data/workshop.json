@@ -236,15 +236,14 @@
         "value": "Malmö, Sweden (Room TBD)"
       },
       {
-        "type": "Social Media",
-        "icon": "SiTwitter",
-        "description": "Follow us on social media:",
-        "value": "",
+        "type": "Slack",
+        "icon": "SiSlack",
+        "description": "Join our LIMIT.Community Slack WG from:",
         "socialLinks": [
           {
-            "name": "Twitter/X",
-            "url": "https://twitter.com/HsijKataoka",
-            "icon": "SiTwitter"
+            "name": "Join Slack WG",
+            "url": "https://join.slack.com/t/limit-community/shared_invite/zt-1oov3gv0h-kaLICu0jm_wzm0_H6D46Lw",
+            "icon": "SiSlack"
           }
         ]
       }
