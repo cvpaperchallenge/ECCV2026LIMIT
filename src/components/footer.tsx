@@ -25,6 +25,18 @@ export function Footer() {
           >
             ICCV 2025 LIMIT
           </Link>
+          <Link
+            to="https://hirokatsukataoka16.github.io/CVPR-2024-LIMIT"
+            className="text-sm text-muted-foreground hover:text-primary transition-colors font-medium"
+          >
+            CVPR 2024 LIMIT
+          </Link>
+          <Link
+            to="https://lsfsl.net/limit23/"
+            className="text-sm text-muted-foreground hover:text-primary transition-colors font-medium"
+          >
+            ICCV 2023 LIMIT
+          </Link>
         </div>
 
         {/* Related Workshop */}

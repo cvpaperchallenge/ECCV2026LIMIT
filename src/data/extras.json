@@ -31,8 +31,22 @@
         "year": "2025",
         "title": "LIMIT @ ICCV 2025",
         "location": "ICCV 2025, Honolulu, Hawaii",
-        "description": "The inaugural LIMIT Workshop focused on representation learning with very limited resources, featuring 4 invited speakers, 21 accepted papers (4 oral, 17 poster), and lively discussions on learning under data, label, and compute constraints.",
+        "description": "The 3rd LIMIT Workshop focused on representation learning with very limited resources, featuring 4 invited speakers, 21 accepted papers (4 oral, 17 poster), and lively discussions on learning under data, label, and compute constraints.",
         "website": "https://limit-workshop.github.io/"
+      },
+      {
+        "year": "2024",
+        "title": "LIMIT @ CVPR 2024",
+        "location": "CVPR 2024, Seattle, WA",
+        "description": "The 2nd LIMIT Workshop at CVPR 2024.",
+        "website": "https://hirokatsukataoka16.github.io/CVPR-2024-LIMIT"
+      },
+      {
+        "year": "2023",
+        "title": "LIMIT @ ICCV 2023",
+        "location": "ICCV 2023, Paris, France",
+        "description": "The 1st LIMIT Workshop at ICCV 2023.",
+        "website": "https://lsfsl.net/limit23/"
       }
     ],
     "pastPapers": [],
