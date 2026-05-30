@@ -49,6 +49,12 @@ export function Footer() {
               Home
             </Link>
             <Link
+              to="/#cfp"
+              className="text-sm text-muted-foreground hover:text-primary transition-colors font-medium"
+            >
+              Call for Papers
+            </Link>
+            <Link
               to="/#program"
               className="text-sm text-muted-foreground hover:text-primary transition-colors font-medium"
             >

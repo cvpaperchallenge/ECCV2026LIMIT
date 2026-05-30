@@ -343,6 +343,62 @@ function Home() {
           </div>
         </section>
 
+        {/* Call for Papers Section */}
+        <section id="cfp" className="space-y-8">
+          <div className="space-y-3">
+            <h2 className="font-bold">Call for Papers</h2>
+            <div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
+          </div>
+
+          {/* Submission Guidelines */}
+          <div className="glass rounded-2xl p-8 md:p-10 border shadow-lg space-y-6">
+            <h3 className="text-xl font-bold">Submission Guidelines</h3>
+            <ul className="space-y-3">
+              {workshopData.callForPapers.paperFormat.submissionGuidelines.map(
+                (guideline, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary text-sm font-bold mt-0.5">
+                      {index + 1}
+                    </div>
+                    <p className="text-base leading-relaxed">{guideline}</p>
+                  </li>
+                ),
+              )}
+            </ul>
+          </div>
+
+          {/* Review & Publication */}
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="glass rounded-2xl p-8 border shadow-md space-y-3">
+              <h3 className="text-lg font-bold">Review Process</h3>
+              <p className="text-base leading-relaxed text-foreground/80">
+                {workshopData.callForPapers.paperFormat.reviewProcess}
+              </p>
+            </div>
+            <div className="glass rounded-2xl p-8 border shadow-md space-y-3">
+              <h3 className="text-lg font-bold">Publication</h3>
+              <p className="text-base leading-relaxed text-foreground/80">
+                {workshopData.callForPapers.paperFormat.publication}
+              </p>
+            </div>
+          </div>
+
+          {/* Submit Button */}
+          <div className="glass-strong rounded-2xl p-8 shadow-lg text-center space-y-4">
+            <p className="text-base leading-relaxed">
+              {workshopData.callForPapers.submission.description}
+            </p>
+            <Button
+              variant="outline"
+              size="lg"
+              className="text-base px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
+              disabled
+            >
+              Submit via OpenReview (Coming Soon)
+            </Button>
+          </div>
+        </section>
+
         {/* Program Section */}
         <section id="program" className="space-y-8">
           <div className="space-y-3">
