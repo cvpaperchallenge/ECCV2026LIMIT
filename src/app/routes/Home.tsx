@@ -112,14 +112,9 @@ function Home() {
               <div className="glass-strong flex flex-wrap items-center justify-center gap-4 rounded-2xl px-8 py-4 shadow-lg">
                 <div className="flex items-center gap-3 pl-2 pr-2">
                   <img
-                    src="/eccv-logo-black.png"
-                    alt="ECCV 2026 logo"
-                    className="h-12 dark:hidden"
-                  />
-                  <img
-                    src="/eccv-logo-white.png"
-                    alt="ECCV 2026 logo"
-                    className="hidden h-12 dark:block"
+                    src="/eccv-navbar-logo.svg"
+                    alt="ECCV 2026 | Malmö | Sept 8-13"
+                    className="h-12"
                   />
                 </div>
               </div>
