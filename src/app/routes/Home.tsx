@@ -475,8 +475,8 @@ function Home() {
           </div>
         </section> */}
 
-        {/* Invited Speakers Section */}
-        <section id="speakers" className="space-y-8">
+        {/* Invited Speakers Section - hidden until speakers are confirmed */}
+        {/* <section id="speakers" className="space-y-8">
           <div className="space-y-3">
             <h2 className="font-bold">Invited Speakers</h2>
             <div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
@@ -523,7 +523,7 @@ function Home() {
               </Card>
             ))}
           </div>
-        </section>
+        </section> */}
 
         {/* Organizers */}
         <section id="organizers" className="space-y-8">
