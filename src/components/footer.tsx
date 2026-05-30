@@ -43,6 +43,18 @@ export function Footer() {
         <div className="flex flex-col gap-4">
           <h3 className="font-bold text-lg">Related Workshops</h3>
           <Link
+            to="https://eccv2026-found-workshop.limitlab.xyz"
+            className="text-sm text-muted-foreground hover:text-primary transition-colors font-medium"
+          >
+            ECCV 2026 FOUND
+          </Link>
+          <Link
+            to="https://cvpr2026-bigmac-workshop.limitlab.xyz"
+            className="text-sm text-muted-foreground hover:text-primary transition-colors font-medium"
+          >
+            CVPR 2026 BigMAC
+          </Link>
+          <Link
             to="https://cvpr2026-vgi-workshop.limitlab.xyz/"
             className="text-sm text-muted-foreground hover:text-primary transition-colors font-medium"
           >
