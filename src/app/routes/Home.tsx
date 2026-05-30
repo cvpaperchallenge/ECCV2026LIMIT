@@ -156,10 +156,10 @@ function Home() {
               <Button
                 variant="outline"
                 size="lg"
-                className="text-base px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
-                asChild
+                className="text-base px-8 py-6 rounded-xl opacity-50 cursor-not-allowed"
+                disabled
               >
-                <Link to="/#program">View Program</Link>
+                View Program (Coming Soon)
               </Button>
             </div>
           </div>
@@ -289,7 +289,7 @@ function Home() {
               <h2 className="font-bold">About the Workshop</h2>
               <div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
             </div>
-            <p className="text-lg leading-relaxed text-foreground/90 max-w-4xl">
+            <p className="text-lg leading-relaxed text-foreground/90">
               {workshopData.home.overview.mission}
             </p>
           </div>
