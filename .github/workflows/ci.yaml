@@ -42,7 +42,7 @@ jobs:
         working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}
 
       - name: Install dependencies
-        run: docker compose exec -T frontend yarn install --frozen-lockfile
+        run: docker compose exec -T frontend yarn install --immutable
         working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}
 
       - name: Run lint
