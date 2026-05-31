@@ -1,23 +1,45 @@
 /**
- * Calculate days until a date
+ * Calculate days until a date.
+ * When the date string contains "AoE", uses Anywhere on Earth (UTC-12)
+ * so deadlines are not shown as ended prematurely.
  */
 export function daysUntil(dateString: string): number | null {
   if (/tbd/i.test(dateString)) {
     return null;
   }
-  const targetDate = new Date(dateString);
+
+  const isAoE = /AoE/i.test(dateString);
+  const cleanDate = dateString.replace(/,?\s*AoE$/i, "").trim();
+
+  const targetDate = new Date(cleanDate);
   if (isNaN(targetDate.getTime())) {
     return null;
   }
 
-  const now = new Date();
-  now.setHours(0, 0, 0, 0);
-  targetDate.setHours(0, 0, 0, 0);
+  const targetYear = targetDate.getFullYear();
+  const targetMonth = targetDate.getMonth();
+  const targetDay = targetDate.getDate();
 
-  const diffTime = targetDate.getTime() - now.getTime();
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  let todayYear: number, todayMonth: number, todayDay: number;
 
-  return diffDays;
+  if (isAoE) {
+    // AoE = UTC-12: subtract 12 hours from UTC to get current AoE wall-clock
+    const now = new Date();
+    const aoeNow = new Date(now.getTime() - 12 * 60 * 60 * 1000);
+    todayYear = aoeNow.getUTCFullYear();
+    todayMonth = aoeNow.getUTCMonth();
+    todayDay = aoeNow.getUTCDate();
+  } else {
+    const now = new Date();
+    todayYear = now.getFullYear();
+    todayMonth = now.getMonth();
+    todayDay = now.getDate();
+  }
+
+  const target = Date.UTC(targetYear, targetMonth, targetDay);
+  const today = Date.UTC(todayYear, todayMonth, todayDay);
+
+  return Math.ceil((target - today) / (1000 * 60 * 60 * 24));
 }
 
 /**
@@ -56,8 +78,9 @@ export function generateICS(
   date: string,
   description?: string,
 ): string {
-  // Parse the date string (format: "Month Day, Year" or "Month Day, Year, Time")
-  const eventDate = new Date(date);
+  // Strip AoE suffix before parsing
+  const cleanDate = date.replace(/,?\s*AoE$/i, "").trim();
+  const eventDate = new Date(cleanDate);
 
   // If date is invalid, use a placeholder
   if (isNaN(eventDate.getTime())) {

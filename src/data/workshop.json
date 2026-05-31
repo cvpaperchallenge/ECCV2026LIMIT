@@ -20,15 +20,15 @@
     "importantDates": [
       {
         "title": "Paper Submission Deadline",
-        "date": "July 6, 2026"
+        "date": "July 6, 2026, AoE"
       },
       {
         "title": "Author Notification",
-        "date": "TBD"
+        "date": "August 3, 2026, AoE"
       },
       {
         "title": "Camera-Ready Deadline",
-        "date": "TBD"
+        "date": "August 10, 2026, AoE"
       },
       {
         "title": "Workshop Date",
@@ -54,17 +54,17 @@
     "importantDates": [
       {
         "title": "Paper Submission Deadline",
-        "date": "July 6, 2026",
+        "date": "July 6, 2026, AoE",
         "description": "Submit your papers by this date"
       },
       {
         "title": "Author Notification",
-        "date": "TBD",
+        "date": "August 3, 2026, AoE",
         "description": "Authors will be notified of acceptance"
       },
       {
         "title": "Camera-Ready Deadline",
-        "date": "TBD",
+        "date": "August 10, 2026, AoE",
         "description": "Final versions due"
       },
       {
@@ -191,7 +191,8 @@
         "Submissions must be handled electronically via the OpenReview submission website",
         "Submissions must be anonymized",
         "Formatted according to ECCV 2026 template",
-        "Maximum 8 pages for publication in the Springer proceedings"
+        "Papers should be longer than 4 pages and up to 14 pages, excluding references, for publication in the Springer proceedings",
+        "Follow the ECCV 2026 Submission Policies"
       ],
       "reviewProcess": "All submissions will undergo a double-blind peer review process. Each paper will be reviewed by at least three reviewers from our program committee.",
       "publication": "Accepted papers will be published in the Springer proceedings and presented at the workshop."
@@ -207,7 +208,7 @@
       },
       {
         "question": "What is the page limit for submissions?",
-        "answer": "The page limit is 8 pages for publication in the Springer proceedings."
+        "answer": "Papers should be longer than 4 pages and up to 14 pages, excluding references, for publication in the Springer proceedings."
       },
       {
         "question": "Is the review process double-blind?",

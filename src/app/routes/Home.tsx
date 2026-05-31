@@ -166,7 +166,7 @@ function Home() {
             <h2 className="font-bold">Important Dates</h2>
             <div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
           </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {workshopData.home.importantDates.map((item, index) => {
               const past = isPast(item.date);
               const days = daysUntil(item.date);
