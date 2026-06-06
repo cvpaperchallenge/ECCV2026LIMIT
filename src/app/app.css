@@ -137,6 +137,8 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
   section[id] {
     scroll-margin-top: 6rem;
