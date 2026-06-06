@@ -28,20 +28,22 @@ export function DeadlineBanner({ dates }: DeadlineBannerProps) {
             : "bg-primary/5 border-primary/10"
       }`}
     >
-      <div className="flex items-center justify-center gap-3 py-3 text-sm">
-        <Clock
-          className={`h-4 w-4 shrink-0 ${
-            isUrgent
-              ? "text-red-600 dark:text-red-400"
-              : isModerate
-                ? "text-orange-600 dark:text-orange-400"
-                : "text-primary"
-          }`}
-        />
-        <span className="font-semibold">{title}</span>
-        <span className="text-muted-foreground">•</span>
+      <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 px-4 py-3 text-sm">
         <div className="flex items-center gap-2">
-          <Calendar className="h-4 w-4 text-muted-foreground" />
+          <Clock
+            className={`h-4 w-4 shrink-0 ${
+              isUrgent
+                ? "text-red-600 dark:text-red-400"
+                : isModerate
+                  ? "text-orange-600 dark:text-orange-400"
+                  : "text-primary"
+            }`}
+          />
+          <span className="font-semibold">{title}</span>
+        </div>
+        <span className="text-muted-foreground hidden sm:inline">•</span>
+        <div className="flex items-center gap-2">
+          <Calendar className="h-4 w-4 shrink-0 text-muted-foreground" />
           <span className="text-muted-foreground">{date}</span>
         </div>
         <span className="text-muted-foreground hidden sm:inline">•</span>
