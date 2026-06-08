@@ -10,6 +10,7 @@ import {
 import { SiSlack } from "react-icons/si";
 import { useLocation } from "react-router";
 import { useEffect } from "react";
+import { NewsCarousel } from "../../components/news-carousel";
 
 // import {
 //   Table,
@@ -244,7 +245,16 @@ function Home() {
                 Monday, July 6, 2026, 23:59 AoE
               </span>
               . Please check the topics of interest below and submit your work
-              via OpenReview (link coming soon).
+              via{" "}
+              <a
+                href={workshopData.callForPapers.submission.url}
+                target="_blank"
+                rel="noreferrer"
+                className="font-semibold text-primary hover:text-primary/80 transition-colors underline decoration-primary/30 underline-offset-4"
+              >
+                OpenReview
+              </a>
+              .
             </p>
           </div>
 
@@ -254,26 +264,7 @@ function Home() {
               <h2 className="font-bold">Latest News</h2>
               <div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
             </div>
-            <div className="grid gap-6 md:grid-cols-2">
-              {workshopData.home.latestNews.map((news, index) => (
-                <div
-                  key={index}
-                  className="glass rounded-2xl p-8 shadow-md card-hover border"
-                >
-                  <div className="space-y-4">
-                    <div className="space-y-2">
-                      <h3 className="text-xl font-bold">{news.title}</h3>
-                      <p className="text-sm text-muted-foreground font-medium">
-                        {news.date}
-                      </p>
-                    </div>
-                    <p className="text-base leading-relaxed text-foreground/80">
-                      {news.content}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <NewsCarousel items={workshopData.home.latestNews} />
           </section>
         </div>
 
@@ -379,12 +370,18 @@ function Home() {
               {workshopData.callForPapers.submission.description}
             </p>
             <Button
-              variant="outline"
               size="lg"
               className="text-base px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
-              disabled
+              asChild
             >
-              Submit via OpenReview (Coming Soon)
+              <a
+                href={workshopData.callForPapers.submission.url}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2"
+              >
+                Submit via OpenReview <ExternalLink className="h-5 w-5" />
+              </a>
             </Button>
           </div>
         </section>
