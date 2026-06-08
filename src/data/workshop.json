@@ -37,14 +37,19 @@
     ],
     "latestNews": [
       {
-        "title": "Workshop page open",
-        "date": "May 29, 2026",
-        "content": "We are excited to announce that the LIMIT Workshop page for ECCV 2026 is now live. We will continue to add information, so please check back regularly for updates."
+        "title": "OpenReview submission site open",
+        "date": "June 8, 2026",
+        "content": "The OpenReview submission website for the LIMIT Workshop is now open. Please submit your papers through the submission link in the Call for Papers section. The submission deadline is July 6, 2026, 23:59 AoE."
       },
       {
         "title": "Call for Papers announced",
         "date": "May 29, 2026",
         "content": "We are now accepting paper submissions. The submission deadline is July 6, 2026, 23:59 AoE. Please check the Call for Papers section for detailed submission guidelines."
+      },
+      {
+        "title": "Workshop page open",
+        "date": "May 29, 2026",
+        "content": "We are excited to announce that the LIMIT Workshop page for ECCV 2026 is now live. We will continue to add information, so please check back regularly for updates."
       }
     ]
   },
@@ -198,7 +203,8 @@
       "publication": "Accepted papers will be published in the Springer proceedings and presented at the workshop."
     },
     "submission": {
-      "description": "The OpenReview submission website is currently being prepared and will be made available shortly."
+      "description": "The OpenReview submission website is now open. Please submit your papers through the link below.",
+      "url": "https://openreview.net/group?id=thecvf.com/ECCV/2026/Workshop/LIMIT&referrer=%5BHomepage%5D(%2F)"
     },
     "bestPaperAwards": "We will present Best Paper and Best Student Paper awards to recognize outstanding contributions. Award winners will receive certificates and will be highlighted during the workshop.",
     "faq": [
@@ -284,7 +290,7 @@
     "faq": [
       {
         "question": "Where can I submit my paper?",
-        "answer": "Please submit your paper via OpenReview. The submission link will be made available on this website."
+        "answer": "Please submit your paper via the OpenReview submission website. The submission link is available in the Call for Papers section."
       },
       {
         "question": "When will accepted papers be announced?",
