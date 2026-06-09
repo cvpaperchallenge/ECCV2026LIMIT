@@ -23,8 +23,6 @@ import { NewsCarousel } from "../../components/news-carousel";
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "../../components/ui/card";
@@ -92,55 +90,59 @@ function Home() {
 
       <main className="container mx-auto px-6 py-12 space-y-24 xl:max-w-6xl">
         {/* Hero Section */}
-        <section className="relative overflow-hidden rounded-3xl border px-8 py-24 md:py-32 text-center shadow-2xl">
+        <section className="relative overflow-hidden rounded-3xl border px-6 py-14 md:px-8 md:py-24 lg:py-32 text-center shadow-2xl">
           {/* Background Effects */}
           <div className="pointer-events-none absolute inset-0">
             <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
             <div className="absolute inset-0 gradient-mesh opacity-50" />
           </div>
 
-          <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center gap-12 fade-in-up">
+          <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center gap-6 md:gap-10 lg:gap-12 fade-in-up">
             {/* Conference Badge */}
-            <div className="flex flex-col items-center gap-4">
-              <span className="text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground">
+            <div className="flex flex-col items-center gap-2 md:gap-4">
+              <span className="text-[10px] md:text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground">
                 Held as part of
               </span>
-              <div className="flex flex-wrap items-center justify-center gap-4 rounded-2xl bg-white px-8 py-4 shadow-lg">
-                <div className="flex items-center gap-3 pl-2 pr-2">
-                  <img
-                    src="/eccv-navbar-logo.svg"
-                    alt="ECCV 2026 | Malmö | Sept 8-13"
-                    className="h-20"
-                  />
-                </div>
+              <div className="flex flex-wrap items-center justify-center rounded-xl md:rounded-2xl bg-white px-5 py-2.5 md:px-8 md:py-4 shadow-lg">
+                <img
+                  src="/eccv-navbar-logo.svg"
+                  alt="ECCV 2026 | Malmö | Sept 8-13"
+                  className="h-12 sm:h-14 md:h-20"
+                />
               </div>
             </div>
 
             {/* Title */}
-            <div className="space-y-6 max-w-4xl">
-              <h1 className="gradient-text font-extrabold leading-tight">
+            <div className="space-y-3 md:space-y-6 max-w-4xl">
+              <h1 className="gradient-text font-extrabold leading-tight text-3xl md:text-5xl lg:text-6xl">
                 {workshopData.home.title}
               </h1>
               {workshopData.home.tagline && (
-                <p className="text-xl md:text-2xl lg:text-3xl font-medium text-muted-foreground/90 tracking-tight">
+                <p className="text-sm md:text-xl lg:text-2xl font-medium text-muted-foreground/90 tracking-tight">
                   {workshopData.home.tagline}
                 </p>
               )}
-              <p className="text-lg md:text-xl text-muted-foreground font-medium">
+              <p className="text-sm md:text-lg text-muted-foreground font-medium">
                 {workshopData.home.subtitle}
               </p>
             </div>
 
             {/* Event Info */}
-            <div className="flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-8 text-base md:text-lg">
-              <div className="glass flex items-center gap-3 px-6 py-3 rounded-2xl shadow-md">
-                <Calendar className="h-5 w-5 text-primary" aria-hidden="true" />
+            <div className="flex flex-row items-center justify-center gap-3 sm:gap-8 text-sm md:text-lg">
+              <div className="glass flex items-center gap-2 md:gap-3 px-4 py-2 md:px-6 md:py-3 rounded-xl md:rounded-2xl shadow-md">
+                <Calendar
+                  className="h-4 w-4 md:h-5 md:w-5 text-primary"
+                  aria-hidden="true"
+                />
                 <time className="font-medium" dateTime="2026-09-08T09:00">
                   {workshopData.home.eventInfo.date}
                 </time>
               </div>
-              <div className="glass flex items-center gap-3 px-6 py-3 rounded-2xl shadow-md">
-                <MapPin className="h-5 w-5 text-primary" aria-hidden="true" />
+              <div className="glass flex items-center gap-2 md:gap-3 px-4 py-2 md:px-6 md:py-3 rounded-xl md:rounded-2xl shadow-md">
+                <MapPin
+                  className="h-4 w-4 md:h-5 md:w-5 text-primary"
+                  aria-hidden="true"
+                />
                 <address className="font-medium not-italic">
                   {workshopData.home.eventInfo.location}
                 </address>
@@ -148,11 +150,25 @@ function Home() {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col gap-4 sm:flex-row mt-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
+              <Button
+                size="lg"
+                className="text-sm md:text-base px-6 py-4 md:px-8 md:py-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
+                asChild
+              >
+                <a
+                  href={workshopData.callForPapers.submission.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-2"
+                >
+                  Submit via OpenReview <ExternalLink className="h-4 w-4" />
+                </a>
+              </Button>
               <Button
                 variant="outline"
                 size="lg"
-                className="text-base px-8 py-6 rounded-xl opacity-50 cursor-not-allowed"
+                className="text-sm md:text-base px-6 py-4 md:px-8 md:py-6 rounded-xl opacity-50 cursor-not-allowed"
                 disabled
               >
                 View Program (Coming Soon)
@@ -518,46 +534,32 @@ function Home() {
             <h2 className="font-bold">Organizers</h2>
             <div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
           </div>
-          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
             {peopleData.organizers.organizers.map((chair, index) => (
-              <Card
+              <a
                 key={index}
-                className="glass border overflow-hidden card-hover group gap-0 py-0"
+                href={chair.website}
+                target="_blank"
+                rel="noreferrer"
+                className="group flex flex-col items-center text-center gap-3"
               >
-                <CardContent className="p-0">
-                  <div className="aspect-square bg-muted flex items-center justify-center overflow-hidden">
-                    <img
-                      src={chair.photo}
-                      alt={`Photo of ${chair.name}`}
-                      className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                  </div>
-                </CardContent>
-                <CardHeader className="space-y-2 pb-4 pt-6">
-                  <CardTitle className="text-lg">{chair.name}</CardTitle>
-                  <CardDescription className="text-sm leading-relaxed">
+                <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full overflow-hidden ring-2 ring-border/50 group-hover:ring-primary/60 transition-all duration-300">
+                  <img
+                    src={chair.photo}
+                    alt={`Photo of ${chair.name}`}
+                    className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="space-y-1">
+                  <p className="text-sm font-semibold leading-tight group-hover:text-primary transition-colors duration-300">
+                    {chair.name}
+                  </p>
+                  <p className="text-xs text-muted-foreground leading-snug">
                     {chair.affiliation}
-                  </CardDescription>
-                </CardHeader>
-                <CardFooter className="pt-0 pb-6">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
-                    asChild
-                  >
-                    <a
-                      href={chair.website}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex items-center justify-center gap-2"
-                    >
-                      Website <ExternalLink className="h-4 w-4" />
-                    </a>
-                  </Button>
-                </CardFooter>
-              </Card>
+                  </p>
+                </div>
+              </a>
             ))}
           </div>
         </section>
