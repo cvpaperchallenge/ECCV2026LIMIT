@@ -518,46 +518,32 @@ function Home() {
             <h2 className="font-bold">Organizers</h2>
             <div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
           </div>
-          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
             {peopleData.organizers.organizers.map((chair, index) => (
-              <Card
+              <a
                 key={index}
-                className="glass border overflow-hidden card-hover group gap-0 py-0"
+                href={chair.website}
+                target="_blank"
+                rel="noreferrer"
+                className="group flex flex-col items-center text-center gap-3"
               >
-                <CardContent className="p-0">
-                  <div className="aspect-square bg-muted flex items-center justify-center overflow-hidden">
-                    <img
-                      src={chair.photo}
-                      alt={`Photo of ${chair.name}`}
-                      className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                  </div>
-                </CardContent>
-                <CardHeader className="space-y-2 pb-4 pt-6">
-                  <CardTitle className="text-lg">{chair.name}</CardTitle>
-                  <CardDescription className="text-sm leading-relaxed">
+                <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full overflow-hidden ring-2 ring-border/50 group-hover:ring-primary/60 transition-all duration-300">
+                  <img
+                    src={chair.photo}
+                    alt={`Photo of ${chair.name}`}
+                    className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="space-y-1">
+                  <p className="text-sm font-semibold leading-tight group-hover:text-primary transition-colors duration-300">
+                    {chair.name}
+                  </p>
+                  <p className="text-xs text-muted-foreground leading-snug">
                     {chair.affiliation}
-                  </CardDescription>
-                </CardHeader>
-                <CardFooter className="pt-0 pb-6">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
-                    asChild
-                  >
-                    <a
-                      href={chair.website}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex items-center justify-center gap-2"
-                    >
-                      Website <ExternalLink className="h-4 w-4" />
-                    </a>
-                  </Button>
-                </CardFooter>
-              </Card>
+                  </p>
+                </div>
+              </a>
             ))}
           </div>
         </section>
