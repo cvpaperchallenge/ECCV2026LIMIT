@@ -25,7 +25,12 @@ export function Header() {
     <header className="fixed top-0 z-50 w-full border-b border-border/50 bg-header-background/80 backdrop-blur-xl flex justify-center shadow-sm">
       <div className="container mx-auto flex h-20 items-center justify-between px-6 xl:max-w-6xl">
         <div className="flex items-center gap-2">
-          <a href="https://limitlab.xyz/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 group">
+          <a
+            href="https://limitlab.xyz/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center space-x-2 group"
+          >
             {/* <span className="font-bold text-xl">VGI 2026</span> */}
             <img
               src={blackLimitLabLogoWide}
