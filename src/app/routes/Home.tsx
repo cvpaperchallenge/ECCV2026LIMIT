@@ -478,17 +478,17 @@ function Home() {
           </div>
         </section> */}
 
-        {/* Invited Speakers Section - hidden until speakers are confirmed */}
-        {/* <section id="speakers" className="space-y-8">
+        {/* Invited Speakers Section */}
+        <section id="speakers" className="space-y-8">
           <div className="space-y-3">
             <h2 className="font-bold">Invited Speakers</h2>
             <div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
           </div>
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
             {peopleData.program.invitedSpeakers.map((speaker, index) => (
               <Card
                 key={index}
-                className="glass border overflow-hidden card-hover group gap-0 py-0"
+                className="glass border overflow-hidden card-hover group gap-0 py-0 flex flex-col"
               >
                 <CardContent className="p-0">
                   <div className="aspect-square bg-muted flex items-center justify-center overflow-hidden">
@@ -500,33 +500,35 @@ function Home() {
                     />
                   </div>
                 </CardContent>
-                <CardHeader className="space-y-3 pb-6 pt-6">
-                  <CardTitle className="text-xl">{speaker.name}</CardTitle>
-                  <CardDescription className="text-base">
+                <CardHeader className="space-y-1 sm:space-y-3 p-3 sm:p-6 flex-1">
+                  <CardTitle className="text-sm sm:text-xl">
+                    {speaker.name}
+                  </CardTitle>
+                  <p className="text-xs sm:text-base text-muted-foreground">
                     {speaker.affiliation}
-                  </CardDescription>
+                  </p>
                 </CardHeader>
-                <CardFooter className="pt-0 pb-6">
+                <div className="px-3 pb-3 sm:px-6 sm:pb-6 mt-auto">
                   <Button
                     variant="outline"
                     size="sm"
-                    className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+                    className="w-full text-xs sm:text-sm group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
                     asChild
                   >
                     <a
                       href={speaker.website}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex items-center justify-center gap-2"
+                      className="flex items-center justify-center gap-1 sm:gap-2"
                     >
-                      View Profile <ExternalLink className="h-4 w-4" />
+                      Profile <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4" />
                     </a>
                   </Button>
-                </CardFooter>
+                </div>
               </Card>
             ))}
           </div>
-        </section> */}
+        </section>
 
         {/* Organizers */}
         <section id="organizers" className="space-y-8">
