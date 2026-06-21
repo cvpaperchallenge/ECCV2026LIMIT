@@ -93,6 +93,11 @@ function Home() {
         <section className="relative overflow-hidden rounded-3xl border px-6 py-14 md:px-8 md:py-24 lg:py-32 text-center shadow-2xl">
           {/* Background Effects */}
           <div className="pointer-events-none absolute inset-0">
+            <img
+              src="/cover.jpg"
+              alt=""
+              className="absolute inset-0 h-full w-full object-cover opacity-50 dark:opacity-45"
+            />
             <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
             <div className="absolute inset-0 gradient-mesh opacity-50" />
           </div>
