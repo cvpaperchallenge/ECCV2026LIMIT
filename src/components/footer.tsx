@@ -1,8 +1,5 @@
 import { Link } from "react-router";
-// import { X } from "lucide-react";
-// import { SiGithub, SiSlack, SiYoutube } from "react-icons/si";
-
-// import { Button } from "./ui/button";
+import { ExternalLink } from "lucide-react";
 
 export function Footer() {
   return (
@@ -90,6 +87,35 @@ export function Footer() {
             >
               Contact
             </Link>
+          </div>
+        </div>
+
+        {/* Share */}
+        <div className="flex flex-col -mt-5">
+          <div className="rounded-2xl p-px bg-gradient-to-br from-primary/40 via-primary/15 to-transparent">
+            <div className="rounded-2xl bg-muted/20 backdrop-blur-sm p-5 flex flex-col gap-5 h-full">
+              <h3 className="font-bold text-base">Spread the Word</h3>
+              <div className="flex flex-col gap-1.5">
+                <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/50 mb-1">
+                  Hashtags
+                </p>
+                <span className="text-sm text-muted-foreground font-medium select-all cursor-text">
+                  #ECCV2026LIMIT
+                </span>
+                <span className="text-sm text-muted-foreground font-medium select-all cursor-text">
+                  #LIMITWorkshop
+                </span>
+              </div>
+              <a
+                href="/workshop-flyer.png"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-primary/70 hover:text-primary transition-colors mt-auto"
+              >
+                <ExternalLink className="h-3.5 w-3.5 shrink-0" />
+                View Flyer
+              </a>
+            </div>
           </div>
         </div>
 
