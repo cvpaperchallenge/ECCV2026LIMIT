@@ -68,6 +68,18 @@
         "affiliation": "University of Technology Nuremberg",
         "photo": "/organizers/yuki.asano.png",
         "website": "https://yukimasano.github.io"
+      },
+      {
+        "name": "Yuiga Wada",
+        "affiliation": "Keio University",
+        "photo": "/organizers/yuiga.wada.png",
+        "website": "https://yuiga.dev/"
+      },
+      {
+        "name": "Daichi Yashima",
+        "affiliation": "Keio University",
+        "photo": "/organizers/daichi.yashima.jpg",
+        "website": "https://daichi1207.github.io/"
       }
     ],
     "programChairs": []
