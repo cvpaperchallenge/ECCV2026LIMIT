@@ -263,7 +263,7 @@ function Home() {
               We are accepting paper submissions for the LIMIT Workshop at ECCV
               2026. The submission deadline is{" "}
               <span className="font-semibold text-primary">
-                Monday, July 6, 2026, 23:59 AoE
+                Friday, July 10, 2026, 23:59 AoE
               </span>
               . Please check the topics of interest below and submit your work
               via{" "}
