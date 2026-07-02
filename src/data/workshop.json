@@ -20,15 +20,15 @@
     "importantDates": [
       {
         "title": "Paper Submission Deadline",
-        "date": "July 6, 2026, AoE"
+        "date": "July 10, 2026, AoE"
       },
       {
         "title": "Author Notification",
-        "date": "August 3, 2026, AoE"
+        "date": "August 6, 2026, AoE"
       },
       {
         "title": "Camera-Ready Deadline",
-        "date": "August 10, 2026, AoE"
+        "date": "August 12, 2026, AoE"
       },
       {
         "title": "Workshop Date",
@@ -37,14 +37,19 @@
     ],
     "latestNews": [
       {
+        "title": "Submission deadline extended",
+        "date": "July 3, 2026",
+        "content": "The paper submission deadline has been extended to July 10, 2026, 23:59 AoE. We encourage all authors to take advantage of this extension and submit their work."
+      },
+      {
         "title": "OpenReview submission site open",
         "date": "June 8, 2026",
-        "content": "The OpenReview submission website for the LIMIT Workshop is now open. Please submit your papers through the submission link in the Call for Papers section. The submission deadline is July 6, 2026, 23:59 AoE."
+        "content": "The OpenReview submission website for the LIMIT Workshop is now open. Please submit your papers through the submission link in the Call for Papers section."
       },
       {
         "title": "Call for Papers announced",
         "date": "May 29, 2026",
-        "content": "We are now accepting paper submissions. The submission deadline is July 6, 2026, 23:59 AoE. Please check the Call for Papers section for detailed submission guidelines."
+        "content": "We are now accepting paper submissions. The submission deadline is July 10, 2026, 23:59 AoE. Please check the Call for Papers section for detailed submission guidelines."
       },
       {
         "title": "Workshop page open",
@@ -59,17 +64,17 @@
     "importantDates": [
       {
         "title": "Paper Submission Deadline",
-        "date": "July 6, 2026, AoE",
+        "date": "July 10, 2026, AoE",
         "description": "Submit your papers by this date"
       },
       {
         "title": "Author Notification",
-        "date": "August 3, 2026, AoE",
+        "date": "August 6, 2026, AoE",
         "description": "Authors will be notified of acceptance"
       },
       {
         "title": "Camera-Ready Deadline",
-        "date": "August 10, 2026, AoE",
+        "date": "August 12, 2026, AoE",
         "description": "Final versions due"
       },
       {
