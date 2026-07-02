@@ -249,13 +249,13 @@
       },
       {
         "type": "Slack",
-        "icon": "SiSlack",
+        "icon": "Slack",
         "description": "Join our LIMIT.Community Slack WG from:",
         "socialLinks": [
           {
             "name": "Join Slack WG",
             "url": "https://join.slack.com/t/limit-community/shared_invite/zt-1oov3gv0h-kaLICu0jm_wzm0_H6D46Lw",
-            "icon": "SiSlack"
+            "icon": "Slack"
           }
         ]
       }
