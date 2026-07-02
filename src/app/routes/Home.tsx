@@ -6,8 +6,8 @@ import {
   // FileText,
   Info,
   CalendarPlus,
+  Slack,
 } from "lucide-react";
-import { SiSlack } from "react-icons/si";
 import { useLocation } from "react-router";
 import { useEffect } from "react";
 import { NewsCarousel } from "../../components/news-carousel";
@@ -588,8 +588,8 @@ function Home() {
                     {info.icon === "MapPin" && (
                       <MapPin className="h-6 w-6 text-primary" />
                     )}
-                    {info.icon === "SiSlack" && (
-                      <SiSlack className="h-6 w-6 text-primary" />
+                    {info.icon === "Slack" && (
+                      <Slack className="h-6 w-6 text-primary" />
                     )}
                     {info.type}
                   </CardTitle>
@@ -628,8 +628,8 @@ function Home() {
                           asChild
                         >
                           <a href={link.url} target="_blank" rel="noreferrer">
-                            {link.icon === "SiSlack" && (
-                              <SiSlack className="h-4 w-4" />
+                            {link.icon === "Slack" && (
+                              <Slack className="h-4 w-4" />
                             )}
                             {link.name}
                           </a>
