@@ -4,6 +4,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "packageManager": "yarn@4.13.0",
   "scripts": {
     "dev": "react-router dev --host",
     "build": "react-router typegen && tsc -b && react-router build",

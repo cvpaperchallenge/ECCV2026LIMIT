@@ -48,3 +48,9 @@ jobs:
       - name: Run lint
         run: docker compose exec -T frontend yarn lint
         working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}
+
+      # The deploy workflow builds the site, so build failures must be caught here as well.
+      # Otherwise a pull request stays green and only the post-merge deploy fails.
+      - name: Build
+        run: docker compose exec -T frontend yarn build
+        working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}

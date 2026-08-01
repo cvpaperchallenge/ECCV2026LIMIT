@@ -33,6 +33,9 @@ WORKDIR ${INNER_APPLICATION_PATH}
 # When this Dockerfile is used in GitHub Actions, the ${RUN_YARN_INSTALL_AT_BUILD_TIME} is set to "true" in the workflow file.
 # This leads to the installation of Node.js packages in the Docker image.
 COPY --chown=${UID}:${GID} ${APPLICATION_PATH}/package.json ${APPLICATION_PATH}/yarn.lock ${APPLICATION_PATH}/.yarnrc.yml ./
-RUN test ${RUN_YARN_INSTALL_AT_BUILD_TIME} = "true" && yarn install --immutable || echo "skip to run yarn install."
+# Note: do not swallow the exit status of `yarn install` here. A failed install must fail the
+# image build, otherwise the container starts with a broken node_modules and the error only
+# surfaces much later (e.g. during `yarn build`).
+RUN if [ "${RUN_YARN_INSTALL_AT_BUILD_TIME}" = "true" ]; then yarn install --immutable; else echo "skip to run yarn install."; fi
 
 CMD ["bash"]
