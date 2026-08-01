@@ -204,7 +204,7 @@
         "Papers should be longer than 4 pages and up to 14 pages, excluding references, for publication in the Springer proceedings",
         "Follow the ECCV 2026 Submission Policies"
       ],
-      "reviewProcess": "All submissions will undergo a double-blind peer review process. Each paper will be reviewed by at least three reviewers from our program committee.",
+      "reviewProcess": "All submissions will undergo a double-blind peer review process. Each paper will be reviewed by at least two reviewers from our program committee.",
       "publication": "Accepted papers will be published in the Springer proceedings and presented at the workshop."
     },
     "submission": {
