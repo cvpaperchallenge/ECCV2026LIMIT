@@ -231,6 +231,30 @@
       }
     ]
   },
+  "sponsors": {
+    "title": "Our Sponsors",
+    "intro": "The 4th LIMIT Workshop at ECCV 2026 is made possible by the sponsors below. We thank them for their commitment to this workshop and to the researchers and practitioners it brings together.",
+    "sponsors": [
+      {
+        "name": "Sansan",
+        "logo": "/sponsors/sansan.png",
+        "url": "https://www.sansan.com/en/",
+        "padding": 56
+      },
+      {
+        "name": "SB Intuitions",
+        "logo": "/sponsors/sb-intuitions.png",
+        "url": "https://www.sbintuitions.co.jp/en/",
+        "padding": 24
+      },
+      {
+        "name": "CADDi",
+        "logo": "/sponsors/caddi.png",
+        "url": "https://caddi.com/en-us/",
+        "padding": 72
+      }
+    ]
+  },
   "contact": {
     "title": "Contact Us",
     "subtitle": "Get in touch with the LIMIT Workshop organizing team",

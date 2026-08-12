@@ -18,6 +18,7 @@ const navItems = [
   { name: "CFP", path: "/#cfp" },
   { name: "Speakers", path: "/#speakers" },
   { name: "Organizers", path: "/#organizers" },
+  { name: "Sponsors", path: "/#sponsors" },
   { name: "Contact", path: "/#contact" },
 ];
 

@@ -82,6 +82,12 @@ export function Footer() {
               Organizers
             </Link>
             <Link
+              to="/#sponsors"
+              className="text-sm text-muted-foreground hover:text-primary transition-colors font-medium"
+            >
+              Sponsors
+            </Link>
+            <Link
               to="/#contact"
               className="text-sm text-muted-foreground hover:text-primary transition-colors font-medium"
             >
