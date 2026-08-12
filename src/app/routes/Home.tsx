@@ -7,6 +7,7 @@ import {
   Info,
   CalendarPlus,
   Slack,
+  Building2,
 } from "lucide-react";
 import { useLocation } from "react-router";
 import { useEffect } from "react";
@@ -568,6 +569,75 @@ function Home() {
                 </div>
               </a>
             ))}
+          </div>
+        </section>
+
+        {/* Sponsors Section */}
+        <section id="sponsors" className="space-y-8">
+          <div className="space-y-3">
+            <h2 className="font-bold">{workshopData.sponsors.title}</h2>
+            <div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
+          </div>
+
+          <p className="text-lg leading-relaxed text-foreground/90">
+            {workshopData.sponsors.intro}
+          </p>
+
+          {/* Logo cards — background is fixed to white in both themes so that
+              sponsor logo usage guidelines are respected. */}
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {workshopData.sponsors.sponsors.map((sponsor, index) => {
+              const card = (
+                <>
+                  {/* Clear space is per sponsor (`padding` in workshop.json,
+                      in px) because the logos differ wildly in aspect ratio —
+                      a 9:1 wordmark needs a tighter inset than a square mark to
+                      read at a comparable size. Inline style rather than a
+                      Tailwind class: the value comes from data, and Tailwind
+                      only generates classes it can find in the source. */}
+                  <div
+                    className="card-hover mx-auto flex aspect-square w-full max-w-[240px] items-center justify-center rounded-2xl bg-white ring-1 ring-black/5 shadow-sm dark:shadow-lg dark:shadow-black/30"
+                    style={{ padding: sponsor.padding }}
+                  >
+                    {sponsor.logo ? (
+                      <img
+                        src={sponsor.logo}
+                        alt={`${sponsor.name} logo`}
+                        className="max-h-full max-w-full object-contain"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="flex flex-col items-center gap-2 text-gray-400">
+                        <Building2 className="h-8 w-8" strokeWidth={1.5} />
+                        <span className="whitespace-nowrap text-[10px] font-semibold uppercase tracking-widest">
+                          Logo coming soon
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                  {sponsor.name && (
+                    <p className="mt-4 text-center text-sm sm:text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
+                      {sponsor.name}
+                    </p>
+                  )}
+                </>
+              );
+
+              return sponsor.url ? (
+                <a
+                  key={index}
+                  href={sponsor.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`${sponsor.name} — external site`}
+                  className="group block rounded-2xl focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
+                >
+                  {card}
+                </a>
+              ) : (
+                <div key={index}>{card}</div>
+              );
+            })}
           </div>
         </section>
 
