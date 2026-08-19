@@ -12,15 +12,7 @@ import {
   NavigationMenuList,
 } from "./ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "./ui/sheet";
-
-const navItems = [
-  { name: "Home", path: "/" },
-  { name: "CFP", path: "/#cfp" },
-  { name: "Speakers", path: "/#speakers" },
-  { name: "Organizers", path: "/#organizers" },
-  { name: "Sponsors", path: "/#sponsors" },
-  { name: "Contact", path: "/#contact" },
-];
+import { navItems } from "@/lib/navigation";
 
 export function Header() {
   return (

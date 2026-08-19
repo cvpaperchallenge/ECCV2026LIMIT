@@ -4,7 +4,7 @@
     "tagline": "When Data, Modalities, Labels, and Computing Resources are Scarce",
     "subtitle": "ECCV 2026 Workshop",
     "eventInfo": {
-      "date": "September 8, 2026 (AM)",
+      "date": "September 8, 2026, 8:30 AM",
       "location": "Malmö, Sweden"
     },
     "overview": {
@@ -32,10 +32,15 @@
       },
       {
         "title": "Workshop Date",
-        "date": "September 8, 2026 (AM)"
+        "date": "September 8, 2026, 8:30 AM"
       }
     ],
     "latestNews": [
+      {
+        "title": "Accepted papers announced",
+        "date": "August 11, 2026",
+        "content": "12 papers have been accepted to the LIMIT Workshop at ECCV 2026. Please see the Accepted Papers section for the full list of titles and authors."
+      },
       {
         "title": "Submission deadline extended",
         "date": "July 3, 2026",
@@ -89,57 +94,73 @@
         "location": "Malmö, Sweden (Room TBD)",
         "schedule": [
           {
-            "time": "09:00 - 09:10",
+            "time": "08:30 - 08:40",
             "session": "Opening Remarks",
-            "presenter": "",
+            "presenter": "Ryousuke Yamada",
+            "title": "",
+            "slides": ""
+          },
+          {
+            "time": "08:40 - 09:10",
+            "session": "Invited Talk 1",
+            "presenter": "Björn Ommer",
+            "title": "",
             "slides": ""
           },
           {
             "time": "09:10 - 09:40",
-            "session": "Invited Talk 1",
-            "presenter": "Björn Ommer",
-            "slides": ""
-          },
-          {
-            "time": "09:40 - 10:10",
             "session": "Invited Talk 2",
             "presenter": "Ranjay Krishna",
+            "title": "",
             "slides": ""
           },
           {
-            "time": "10:10 - 10:20",
+            "time": "09:40 - 09:50",
             "session": "Short Break",
             "presenter": "",
+            "title": "",
             "slides": ""
           },
           {
-            "time": "10:20 - 10:50",
+            "time": "09:50 - 10:30",
+            "session": "Oral Presentations (10 min × 4)",
+            "presenter": "",
+            "title": "",
+            "slides": ""
+          },
+          {
+            "time": "10:30 - 11:00",
             "session": "Invited Talk 3",
-            "presenter": "Jia Deng",
-            "slides": ""
-          },
-          {
-            "time": "10:50 - 11:20",
-            "session": "Invited Talk 4",
             "presenter": "Anna Kukleva",
+            "title": "",
             "slides": ""
           },
           {
-            "time": "11:20 - 12:00",
-            "session": "Oral Session",
+            "time": "11:00 - 11:10",
+            "session": "Short Break",
             "presenter": "",
+            "title": "",
             "slides": ""
           },
           {
-            "time": "12:00 - 12:10",
+            "time": "11:10 - 11:40",
+            "session": "Invited Talk 4",
+            "presenter": "To Be Announced",
+            "title": "",
+            "slides": ""
+          },
+          {
+            "time": "11:40 - 11:50",
             "session": "Closing Remarks",
-            "presenter": "",
+            "presenter": "Daichi Otsuka",
+            "title": "",
             "slides": ""
           },
           {
-            "time": "12:10 - 13:30",
-            "session": "Lunch & Poster Session",
+            "time": "12:00 - 13:00",
+            "session": "Poster Session (20 posters)",
             "presenter": "",
+            "title": "",
             "slides": ""
           }
         ]
@@ -208,7 +229,7 @@
       "publication": "Accepted papers will be published in the Springer proceedings and presented at the workshop."
     },
     "submission": {
-      "description": "The OpenReview submission website is now open. Please submit your papers through the link below.",
+      "description": "Paper submission closed on July 10, 2026, 23:59 AoE. Thank you to everyone who submitted.",
       "url": "https://openreview.net/group?id=thecvf.com/ECCV/2026/Workshop/LIMIT&referrer=%5BHomepage%5D(%2F)"
     },
     "bestPaperAwards": "We will present Best Paper and Best Student Paper awards to recognize outstanding contributions. Award winners will receive certificates and will be highlighted during the workshop.",

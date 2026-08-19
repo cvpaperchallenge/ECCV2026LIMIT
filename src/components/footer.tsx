@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { ExternalLink } from "lucide-react";
+import { navItems } from "@/lib/navigation";
 
 export function Footer() {
   return (
@@ -62,37 +63,17 @@ export function Footer() {
         {/* Links */}
         <div className="flex flex-col gap-4">
           <h3 className="font-bold text-lg">Quick Links</h3>
+          {/* Same list as the header nav — see lib/navigation.ts. */}
           <div className="flex flex-col gap-2">
-            <Link
-              to="/"
-              className="text-sm text-muted-foreground hover:text-primary transition-colors font-medium"
-            >
-              Home
-            </Link>
-            <Link
-              to="/#cfp"
-              className="text-sm text-muted-foreground hover:text-primary transition-colors font-medium"
-            >
-              Call for Papers
-            </Link>
-            <Link
-              to="/#organizers"
-              className="text-sm text-muted-foreground hover:text-primary transition-colors font-medium"
-            >
-              Organizers
-            </Link>
-            <Link
-              to="/#sponsors"
-              className="text-sm text-muted-foreground hover:text-primary transition-colors font-medium"
-            >
-              Sponsors
-            </Link>
-            <Link
-              to="/#contact"
-              className="text-sm text-muted-foreground hover:text-primary transition-colors font-medium"
-            >
-              Contact
-            </Link>
+            {navItems.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                className="text-sm text-muted-foreground hover:text-primary transition-colors font-medium"
+              >
+                {item.name}
+              </Link>
+            ))}
           </div>
         </div>
 
