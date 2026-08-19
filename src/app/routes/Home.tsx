@@ -5,7 +5,7 @@ import {
   ExternalLink,
   FileText,
   Info,
-  CalendarPlus,
+  // CalendarPlus,
   Slack,
   Building2,
   UserRound,
@@ -35,7 +35,7 @@ import type { Route } from "./+types/Home";
 // import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { buildMeta } from "@/lib/seo";
 import { generateWorkshopStructuredData } from "@/lib/structured-data";
-import { downloadICS, isPast, daysUntil } from "@/lib/calendar";
+// import { downloadICS, isPast, daysUntil } from "@/lib/calendar";
 
 export const meta: Route.MetaFunction = () =>
   buildMeta({
@@ -170,8 +170,12 @@ function Home() {
           </div>
         </section>
 
-        {/* Important Dates Section */}
-        <section id="dates" className="space-y-8">
+        {/* Important Dates Section - hidden now that the submission, review
+            and camera-ready milestones have all passed; three of the four
+            cards were struck through. The `home.importantDates` data stays in
+            workshop.json because the sticky DeadlineBanner in layout.tsx reads
+            it to count down to the workshop itself. */}
+        {/* <section id="dates" className="space-y-8">
           <div className="space-y-3">
             <h2 className="font-bold">Important Dates</h2>
             <div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
@@ -240,7 +244,7 @@ function Home() {
               );
             })}
           </div>
-        </section>
+        </section> */}
 
         {/* Latest News Section */}
         <section id="news" className="space-y-8">
