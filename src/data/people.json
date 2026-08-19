@@ -113,10 +113,56 @@
         "website": ""
       }
     ],
-    "acceptedPapers": {
-      "oral": [],
-      "poster": []
-    },
+    "acceptedPapers": [
+      {
+        "title": "ES-VP: Energy-Shaped Dynamic Low-Rank Visual Prompting for Efficient Model Adaptation",
+        "authors": "Can Jin, Ying Li, Jingchen Sun, Hongwu Peng, Jiahui Zhao, Yang Zhou, Lei Li, Dimitris N. Metaxas"
+      },
+      {
+        "title": "RIPE++: Reinforced Keypoint Learning from Positive Pairs Only",
+        "authors": "Johannes Künzel, Peter Eisert, Anna Hilsmann"
+      },
+      {
+        "title": "ADSF: Approximating Diffusion Process through Tracking the Score Function",
+        "authors": "Preeti Mukherjee, Shayok Bagchi, Jagannath Prabhakaran, Siddhant Prakash, Chaoyue Liu"
+      },
+      {
+        "title": "Recursive Block-Diagonal Coupling for Resource-Efficient Training of Vision Models",
+        "authors": "Maxim Henry, Marc Van Droogenbroeck, Adrien Deliege, Sébastien Piérard"
+      },
+      {
+        "title": "Performance-Carbon Trade-Offs across Architectural Biases in Shear Flow Forecasting",
+        "authors": "Sophia N. Wilson, Jens H. Christensen, Raghavendra Selvan"
+      },
+      {
+        "title": "Efficient Generative Adversarial Networks Using Linear Additive-Attention Transformers",
+        "authors": "Emilio Alejandro Morales-Juárez, Gibran Fuentes-Pineda"
+      },
+      {
+        "title": "Resource-Efficient Neural Architecture Search for Medical Image Segmentation Using Monte Carlo Tree Search",
+        "authors": "Liping Meng, Jintao Ma, Jiangtao Ma, Lingxiang Hu, Kaiyuan Gong, Yixuan Wu, Xi Jia, Yunyun Zhang, Dun Li"
+      },
+      {
+        "title": "Gloss-Free Representation Learning for Cross-Dataset Sign Spotting",
+        "authors": "Oğuz Akif Tüfekcioğlu, Ezgi Ekin, Mustafa Kaan Çevik, Hacer Yalim Keles"
+      },
+      {
+        "title": "VideoLLMs Conditioned on Visual Scene Graphs: A Global-Local Approach",
+        "authors": "Ananth Kalyanasundaram, Aswanth Krishnan"
+      },
+      {
+        "title": "Multimodal Feature Co-Distillation for Unsupervised Action Recognition",
+        "authors": "Philip Zimmermann, Ulas Sureyya Bingol, Urs Waldmann, Andreas Lamprecht, Simon Burger, Bastian Goldluecke, Manuel Stein"
+      },
+      {
+        "title": "A Controlled Study of Self-Supervised Image and Video Pretraining under Limited Resources",
+        "authors": "Brunó B. Englert, Gijs Dubbelman"
+      },
+      {
+        "title": "Representation-Preserving Federated Self-Supervised Learning with Foundation Models",
+        "authors": "Ozgu Goksu, Daniela Ivanova, Nicolas Pugeault"
+      }
+    ],
     "panelDiscussion": {
       "title": "Panel Discussion",
       "time": "TBD",

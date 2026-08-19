@@ -461,18 +461,34 @@ function Home() {
           </div>
         </section>
 
-        {/* Accepted Papers Section - placeholder until the list is published.
-            The oral and poster arrays already exist under
-            people.json -> program.acceptedPapers. */}
-        <section id="papers" className="space-y-8">
+        {/* Accepted Papers Section - one card with hairline-divided rows, the
+            same treatment as the Program schedule, since both are continuous
+            lists of the workshop's own content. The source data carries no
+            oral/poster designation, so the papers are listed flat rather than
+            split into sessions. */}
+        <section id="papers" className="space-y-6">
           <div className="space-y-3">
             <h2 className="font-bold">Accepted Papers</h2>
             <div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
           </div>
           <p className="text-lg leading-relaxed text-foreground/90">
-            The list of accepted papers will be published here ahead of the
-            workshop.
+            The following {peopleData.program.acceptedPapers.length} papers have
+            been accepted to the workshop.
           </p>
+          <div className="glass rounded-2xl border shadow-lg">
+            <ol className="divide-y divide-border/50 p-2 sm:p-4">
+              {peopleData.program.acceptedPapers.map((paper, index) => (
+                <li key={index} className="space-y-1 px-2 py-4 sm:px-3">
+                  <h3 className="text-base font-semibold leading-snug">
+                    {paper.title}
+                  </h3>
+                  <p className="text-sm leading-snug text-muted-foreground">
+                    {paper.authors}
+                  </p>
+                </li>
+              ))}
+            </ol>
+          </div>
         </section>
 
         {/* Organizers */}
