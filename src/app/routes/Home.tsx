@@ -469,7 +469,7 @@ function Home() {
             <h2 className="font-bold">Accepted Papers</h2>
             <div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
           </div>
-          <p className="text-base leading-relaxed text-muted-foreground">
+          <p className="text-lg leading-relaxed text-foreground/90">
             The list of accepted papers will be published here ahead of the
             workshop.
           </p>
@@ -511,18 +511,36 @@ function Home() {
           </div>
         </section>
 
-        {/* Reviewers Section - placeholder until the list is published. Sits
-            with Organizers and Sponsors as part of the acknowledgement cluster,
-            and pairs with the review process described under Call for Papers. */}
-        <section id="reviewers" className="space-y-8">
+        {/* Reviewers Section - sits with Organizers and Sponsors as part of the
+            acknowledgement cluster, and pairs with the review process described
+            under Call for Papers. Deliberately quieter than Organizers: no
+            portraits, no links, smaller type. */}
+        <section id="reviewers" className="space-y-6">
           <div className="space-y-3">
             <h2 className="font-bold">Reviewers</h2>
             <div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
           </div>
-          <p className="text-base leading-relaxed text-muted-foreground">
-            We thank the reviewers who supported the review process. The full
-            list will be published here.
+          <p className="text-lg leading-relaxed text-foreground/90">
+            We thank the {peopleData.reviewers.length} reviewers below for the
+            time and expertise they gave to the review process.
           </p>
+          {/* CSS multi-column rather than a grid: the list is alphabetical, and
+              columns flow top-to-bottom before wrapping, which keeps that order
+              readable. A grid would run A, B, C across each row instead. */}
+          <ul className="columns-1 gap-x-10 sm:columns-2 lg:columns-3">
+            {peopleData.reviewers.map((reviewer, index) => (
+              <li key={index} className="mb-3 break-inside-avoid">
+                <p className="text-sm font-medium leading-snug">
+                  {reviewer.name}
+                </p>
+                {reviewer.affiliation && (
+                  <p className="text-xs leading-snug text-muted-foreground">
+                    {reviewer.affiliation}
+                  </p>
+                )}
+              </li>
+            ))}
+          </ul>
         </section>
 
         {/* Sponsors Section */}

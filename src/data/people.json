@@ -125,5 +125,127 @@
       "moderator": "TBD"
     },
     "sessionStructure": []
-  }
+  },
+  "reviewers": [
+    { "name": "Ahmed S. Abdelrahman", "affiliation": "" },
+    {
+      "name": "Anestis Kastellos",
+      "affiliation": "Democritus University of Thrace"
+    },
+    {
+      "name": "Anirban Sarkar",
+      "affiliation": "Cold Spring Harbor Laboratory"
+    },
+    { "name": "Anubhav Paras", "affiliation": "Zoox, Inc." },
+    {
+      "name": "Arjun Majumdar",
+      "affiliation": "Eberhard-Karls-Universität Tübingen"
+    },
+    { "name": "Athanasios Psaltis", "affiliation": "CERTH/ITI" },
+    {
+      "name": "Atin Kumar Singh",
+      "affiliation": "University of California, Davis"
+    },
+    { "name": "Atsushi Hashimoto", "affiliation": "The University of Tokyo" },
+    { "name": "Dheeraj Varghese", "affiliation": "University of Amsterdam" },
+    {
+      "name": "Edgar Josafat Martinez-Noriega",
+      "affiliation": "AIST, National Institute of Advanced Industrial Science and Technology"
+    },
+    { "name": "Emanuela Haller", "affiliation": "UiPath" },
+    {
+      "name": "Eunbeen Hong",
+      "affiliation": "Korea Advanced Institute of Science & Technology"
+    },
+    {
+      "name": "Fernando Julio Cendra",
+      "affiliation": "Imagine group, Institut Polytechnique de Paris"
+    },
+    { "name": "Fumiya Uchiyama", "affiliation": "The University of Tokyo" },
+    { "name": "Gaganpreet Jhajj", "affiliation": "Athabasca University" },
+    {
+      "name": "Hailemicael Lulseged Yimer",
+      "affiliation": "North Carolina A&T State University"
+    },
+    { "name": "Humayun Akhtar", "affiliation": "Prime Robotics" },
+    { "name": "Ikuro Sato", "affiliation": "Institute of Science Tokyo" },
+    { "name": "Imanol G. Estepa", "affiliation": "Universitat de Barcelona" },
+    { "name": "Ivy He", "affiliation": "Georgia Institute of Technology" },
+    { "name": "J. Herrera", "affiliation": "Universidad de Granada" },
+    { "name": "Jose Sosa", "affiliation": "Hydrosat" },
+    {
+      "name": "Kazuya Nishimura",
+      "affiliation": "Osaka University, Tokyo Institute of Technology"
+    },
+    { "name": "Kohsuke Ide", "affiliation": "University of Tsukuba" },
+    {
+      "name": "Koki Seno",
+      "affiliation": "Information and Computer Science, Keio University"
+    },
+    { "name": "Kota Matsui", "affiliation": "Kyoto University" },
+    {
+      "name": "Krishna Kanth Nakka",
+      "affiliation": "Huawei Technologies Ltd."
+    },
+    { "name": "Kuniaki Saito", "affiliation": "OMRON SINICX" },
+    { "name": "Kuniko Paxton", "affiliation": "University of Hull" },
+    { "name": "Laurenz Reichardt", "affiliation": "TH Mannheim" },
+    { "name": "Manel Baradad", "affiliation": "Amazon" },
+    {
+      "name": "Marc Van Droogenbroeck",
+      "affiliation": "University of Liège, Belgium"
+    },
+    {
+      "name": "Marek Wodzinski",
+      "affiliation": "Sano Centre for Computational Medicine"
+    },
+    { "name": "Moeri Okuda", "affiliation": "University of Hyogo" },
+    { "name": "Mogana Kumaran", "affiliation": "IEEE" },
+    { "name": "Naoya Chiba", "affiliation": "Osaka University" },
+    {
+      "name": "Nilakshan Kunananthaseelan",
+      "affiliation": "Monash University"
+    },
+    { "name": "Pagon Gatchalee", "affiliation": "" },
+    { "name": "Partha Das", "affiliation": "University of Amsterdam" },
+    { "name": "Pengyu Dai", "affiliation": "The University of Tokyo" },
+    {
+      "name": "Prajwal Singh",
+      "affiliation": "Indian Institute of Technology, Gandhinagar"
+    },
+    { "name": "Rahul Jaisy", "affiliation": "Assam Engineering College" },
+    { "name": "Renaud Vandeghen", "affiliation": "University of Liège" },
+    { "name": "Ryuichi Nakahara", "affiliation": "Okayama University" },
+    { "name": "Sakshi Kakde", "affiliation": "Cox Auto" },
+    { "name": "Sethuraman T V", "affiliation": "Adobe Systems" },
+    { "name": "Shuitsu Koyama", "affiliation": "Keio University" },
+    { "name": "Shunsuke Kitada", "affiliation": "LY Corp." },
+    {
+      "name": "Sonain Jamil",
+      "affiliation": "University of Technology Sydney"
+    },
+    {
+      "name": "Soowon Son",
+      "affiliation": "Korea Advanced Institute of Science & Technology"
+    },
+    {
+      "name": "Takuma Yagi",
+      "affiliation": "AIST, National Institute of Advanced Industrial Science and Technology"
+    },
+    { "name": "Tommy Tran", "affiliation": "" },
+    { "name": "Tomoyuki Suzuki", "affiliation": "CyberAgent" },
+    { "name": "Tsun-Yi Yang", "affiliation": "Graphcore" },
+    { "name": "V Gurucharan", "affiliation": "Collaborative Dynamics" },
+    {
+      "name": "Valentino Maiorca",
+      "affiliation": "Institute of Science and Technology Austria"
+    },
+    { "name": "Wenhao You", "affiliation": "University of Waterloo" },
+    { "name": "Yusuke Mukuta", "affiliation": "RIKEN" },
+    {
+      "name": "Zahra Dehghanighobadi",
+      "affiliation": "Ruhr-Universität Bochum"
+    },
+    { "name": "Zhengkang Xiang", "affiliation": "Amazon" }
+  ]
 }
