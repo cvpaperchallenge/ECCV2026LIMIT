@@ -3,13 +3,14 @@ import {
   Mail,
   MapPin,
   ExternalLink,
-  // FileText,
+  FileText,
   Info,
   CalendarPlus,
   Slack,
   Building2,
+  UserRound,
 } from "lucide-react";
-import { useLocation } from "react-router";
+import { Link, useLocation } from "react-router";
 import { useEffect } from "react";
 import { NewsCarousel } from "../../components/news-carousel";
 
@@ -65,8 +66,8 @@ function Home() {
   const structuredData = generateWorkshopStructuredData({
     name: workshopData.home.title,
     description: workshopData.home.overview.mission,
-    startDate: "2026-09-08T09:00:00",
-    endDate: "2026-09-08T17:00:00",
+    startDate: "2026-09-08T08:30:00",
+    endDate: "2026-09-08T13:00:00",
     location: {
       name: workshopData.home.eventInfo.location,
       address: "Malmö, Sweden",
@@ -140,7 +141,7 @@ function Home() {
                   className="h-4 w-4 md:h-5 md:w-5 text-primary"
                   aria-hidden="true"
                 />
-                <time className="font-medium" dateTime="2026-09-08T09:00">
+                <time className="font-medium" dateTime="2026-09-08T08:30">
                   {workshopData.home.eventInfo.date}
                 </time>
               </div>
@@ -155,29 +156,15 @@ function Home() {
               </div>
             </div>
 
-            {/* CTA Buttons */}
+            {/* CTA Buttons — the submission CTA was removed once the deadline
+                passed; the program link takes its place as the next milestone. */}
             <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
               <Button
                 size="lg"
                 className="text-sm md:text-base px-6 py-4 md:px-8 md:py-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
                 asChild
               >
-                <a
-                  href={workshopData.callForPapers.submission.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-2"
-                >
-                  Submit via OpenReview <ExternalLink className="h-4 w-4" />
-                </a>
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="text-sm md:text-base px-6 py-4 md:px-8 md:py-6 rounded-xl opacity-50 cursor-not-allowed"
-                disabled
-              >
-                View Program (Coming Soon)
+                <Link to="/#program">View Program</Link>
               </Button>
             </div>
           </div>
@@ -255,40 +242,14 @@ function Home() {
           </div>
         </section>
 
-        {/* Info + Latest News Section */}
-        <div className="space-y-12">
-          {/* Info Section */}
-          <div className="glass-strong flex items-start gap-4 rounded-2xl p-8 shadow-lg card-hover">
-            <Info className="h-6 w-6 shrink-0 text-primary mt-1" />
-            <p className="text-base leading-relaxed">
-              We are accepting paper submissions for the LIMIT Workshop at ECCV
-              2026. The submission deadline is{" "}
-              <span className="font-semibold text-primary">
-                Friday, July 10, 2026, 23:59 AoE
-              </span>
-              . Please check the topics of interest below and submit your work
-              via{" "}
-              <a
-                href={workshopData.callForPapers.submission.url}
-                target="_blank"
-                rel="noreferrer"
-                className="font-semibold text-primary hover:text-primary/80 transition-colors underline decoration-primary/30 underline-offset-4"
-              >
-                OpenReview
-              </a>
-              .
-            </p>
+        {/* Latest News Section */}
+        <section id="news" className="space-y-8">
+          <div className="space-y-3">
+            <h2 className="font-bold">Latest News</h2>
+            <div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
           </div>
-
-          {/* Latest News Section */}
-          <section id="news" className="space-y-8">
-            <div className="space-y-3">
-              <h2 className="font-bold">Latest News</h2>
-              <div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
-            </div>
-            <NewsCarousel items={workshopData.home.latestNews} />
-          </section>
-        </div>
+          <NewsCarousel items={workshopData.home.latestNews} />
+        </section>
 
         {/* Overview Section */}
         <section id="about" className="space-y-12">
@@ -386,14 +347,16 @@ function Home() {
             </div>
           </div>
 
-          {/* Submit Button */}
+          {/* Submission status — the call is closed, so the OpenReview link is
+              kept as a reference to the venue rather than as a submit CTA. */}
           <div className="glass-strong rounded-2xl p-8 shadow-lg text-center space-y-4">
             <p className="text-base leading-relaxed">
               {workshopData.callForPapers.submission.description}
             </p>
             <Button
+              variant="outline"
               size="lg"
-              className="text-base px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
+              className="text-base px-8 py-6 rounded-xl"
               asChild
             >
               <a
@@ -402,87 +365,92 @@ function Home() {
                 rel="noreferrer"
                 className="flex items-center gap-2"
               >
-                Submit via OpenReview <ExternalLink className="h-5 w-5" />
+                View on OpenReview <ExternalLink className="h-5 w-5" />
               </a>
             </Button>
           </div>
         </section>
 
-        {/* Program Section - hidden until program is finalized */}
-        {/* <section id="program" className="space-y-8">
+        {/* Program Section */}
+        <section id="program" className="space-y-6">
           <div className="space-y-3">
-            <h2 className="font-bold">Workshop Program</h2>
+            <div className="flex flex-wrap items-center gap-3">
+              <h2 className="font-bold">Workshop Program</h2>
+              <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary">
+                Tentative
+              </span>
+            </div>
             <div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
           </div>
-          <div className="glass-strong flex items-start gap-4 rounded-2xl p-8 shadow-lg">
-            <Info className="h-6 w-6 shrink-0 text-primary mt-1" />
-            <p className="text-base leading-relaxed">
-              The following workshop program is tentative and subject to change.
-              The exact date, time slot, and room assignment will be confirmed
-              closer to the event. Please check back for updates.
-            </p>
-          </div>
-          <div className="glass rounded-2xl p-6 md:p-8 border shadow-lg overflow-hidden">
-            <ScrollArea className="w-full">
-              <Table>
-                <TableHeader>
-                  <TableRow className="hover:bg-transparent border-b-2">
-                    <TableHead className="w-[150px] font-bold text-base">
-                      Time
-                    </TableHead>
-                    <TableHead className="font-bold text-base">
-                      Session
-                    </TableHead>
-                    <TableHead className="hidden md:table-cell font-bold text-base">
-                      Presenter
-                    </TableHead>
-                    <TableHead className="hidden md:table-cell w-[140px]"></TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {workshopData.schedule.workshopProgram.day1.schedule.map(
-                    (item, index) => (
-                      <TableRow
-                        key={index}
-                        className="border-b border-border/50 hover:bg-accent/5"
-                      >
-                        <TableCell className="font-semibold text-primary">
-                          {item.time}
-                        </TableCell>
-                        <TableCell className="font-medium">
+
+          {/* Date and venue are omitted here on purpose — the hero already
+              states both prominently. */}
+          <p className="flex items-start gap-2 text-sm text-muted-foreground">
+            <Info
+              className="mt-0.5 h-4 w-4 shrink-0 text-primary"
+              aria-hidden="true"
+            />
+            <span className="leading-relaxed">
+              This program is tentative and subject to change. Time slots and
+              the room assignment will be confirmed closer to the event.
+            </span>
+          </p>
+
+          {/* One card for the whole schedule, hairline-divided — a timetable is
+              a single continuous list, not ten independent objects, so the rows
+              carry no border, blur or hover of their own. Within a row the
+              session type is a kicker above the presenter: uppercase tracking
+              makes it scannable without competing for weight, and it leaves the
+              line below free for the talk title once those are announced. */}
+          <div className="glass rounded-2xl border shadow-lg">
+            <ol className="divide-y divide-border/50 p-2 sm:p-4">
+              {workshopData.schedule.workshopProgram.day1.schedule.map(
+                (item, index) => (
+                  <li
+                    key={index}
+                    className="flex flex-col gap-1 px-2 py-4 sm:flex-row sm:items-baseline sm:gap-6 sm:px-3"
+                  >
+                    <span className="shrink-0 text-sm font-semibold tabular-nums text-primary sm:w-28">
+                      {item.time}
+                    </span>
+                    <div className="min-w-0 flex-1 space-y-1">
+                      {item.presenter ? (
+                        <>
+                          <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+                            {item.session}
+                          </p>
+                          <p className="font-semibold leading-snug">
+                            {item.presenter}
+                          </p>
+                        </>
+                      ) : (
+                        <p className="font-medium leading-snug">
                           {item.session}
-                        </TableCell>
-                        <TableCell className="hidden md:table-cell text-muted-foreground">
-                          {item.presenter || ""}
-                        </TableCell>
-                        <TableCell className="hidden md:table-cell">
-                          {item.slides ? (
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              asChild
-                              className="hover:bg-primary/10"
-                            >
-                              <a
-                                href={item.slides}
-                                target="_blank"
-                                rel="noreferrer"
-                              >
-                                <FileText className="mr-2 h-4 w-4" />
-                                Slides
-                              </a>
-                            </Button>
-                          ) : null}
-                        </TableCell>
-                      </TableRow>
-                    ),
-                  )}
-                </TableBody>
-              </Table>
-              <ScrollBar orientation="horizontal" />
-            </ScrollArea>
+                        </p>
+                      )}
+                      {item.title && (
+                        <p className="text-sm italic leading-snug text-muted-foreground">
+                          {item.title}
+                        </p>
+                      )}
+                      {item.slides && (
+                        <a
+                          href={item.slides}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-1.5 pt-0.5 text-xs font-medium text-primary hover:text-primary/80 transition-colors"
+                        >
+                          <FileText className="h-3.5 w-3.5" />
+                          Slides
+                        </a>
+                      )}
+                    </div>
+                  </li>
+                ),
+              )}
+            </ol>
           </div>
-        </section> */}
+        </section>
 
         {/* Invited Speakers Section */}
         <section id="speakers" className="space-y-8">
@@ -490,6 +458,9 @@ function Home() {
             <h2 className="font-bold">Invited Speakers</h2>
             <div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
           </div>
+          {/* A speaker with an empty `photo` / `website` in people.json is an
+              unannounced slot: the portrait becomes a placeholder and the
+              profile link is dropped, so a TBA entry needs no code change. */}
           <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
             {peopleData.program.invitedSpeakers.map((speaker, index) => (
               <Card
@@ -498,39 +469,53 @@ function Home() {
               >
                 <CardContent className="p-0">
                   <div className="aspect-square bg-muted flex items-center justify-center overflow-hidden">
-                    <img
-                      src={speaker.photo}
-                      alt={`Photo of ${speaker.name}`}
-                      className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
+                    {speaker.photo ? (
+                      <img
+                        src={speaker.photo}
+                        alt={`Photo of ${speaker.name}`}
+                        className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="flex flex-col items-center gap-2 text-muted-foreground">
+                        <UserRound className="h-8 w-8" strokeWidth={1.5} />
+                        <span className="whitespace-nowrap text-[10px] font-semibold uppercase tracking-widest">
+                          Coming soon
+                        </span>
+                      </div>
+                    )}
                   </div>
                 </CardContent>
                 <CardHeader className="space-y-1 sm:space-y-3 p-3 sm:p-6 flex-1">
                   <CardTitle className="text-sm sm:text-xl">
                     {speaker.name}
                   </CardTitle>
-                  <p className="text-xs sm:text-base text-muted-foreground">
-                    {speaker.affiliation}
-                  </p>
+                  {speaker.affiliation && (
+                    <p className="text-xs sm:text-base text-muted-foreground">
+                      {speaker.affiliation}
+                    </p>
+                  )}
                 </CardHeader>
-                <div className="px-3 pb-3 sm:px-6 sm:pb-6 mt-auto">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="w-full text-xs sm:text-sm group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
-                    asChild
-                  >
-                    <a
-                      href={speaker.website}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex items-center justify-center gap-1 sm:gap-2"
+                {speaker.website && (
+                  <div className="px-3 pb-3 sm:px-6 sm:pb-6 mt-auto">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="w-full text-xs sm:text-sm group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+                      asChild
                     >
-                      Profile <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4" />
-                    </a>
-                  </Button>
-                </div>
+                      <a
+                        href={speaker.website}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex items-center justify-center gap-1 sm:gap-2"
+                      >
+                        Profile{" "}
+                        <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4" />
+                      </a>
+                    </Button>
+                  </div>
+                )}
               </Card>
             ))}
           </div>

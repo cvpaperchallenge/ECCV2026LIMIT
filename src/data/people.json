@@ -101,16 +101,16 @@
         "website": "https://www.ranjaykrishna.com/"
       },
       {
-        "name": "Jia Deng",
-        "affiliation": "Princeton University",
-        "photo": "/program/jia.deng-512x512.jpg",
-        "website": "https://www.cs.princeton.edu/~jiadeng/"
-      },
-      {
         "name": "Anna Kukleva",
         "affiliation": "Meta",
         "photo": "/program/anna.kukleva-512x512.jpg",
         "website": "https://annusha.github.io/"
+      },
+      {
+        "name": "To Be Announced",
+        "affiliation": "",
+        "photo": "",
+        "website": ""
       }
     ],
     "acceptedPapers": {
