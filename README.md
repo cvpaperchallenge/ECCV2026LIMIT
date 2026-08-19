@@ -134,8 +134,8 @@ Most content updates only require editing JSON files in `src/data/` — no code 
 | Past events, awards, supporters | `src/data/extras.json` |
 | SEO metadata, OGP | `src/lib/seo.ts` |
 | Color palette | `src/app/app.css` |
-| Navigation links | `src/components/header.tsx` |
-| Footer links | `src/components/footer.tsx` |
+| Navigation links (shared by header and footer) | `src/lib/navigation.ts` |
+| Footer-only links (past/related workshops, share) | `src/components/footer.tsx` |
 
 To show/hide sections (e.g., Program, Invited Speakers), comment out or uncomment the corresponding blocks in `src/app/routes/Home.tsx`.
 

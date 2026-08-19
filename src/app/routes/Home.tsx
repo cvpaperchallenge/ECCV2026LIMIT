@@ -311,70 +311,6 @@ function Home() {
           </div>
         </section>
 
-        {/* Call for Papers Section */}
-        <section id="cfp" className="space-y-8">
-          <div className="space-y-3">
-            <h2 className="font-bold">Call for Papers</h2>
-            <div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
-          </div>
-
-          {/* Submission Guidelines */}
-          <div className="glass rounded-2xl p-8 md:p-10 border shadow-lg space-y-6">
-            <h3 className="text-xl font-bold">Submission Guidelines</h3>
-            <ul className="space-y-3">
-              {workshopData.callForPapers.paperFormat.submissionGuidelines.map(
-                (guideline, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary text-sm font-bold mt-0.5">
-                      {index + 1}
-                    </div>
-                    <p className="text-base leading-relaxed">{guideline}</p>
-                  </li>
-                ),
-              )}
-            </ul>
-          </div>
-
-          {/* Review & Publication */}
-          <div className="grid gap-6 md:grid-cols-2">
-            <div className="glass rounded-2xl p-8 border shadow-md space-y-3">
-              <h3 className="text-lg font-bold">Review Process</h3>
-              <p className="text-base leading-relaxed text-foreground/80">
-                {workshopData.callForPapers.paperFormat.reviewProcess}
-              </p>
-            </div>
-            <div className="glass rounded-2xl p-8 border shadow-md space-y-3">
-              <h3 className="text-lg font-bold">Publication</h3>
-              <p className="text-base leading-relaxed text-foreground/80">
-                {workshopData.callForPapers.paperFormat.publication}
-              </p>
-            </div>
-          </div>
-
-          {/* Submission status — the call is closed, so the OpenReview link is
-              kept as a reference to the venue rather than as a submit CTA. */}
-          <div className="glass-strong rounded-2xl p-8 shadow-lg text-center space-y-4">
-            <p className="text-base leading-relaxed">
-              {workshopData.callForPapers.submission.description}
-            </p>
-            <Button
-              variant="outline"
-              size="lg"
-              className="text-base px-8 py-6 rounded-xl"
-              asChild
-            >
-              <a
-                href={workshopData.callForPapers.submission.url}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-2"
-              >
-                View on OpenReview <ExternalLink className="h-5 w-5" />
-              </a>
-            </Button>
-          </div>
-        </section>
-
         {/* Program Section */}
         <section id="program" className="space-y-6">
           <div className="space-y-3">
@@ -525,6 +461,20 @@ function Home() {
           </div>
         </section>
 
+        {/* Accepted Papers Section - placeholder until the list is published.
+            The oral and poster arrays already exist under
+            people.json -> program.acceptedPapers. */}
+        <section id="papers" className="space-y-8">
+          <div className="space-y-3">
+            <h2 className="font-bold">Accepted Papers</h2>
+            <div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
+          </div>
+          <p className="text-base leading-relaxed text-muted-foreground">
+            The list of accepted papers will be published here ahead of the
+            workshop.
+          </p>
+        </section>
+
         {/* Organizers */}
         <section id="organizers" className="space-y-8">
           <div className="space-y-3">
@@ -559,6 +509,20 @@ function Home() {
               </a>
             ))}
           </div>
+        </section>
+
+        {/* Reviewers Section - placeholder until the list is published. Sits
+            with Organizers and Sponsors as part of the acknowledgement cluster,
+            and pairs with the review process described under Call for Papers. */}
+        <section id="reviewers" className="space-y-8">
+          <div className="space-y-3">
+            <h2 className="font-bold">Reviewers</h2>
+            <div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
+          </div>
+          <p className="text-base leading-relaxed text-muted-foreground">
+            We thank the reviewers who supported the review process. The full
+            list will be published here.
+          </p>
         </section>
 
         {/* Sponsors Section */}
@@ -627,6 +591,74 @@ function Home() {
                 <div key={index}>{card}</div>
               );
             })}
+          </div>
+        </section>
+
+        {/* Call for Papers Section - kept as an archival record now that the
+            call has closed, so it sits near the foot of the page. The review
+            process and publication details below are what give the Reviewers
+            section its context, which is why this is retained rather than
+            dropped. */}
+        <section id="cfp" className="space-y-8">
+          <div className="space-y-3">
+            <h2 className="font-bold">Call for Papers</h2>
+            <div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
+          </div>
+
+          {/* Submission Guidelines */}
+          <div className="glass rounded-2xl p-8 md:p-10 border shadow-lg space-y-6">
+            <h3 className="text-xl font-bold">Submission Guidelines</h3>
+            <ul className="space-y-3">
+              {workshopData.callForPapers.paperFormat.submissionGuidelines.map(
+                (guideline, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary text-sm font-bold mt-0.5">
+                      {index + 1}
+                    </div>
+                    <p className="text-base leading-relaxed">{guideline}</p>
+                  </li>
+                ),
+              )}
+            </ul>
+          </div>
+
+          {/* Review & Publication */}
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="glass rounded-2xl p-8 border shadow-md space-y-3">
+              <h3 className="text-lg font-bold">Review Process</h3>
+              <p className="text-base leading-relaxed text-foreground/80">
+                {workshopData.callForPapers.paperFormat.reviewProcess}
+              </p>
+            </div>
+            <div className="glass rounded-2xl p-8 border shadow-md space-y-3">
+              <h3 className="text-lg font-bold">Publication</h3>
+              <p className="text-base leading-relaxed text-foreground/80">
+                {workshopData.callForPapers.paperFormat.publication}
+              </p>
+            </div>
+          </div>
+
+          {/* Submission status — the call is closed, so the OpenReview link is
+              kept as a reference to the venue rather than as a submit CTA. */}
+          <div className="glass-strong rounded-2xl p-8 shadow-lg text-center space-y-4">
+            <p className="text-base leading-relaxed">
+              {workshopData.callForPapers.submission.description}
+            </p>
+            <Button
+              variant="outline"
+              size="lg"
+              className="text-base px-8 py-6 rounded-xl"
+              asChild
+            >
+              <a
+                href={workshopData.callForPapers.submission.url}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2"
+              >
+                View on OpenReview <ExternalLink className="h-5 w-5" />
+              </a>
+            </Button>
           </div>
         </section>
 
