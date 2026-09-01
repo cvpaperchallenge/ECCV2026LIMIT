@@ -354,13 +354,17 @@ function Home() {
                       {item.time}
                     </span>
                     <div className="min-w-0 flex-1 space-y-1">
-                      {item.presenter ? (
+                      {/* A row's headline is its presenter, or its paper title
+                          where no presenter is named (the orals), so that every
+                          content row reads as kicker-then-content rather than
+                          burying the substance in the subordinate line. */}
+                      {item.presenter || item.title ? (
                         <>
                           <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
                             {item.session}
                           </p>
                           <p className="font-semibold leading-snug">
-                            {item.presenter}
+                            {item.presenter || item.title}
                           </p>
                         </>
                       ) : (
@@ -368,7 +372,7 @@ function Home() {
                           {item.session}
                         </p>
                       )}
-                      {item.title && (
+                      {item.presenter && item.title && (
                         <p className="text-sm italic leading-snug text-muted-foreground">
                           {item.title}
                         </p>
