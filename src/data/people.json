@@ -89,10 +89,10 @@
     "subtitle": "Invited speakers and accepted papers",
     "invitedSpeakers": [
       {
-        "name": "Björn Ommer",
-        "affiliation": "Ludwig Maximilian University of Munich",
-        "photo": "/program/bjorn.ommer-512x512.jpg",
-        "website": "https://ommer-lab.com/ommer/"
+        "name": "Anna Kukleva",
+        "affiliation": "Meta",
+        "photo": "/program/anna.kukleva-512x512.jpg",
+        "website": "https://annusha.github.io/"
       },
       {
         "name": "Ranjay Krishna",
@@ -101,16 +101,16 @@
         "website": "https://www.ranjaykrishna.com/"
       },
       {
-        "name": "Anna Kukleva",
-        "affiliation": "Meta",
-        "photo": "/program/anna.kukleva-512x512.jpg",
-        "website": "https://annusha.github.io/"
+        "name": "Björn Ommer",
+        "affiliation": "Ludwig Maximilian University of Munich",
+        "photo": "/program/bjorn.ommer-512x512.jpg",
+        "website": "https://ommer-lab.com/ommer/"
       },
       {
-        "name": "To Be Announced",
-        "affiliation": "",
-        "photo": "",
-        "website": ""
+        "name": "Yunzhu Li",
+        "affiliation": "Columbia University",
+        "photo": "/program/yunzhu.li-512x512.jpg",
+        "website": "https://yunzhuli.github.io/"
       }
     ],
     "acceptedPapers": [
