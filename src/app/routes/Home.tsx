@@ -550,14 +550,9 @@ function Home() {
                   <h3 className="text-base font-semibold leading-snug">
                     {poster.title}
                   </h3>
-                  {/* Author lists for the invited posters have not been
-                      supplied yet; the row simply omits the line until they
-                      are. */}
-                  {poster.authors && (
-                    <p className="text-sm leading-snug text-muted-foreground">
-                      {poster.authors}
-                    </p>
-                  )}
+                  <p className="text-sm leading-snug text-muted-foreground">
+                    {poster.authors}
+                  </p>
                 </li>
               ))}
             </ol>

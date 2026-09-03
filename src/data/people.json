@@ -177,20 +177,20 @@
     ],
     "invitedPosters": [
       {
-        "title": "IDeaL: data-free multi-teacher distillation via Improved Dead Leaves",
-        "authors": ""
+        "title": "IDeaL: Data-Free Multi-Teacher Distillation via Improved Dead Leaves",
+        "authors": "Feyza Yavuz, Mert Bülent Sarıyıldız, Diane Larlus"
       },
       {
         "title": "PADFormer: Pose-agnostic Anomaly Detection from Sparse View Images",
-        "authors": ""
+        "authors": "Ruiqi Wang, Yiming Qian, Fenggen Yu, Yuxuan Lu, Dakuo Wang, Hao Zhang, Jing Huang"
       },
       {
         "title": "ELT: Elastic Looped Transformers for Visual Generation",
-        "authors": ""
+        "authors": "Sahil Goyal, Swayam Agrawal, Gautham Govind Anil, Prateek Jain, Sujoy Paul, Aditya Kusupati"
       },
       {
         "title": "See & Sniff: Learning Visuo-Olfactory Representations",
-        "authors": ""
+        "authors": "Seongyu Kim, Seungwoo Lee, Hyeonggon Ryu, Joon Son Chung, Arda Senocak"
       }
     ],
     "panelDiscussion": {
