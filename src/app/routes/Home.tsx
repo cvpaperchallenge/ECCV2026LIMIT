@@ -546,13 +546,33 @@ function Home() {
           <div className="glass rounded-2xl border shadow-lg">
             <ol className="divide-y divide-border/50 p-2 sm:p-4">
               {invitedPosters.map((poster, index) => (
-                <li key={index} className="space-y-1 px-2 py-4 sm:px-3">
-                  <h3 className="text-base font-semibold leading-snug">
-                    {poster.title}
-                  </h3>
-                  <p className="text-sm leading-snug text-muted-foreground">
-                    {poster.authors}
-                  </p>
+                <li key={index}>
+                  {/* The whole row is the target, so the hover feedback can be
+                      the row itself: the title takes the accent colour and the
+                      arXiv chip fills in. The chip sits where the accepted
+                      papers carry their format badge, which keeps the two
+                      lists aligned even though only this one links out. */}
+                  <a
+                    href={poster.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group flex items-start justify-between gap-3 rounded-lg px-2 py-4 transition-colors hover:bg-primary/5 focus-visible:bg-primary/5 focus-visible:outline-none sm:gap-4 sm:px-3"
+                  >
+                    <div className="min-w-0 space-y-1">
+                      <h3 className="text-base font-semibold leading-snug transition-colors group-hover:text-primary group-focus-visible:text-primary">
+                        {poster.title}
+                      </h3>
+                      <p className="text-sm leading-snug text-muted-foreground">
+                        {poster.authors}
+                      </p>
+                    </div>
+                    {/* Not uppercased like the format badges: arXiv is a
+                        proper noun and "ARXIV" would misspell it. */}
+                    <span className="inline-flex shrink-0 items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-semibold tracking-wide text-muted-foreground transition-colors group-hover:bg-primary/10 group-hover:text-primary group-focus-visible:bg-primary/10 group-focus-visible:text-primary sm:text-xs">
+                      arXiv
+                      <ExternalLink className="h-3 w-3" />
+                    </span>
+                  </a>
                 </li>
               ))}
             </ol>
