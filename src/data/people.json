@@ -115,52 +115,82 @@
     ],
     "acceptedPapers": [
       {
-        "title": "ES-VP: Energy-Shaped Dynamic Low-Rank Visual Prompting for Efficient Model Adaptation",
-        "authors": "Can Jin, Ying Li, Jingchen Sun, Hongwu Peng, Jiahui Zhao, Yang Zhou, Lei Li, Dimitris N. Metaxas"
-      },
-      {
-        "title": "RIPE++: Reinforced Keypoint Learning from Positive Pairs Only",
-        "authors": "Johannes Künzel, Peter Eisert, Anna Hilsmann"
+        "title": "Representation-Preserving Federated Self-Supervised Learning with Foundation Models",
+        "authors": "Ozgu Goksu, Daniela Ivanova, Nicolas Pugeault",
+        "type": "Oral"
       },
       {
         "title": "ADSF: Approximating Diffusion Process through Tracking the Score Function",
-        "authors": "Preeti Mukherjee, Shayok Bagchi, Jagannath Prabhakaran, Siddhant Prakash, Chaoyue Liu"
-      },
-      {
-        "title": "Recursive Block-Diagonal Coupling for Resource-Efficient Training of Vision Models",
-        "authors": "Maxim Henry, Marc Van Droogenbroeck, Adrien Deliege, Sébastien Piérard"
-      },
-      {
-        "title": "Performance-Carbon Trade-Offs across Architectural Biases in Shear Flow Forecasting",
-        "authors": "Sophia N. Wilson, Jens H. Christensen, Raghavendra Selvan"
+        "authors": "Preeti Mukherjee, Shayok Bagchi, Jagannath Prabhakaran, Siddhant Prakash, Chaoyue Liu",
+        "type": "Oral"
       },
       {
         "title": "Efficient Generative Adversarial Networks Using Linear Additive-Attention Transformers",
-        "authors": "Emilio Alejandro Morales-Juárez, Gibran Fuentes-Pineda"
+        "authors": "Emilio Alejandro Morales-Juárez, Gibran Fuentes-Pineda",
+        "type": "Oral"
+      },
+      {
+        "title": "RIPE++: Reinforced Keypoint Learning from Positive Pairs Only",
+        "authors": "Johannes Künzel, Peter Eisert, Anna Hilsmann",
+        "type": "Oral"
+      },
+      {
+        "title": "ES-VP: Energy-Shaped Dynamic Low-Rank Visual Prompting for Efficient Model Adaptation",
+        "authors": "Can Jin, Ying Li, Jingchen Sun, Hongwu Peng, Jiahui Zhao, Yang Zhou, Lei Li, Dimitris N. Metaxas",
+        "type": "Poster"
+      },
+      {
+        "title": "Recursive Block-Diagonal Coupling for Resource-Efficient Training of Vision Models",
+        "authors": "Maxim Henry, Marc Van Droogenbroeck, Adrien Deliege, Sébastien Piérard",
+        "type": "Poster"
+      },
+      {
+        "title": "Performance-Carbon Trade-Offs across Architectural Biases in Shear Flow Forecasting",
+        "authors": "Sophia N. Wilson, Jens H. Christensen, Raghavendra Selvan",
+        "type": "Poster"
       },
       {
         "title": "Resource-Efficient Neural Architecture Search for Medical Image Segmentation Using Monte Carlo Tree Search",
-        "authors": "Liping Meng, Jintao Ma, Jiangtao Ma, Lingxiang Hu, Kaiyuan Gong, Yixuan Wu, Xi Jia, Yunyun Zhang, Dun Li"
+        "authors": "Liping Meng, Jintao Ma, Jiangtao Ma, Lingxiang Hu, Kaiyuan Gong, Yixuan Wu, Xi Jia, Yunyun Zhang, Dun Li",
+        "type": "Poster"
       },
       {
         "title": "Gloss-Free Representation Learning for Cross-Dataset Sign Spotting",
-        "authors": "Oğuz Akif Tüfekcioğlu, Ezgi Ekin, Mustafa Kaan Çevik, Hacer Yalim Keles"
+        "authors": "Oğuz Akif Tüfekcioğlu, Ezgi Ekin, Mustafa Kaan Çevik, Hacer Yalim Keles",
+        "type": "Poster"
       },
       {
         "title": "VideoLLMs Conditioned on Visual Scene Graphs: A Global-Local Approach",
-        "authors": "Ananth Kalyanasundaram, Aswanth Krishnan"
+        "authors": "Ananth Kalyanasundaram, Aswanth Krishnan",
+        "type": "Poster"
       },
       {
         "title": "Multimodal Feature Co-Distillation for Unsupervised Action Recognition",
-        "authors": "Philip Zimmermann, Ulas Sureyya Bingol, Urs Waldmann, Andreas Lamprecht, Simon Burger, Bastian Goldluecke, Manuel Stein"
+        "authors": "Philip Zimmermann, Ulas Sureyya Bingol, Urs Waldmann, Andreas Lamprecht, Simon Burger, Bastian Goldluecke, Manuel Stein",
+        "type": "Poster"
       },
       {
         "title": "A Controlled Study of Self-Supervised Image and Video Pretraining under Limited Resources",
-        "authors": "Brunó B. Englert, Gijs Dubbelman"
+        "authors": "Brunó B. Englert, Gijs Dubbelman",
+        "type": "Poster"
+      }
+    ],
+    "invitedPosters": [
+      {
+        "title": "IDeaL: data-free multi-teacher distillation via Improved Dead Leaves",
+        "authors": ""
       },
       {
-        "title": "Representation-Preserving Federated Self-Supervised Learning with Foundation Models",
-        "authors": "Ozgu Goksu, Daniela Ivanova, Nicolas Pugeault"
+        "title": "PADFormer: Pose-agnostic Anomaly Detection from Sparse View Images",
+        "authors": ""
+      },
+      {
+        "title": "ELT: Elastic Looped Transformers for Visual Generation",
+        "authors": ""
+      },
+      {
+        "title": "See & Sniff: Learning Visuo-Olfactory Representations",
+        "authors": ""
       }
     ],
     "panelDiscussion": {

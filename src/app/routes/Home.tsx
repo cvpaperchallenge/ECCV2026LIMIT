@@ -82,6 +82,11 @@ function Home() {
     eventStatus: "EventScheduled",
   });
 
+  const { acceptedPapers, invitedPosters } = peopleData.program;
+  const oralCount = acceptedPapers.filter(
+    (paper) => paper.type === "Oral",
+  ).length;
+
   return (
     <>
       {/* Structured Data for SEO */}
@@ -480,28 +485,79 @@ function Home() {
 
         {/* Accepted Papers Section - one card with hairline-divided rows, the
             same treatment as the Program schedule, since both are continuous
-            lists of the workshop's own content. The source data carries no
-            oral/poster designation, so the papers are listed flat rather than
-            split into sessions. */}
+            lists of the workshop's own content. The orals lead the list in the
+            order they are presented and every row states its format, so the
+            four talks can be picked out without consulting the schedule. */}
         <section id="papers" className="space-y-6">
           <div className="space-y-3">
             <h2 className="font-bold">Accepted Papers</h2>
             <div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
           </div>
           <p className="text-lg leading-relaxed text-foreground/90">
-            The following {peopleData.program.acceptedPapers.length} papers have
-            been accepted to the workshop.
+            The following {acceptedPapers.length} papers have been accepted to
+            the workshop: {oralCount} presented as talks and the remaining{" "}
+            {acceptedPapers.length - oralCount} as posters.
           </p>
           <div className="glass rounded-2xl border shadow-lg">
             <ol className="divide-y divide-border/50 p-2 sm:p-4">
-              {peopleData.program.acceptedPapers.map((paper, index) => (
+              {acceptedPapers.map((paper, index) => (
+                <li
+                  key={index}
+                  className="flex items-start justify-between gap-3 px-2 py-4 sm:gap-4 sm:px-3"
+                >
+                  <div className="min-w-0 space-y-1">
+                    <h3 className="text-base font-semibold leading-snug">
+                      {paper.title}
+                    </h3>
+                    <p className="text-sm leading-snug text-muted-foreground">
+                      {paper.authors}
+                    </p>
+                  </div>
+                  {/* The talks are the exception in a list that is mostly
+                      posters, so only they take the accent colour. */}
+                  <span
+                    className={`shrink-0 rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest sm:text-xs ${
+                      paper.type === "Oral"
+                        ? "bg-primary/10 text-primary"
+                        : "bg-muted text-muted-foreground"
+                    }`}
+                  >
+                    {paper.type}
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        {/* Invited Posters — held apart from the accepted papers rather than
+            given a third badge, because they did not come through the
+            workshop's review process and a heading says so more plainly than a
+            label in a list titled "Accepted Papers" could. */}
+        <section id="invited-posters" className="space-y-6">
+          <div className="space-y-3">
+            <h2 className="font-bold">Invited Posters</h2>
+            <div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
+          </div>
+          <p className="text-lg leading-relaxed text-foreground/90">
+            The following {invitedPosters.length} posters have been invited to
+            the workshop.
+          </p>
+          <div className="glass rounded-2xl border shadow-lg">
+            <ol className="divide-y divide-border/50 p-2 sm:p-4">
+              {invitedPosters.map((poster, index) => (
                 <li key={index} className="space-y-1 px-2 py-4 sm:px-3">
                   <h3 className="text-base font-semibold leading-snug">
-                    {paper.title}
+                    {poster.title}
                   </h3>
-                  <p className="text-sm leading-snug text-muted-foreground">
-                    {paper.authors}
-                  </p>
+                  {/* Author lists for the invited posters have not been
+                      supplied yet; the row simply omits the line until they
+                      are. */}
+                  {poster.authors && (
+                    <p className="text-sm leading-snug text-muted-foreground">
+                      {poster.authors}
+                    </p>
+                  )}
                 </li>
               ))}
             </ol>
