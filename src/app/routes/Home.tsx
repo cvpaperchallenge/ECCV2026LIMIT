@@ -69,8 +69,8 @@ function Home() {
     startDate: "2026-09-08T08:30:00",
     endDate: "2026-09-08T13:00:00",
     location: {
-      name: workshopData.home.eventInfo.location,
-      address: "Malmö, Sweden",
+      name: workshopData.home.eventInfo.venue,
+      address: workshopData.home.eventInfo.location,
     },
     organizer: {
       name: "LIMIT Workshop Organizing Committee",
@@ -134,24 +134,37 @@ function Home() {
               </p>
             </div>
 
-            {/* Event Info */}
-            <div className="flex flex-row items-center justify-center gap-3 sm:gap-8 text-sm md:text-lg">
-              <div className="glass flex items-center gap-2 md:gap-3 px-4 py-2 md:px-6 md:py-3 rounded-xl md:rounded-2xl shadow-md">
+            {/* Event Info — each box carries a headline and a subordinate line
+                (day over start time, venue over city). Naming the room makes
+                these strings long enough to collide on a phone, so the pair
+                stacks below `sm` rather than sharing one row. */}
+            <div className="flex flex-col sm:flex-row items-stretch justify-center gap-3 sm:gap-4 text-sm md:text-lg w-full max-w-2xl">
+              <div className="glass flex flex-1 items-center gap-3 md:gap-4 px-5 py-3 md:px-6 md:py-4 rounded-xl md:rounded-2xl shadow-md">
                 <Calendar
-                  className="h-4 w-4 md:h-5 md:w-5 text-primary"
+                  className="h-5 w-5 md:h-6 md:w-6 text-primary shrink-0"
                   aria-hidden="true"
                 />
-                <time className="font-medium" dateTime="2026-09-08T08:30">
-                  {workshopData.home.eventInfo.date}
-                </time>
+                <div className="flex flex-col leading-tight text-left min-w-0">
+                  <time className="font-medium truncate" dateTime="2026-09-08">
+                    {workshopData.home.eventInfo.date}
+                  </time>
+                  <span className="text-xs md:text-sm font-normal text-muted-foreground truncate">
+                    {workshopData.home.eventInfo.time}
+                  </span>
+                </div>
               </div>
-              <div className="glass flex items-center gap-2 md:gap-3 px-4 py-2 md:px-6 md:py-3 rounded-xl md:rounded-2xl shadow-md">
+              <div className="glass flex flex-1 items-center gap-3 md:gap-4 px-5 py-3 md:px-6 md:py-4 rounded-xl md:rounded-2xl shadow-md">
                 <MapPin
-                  className="h-4 w-4 md:h-5 md:w-5 text-primary"
+                  className="h-5 w-5 md:h-6 md:w-6 text-primary shrink-0"
                   aria-hidden="true"
                 />
-                <address className="font-medium not-italic">
-                  {workshopData.home.eventInfo.location}
+                <address className="not-italic flex flex-col leading-tight text-left min-w-0">
+                  <span className="font-medium truncate">
+                    {workshopData.home.eventInfo.venue}
+                  </span>
+                  <span className="text-xs md:text-sm font-normal text-muted-foreground truncate">
+                    {workshopData.home.eventInfo.location}
+                  </span>
                 </address>
               </div>
             </div>
@@ -331,8 +344,8 @@ function Home() {
               aria-hidden="true"
             />
             <span className="leading-relaxed">
-              This program is tentative and subject to change. Time slots and
-              the room assignment will be confirmed closer to the event.
+              This program is tentative and subject to change. All times are
+              local to Malmö, and the workshop takes place in Malmömässan C1.
             </span>
           </p>
 
