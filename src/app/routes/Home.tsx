@@ -35,6 +35,7 @@ import type { Route } from "./+types/Home";
 // import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { buildMeta } from "@/lib/seo";
 import { generateWorkshopStructuredData } from "@/lib/structured-data";
+import { cn } from "@/lib/utils";
 // import { downloadICS, isPast, daysUntil } from "@/lib/calendar";
 
 export const meta: Route.MetaFunction = () =>
@@ -51,6 +52,85 @@ export const meta: Route.MetaFunction = () =>
       "few-shot learning",
     ],
   });
+
+/**
+ * The poster session is one run of numbered boards in the Exhibit Hall, shared
+ * by the accepted papers, the invited posters and the workshop's sponsors.
+ * Only the range and the sponsor positions are derived here, for the prose
+ * above the lists; each board itself stays with what it belongs to, papers in
+ * people.json and sponsors alongside their logo in workshop.json, so neither
+ * side's data is copied into the other.
+ *
+ * The papers take their boards in the order this page lists them — the four
+ * orals, then the posters, then the invited posters — so reading down the two
+ * lists is reading down the row in the hall. The sponsors are spaced through
+ * that run rather than grouped at one end: on every fifth board no one can
+ * walk the row without passing one, and no sponsor is first, last or next to
+ * another.
+ *
+ * The numbers are stored per paper rather than derived from position. Derived
+ * numbering would look tidier, but a paper inserted into either list would
+ * then silently renumber everyone below it after the numbers had already been
+ * sent out. Fixing them means a later insertion breaks the run rather than
+ * someone's board.
+ */
+const sponsorBoards = workshopData.sponsors.sponsors
+  .filter((sponsor) => sponsor.board > 0)
+  .map((sponsor) => sponsor.board)
+  .sort((a, b) => a - b);
+
+const allBoards = [
+  ...peopleData.program.acceptedPapers.map((paper) => paper.board),
+  ...peopleData.program.invitedPosters.map((poster) => poster.board),
+  ...sponsorBoards,
+].sort((a, b) => a - b);
+
+const firstBoard = allBoards[0];
+const lastBoard = allBoards[allBoards.length - 1];
+
+/** "5, 10 and 15" — a bare comma list of numbers would read as a range. */
+const sponsorBoardList =
+  sponsorBoards.length > 1
+    ? `${sponsorBoards.slice(0, -1).join(", ")} and ${
+        sponsorBoards[sponsorBoards.length - 1]
+      }`
+    : sponsorBoards.join("");
+
+/**
+ * The board a presentation is hung on, in the left column the Program schedule
+ * gives its time chip, so a presenter hunting for their own board reads down
+ * one edge instead of through sixteen titles. Bigger and bolder than the time
+ * chip because it is the one thing on the row that has to be acted on, and
+ * tabular-nums keeps the digits aligned in that column.
+ */
+function BoardNumber({
+  board,
+  className,
+}: {
+  board: number;
+  className?: string;
+}) {
+  return (
+    <span
+      className={cn(
+        "inline-flex items-baseline gap-2 whitespace-nowrap rounded-lg bg-primary/10 px-3 py-2 text-primary",
+        className,
+      )}
+    >
+      <span className="text-[10px] font-semibold uppercase tracking-widest opacity-70">
+        Board
+      </span>
+      <span className="text-lg font-bold tabular-nums leading-none">
+        {board}
+      </span>
+    </span>
+  );
+}
+
+/** Shared by the two lists, so their board columns cannot drift apart. */
+const boardColumn = "justify-self-start sm:w-full sm:justify-center";
+const boardRow =
+  "grid gap-x-4 gap-y-2 px-2 py-4 sm:grid-cols-[8rem_1fr] sm:items-baseline sm:gap-x-6 sm:px-3";
 
 function Home() {
   const location = useLocation();
@@ -350,7 +430,8 @@ function Home() {
             />
             <span className="leading-relaxed">
               This program is tentative and subject to change. All times are
-              local to Malmö, and the workshop takes place in Malmömässan C1.
+              local to Malmö. The talks take place in Malmömässan C1; the poster
+              session is in the Malmömässan Exhibit Hall.
             </span>
           </p>
 
@@ -386,9 +467,25 @@ function Home() {
                           </p>
                         </>
                       ) : (
-                        <p className="font-medium leading-snug">
-                          {item.session}
-                        </p>
+                        <>
+                          <p className="font-medium leading-snug">
+                            {item.session}
+                          </p>
+                          {/* A room goes on this line when it differs from the
+                              one in the note above the schedule — the poster
+                              boards are not in C1, and a reader planning their
+                              morning should see that on the row itself rather
+                              than have to hunt for it. */}
+                          {item.location && (
+                            <p className="flex items-center gap-1.5 text-sm leading-snug text-muted-foreground">
+                              <MapPin
+                                className="h-3.5 w-3.5 shrink-0 text-primary"
+                                aria-hidden="true"
+                              />
+                              {item.location}
+                            </p>
+                          )}
+                        </>
                       )}
                       {item.presenter && item.title && (
                         <p className="text-sm italic leading-snug text-muted-foreground">
@@ -483,99 +580,201 @@ function Home() {
           </div>
         </section>
 
-        {/* Accepted Papers Section - one card with hairline-divided rows, the
-            same treatment as the Program schedule, since both are continuous
-            lists of the workshop's own content. The orals lead the list in the
-            order they are presented and every row states its format, so the
-            four talks can be picked out without consulting the schedule. */}
-        <section id="papers" className="space-y-6">
-          <div className="space-y-3">
-            <h2 className="font-bold">Accepted Papers</h2>
-            <div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
-          </div>
-          <p className="text-lg leading-relaxed text-foreground/90">
-            The following {acceptedPapers.length} papers have been accepted to
-            the workshop: {oralCount} presented as talks and the remaining{" "}
-            {acceptedPapers.length - oralCount} as posters.
-          </p>
-          <div className="glass rounded-2xl border shadow-lg">
-            <ol className="divide-y divide-border/50 p-2 sm:p-4">
-              {acceptedPapers.map((paper, index) => (
-                <li
-                  key={index}
-                  className="flex items-start justify-between gap-3 px-2 py-4 sm:gap-4 sm:px-3"
-                >
-                  <div className="min-w-0 space-y-1">
-                    <h3 className="text-base font-semibold leading-snug">
-                      {paper.title}
-                    </h3>
-                    <p className="text-sm leading-snug text-muted-foreground">
-                      {paper.authors}
-                    </p>
-                  </div>
-                  {/* The talks are the exception in a list that is mostly
-                      posters, so only they take the accent colour. */}
-                  <span
-                    className={`shrink-0 rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest sm:text-xs ${
-                      paper.type === "Oral"
-                        ? "bg-primary/10 text-primary"
-                        : "bg-muted text-muted-foreground"
-                    }`}
-                  >
-                    {paper.type}
-                  </span>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
+        {/* Papers and Posters — everything the workshop presents, under one
+            heading, with the poster-session logistics at its head.
 
-        {/* Invited Posters — held apart from the accepted papers rather than
-            given a third badge, because they did not come through the
-            workshop's review process and a heading says so more plainly than a
-            label in a list titled "Accepted Papers" could. */}
-        <section id="invited-posters" className="space-y-6">
+            The two lists are subsections of this rather than sections beside
+            it. They were peers of a "Poster Session" heading before, which
+            named a container and then sat next to its own contents; a heading
+            for the practical notes alone would have had the same problem in
+            reverse. What actually contains both lists is "what is presented",
+            so that is what the heading says, and the notes are the first thing
+            under it because a presenter needs the hall and the poster size
+            before they need to find their own row.
+
+            Only the h2 keeps the gradient rule beneath it. That rule is what
+            marks a top-level section on this page, so leaving it off the two
+            subsection headings is what makes the nesting legible at a glance.
+
+            The boards are numbered beside each paper in the lists rather than
+            repeated in a run of their own: the papers take their boards in the
+            order these lists give them, so reading down the two lists is
+            reading down the row in the hall, and a second copy of sixteen
+            titles would be one more place for a title to go stale. */}
+        <section id="papers" className="space-y-10">
           <div className="space-y-3">
-            <h2 className="font-bold">Invited Posters</h2>
+            <h2 className="font-bold">Papers and Posters</h2>
             <div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
           </div>
-          <p className="text-lg leading-relaxed text-foreground/90">
-            The following {invitedPosters.length} posters have been invited to
-            the workshop.
-          </p>
-          <div className="glass rounded-2xl border shadow-lg">
-            <ol className="divide-y divide-border/50 p-2 sm:p-4">
-              {invitedPosters.map((poster, index) => (
-                <li key={index}>
-                  {/* The whole row is the target, so the hover feedback can be
-                      the row itself: the title takes the accent colour and the
-                      arXiv chip fills in. The chip sits where the accepted
-                      papers carry their format badge, which keeps the two
-                      lists aligned even though only this one links out. */}
-                  <a
-                    href={poster.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group flex items-start justify-between gap-3 rounded-lg px-2 py-4 transition-colors hover:bg-primary/5 focus-visible:bg-primary/5 focus-visible:outline-none sm:gap-4 sm:px-3"
-                  >
-                    <div className="min-w-0 space-y-1">
-                      <h3 className="text-base font-semibold leading-snug transition-colors group-hover:text-primary group-focus-visible:text-primary">
-                        {poster.title}
-                      </h3>
-                      <p className="text-sm leading-snug text-muted-foreground">
-                        {poster.authors}
+
+          <div className="space-y-6">
+            {/* Deliberately short: the counts are in each list's own line
+                below, and the hall is in the Location note directly under this
+                as well as on the schedule row, so this says only what is said
+                nowhere else — the range, and the three boards the sponsors
+                take, which is what accounts for the gaps in the numbering.
+
+                The sponsor boards are an exception to the run rather than
+                entries in it. Those three do not appear in either list below
+                (the sponsors have their own section further down), so naming
+                them as boards the papers do not take is the accurate way to
+                put it. */}
+            <p className="text-lg leading-relaxed text-foreground/90">
+              The papers and posters below take boards {firstBoard}–{lastBoard}{" "}
+              at the poster session, apart from {sponsorBoardList}, which the
+              workshop&apos;s sponsors take.
+            </p>
+
+            {/* Left-bordered callout, the shape this page uses for practical
+                points that must not be missed. The points are ordered by when
+                someone has to act on them: the size leads because it is the
+                only one with a lead time, it has to be right before anything
+                is printed, and the 140x100 landscape format is the opposite of
+                the portrait most people default to. */}
+            <div className="border-l-2 border-primary/50 pl-6 space-y-4">
+              <div className="flex items-center gap-3">
+                <Info
+                  className="h-5 w-5 shrink-0 text-primary"
+                  aria-hidden="true"
+                />
+                <h3 className="text-lg font-bold">
+                  {
+                    workshopData.schedule.presenterGuidelines.posterPresentation
+                      .title
+                  }
+                </h3>
+              </div>
+              <p className="text-base leading-relaxed text-foreground/80">
+                {
+                  workshopData.schedule.presenterGuidelines.posterPresentation
+                    .intro
+                }
+              </p>
+              <ul className="space-y-2.5">
+                {workshopData.schedule.presenterGuidelines.posterPresentation.points.map(
+                  (point, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                      <p className="text-base leading-relaxed">
+                        <span className="font-semibold text-foreground">
+                          {point.label}
+                        </span>{" "}
+                        <span className="text-foreground/80">{point.text}</span>
                       </p>
+                    </li>
+                  ),
+                )}
+              </ul>
+            </div>
+          </div>
+
+          {/* One card with hairline-divided rows, the same treatment as the
+              Program schedule, since both are continuous lists of the
+              workshop's own content. The orals lead the list in the order they
+              are presented and every row states its format, so the four talks
+              can be picked out without consulting the schedule. */}
+          <div className="space-y-5">
+            <div className="space-y-2">
+              <h3 className="text-2xl font-bold">Accepted Papers</h3>
+              {/* Every accepted paper is on a board, the talks included, so
+                  the split this sentence draws is between the papers that also
+                  get the stage and the rest — not between talks and posters,
+                  which would now read as though the orals were not in the
+                  hall. */}
+              <p className="text-base leading-relaxed text-foreground/80">
+                {acceptedPapers.length} papers were accepted to the workshop,{" "}
+                {oralCount} of them also presented as talks.
+              </p>
+            </div>
+            <div className="glass rounded-2xl border shadow-lg">
+              <ol className="divide-y divide-border/50 p-2 sm:p-4">
+                {acceptedPapers.map((paper, index) => (
+                  <li key={index} className={boardRow}>
+                    <BoardNumber board={paper.board} className={boardColumn} />
+                    {/* Title, authors and format stay together in the
+                        right-hand column, so the format badge keeps sitting at
+                        the end of the title rather than drifting away from
+                        it. */}
+                    <div className="flex items-start justify-between gap-3 sm:gap-4">
+                      <div className="min-w-0 space-y-1">
+                        <h4 className="text-base font-semibold leading-snug">
+                          {paper.title}
+                        </h4>
+                        <p className="text-sm leading-snug text-muted-foreground">
+                          {paper.authors}
+                        </p>
+                      </div>
+                      {/* The talks are the exception in a list that is mostly
+                          posters, so only they take the accent colour. */}
+                      <span
+                        className={`shrink-0 rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest sm:text-xs ${
+                          paper.type === "Oral"
+                            ? "bg-primary/10 text-primary"
+                            : "bg-muted text-muted-foreground"
+                        }`}
+                      >
+                        {paper.type}
+                      </span>
                     </div>
-                    {/* Not uppercased like the format badges: arXiv is a
-                        proper noun and "ARXIV" would misspell it. */}
-                    <span className="inline-flex shrink-0 items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-semibold tracking-wide text-muted-foreground transition-colors group-hover:bg-primary/10 group-hover:text-primary group-focus-visible:bg-primary/10 group-focus-visible:text-primary sm:text-xs">
-                      arXiv
-                      <ExternalLink className="h-3 w-3" />
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ol>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+
+          {/* Kept as a list of its own rather than merged into the one above
+              with a third badge: these did not come through the workshop's
+              review process, and a heading says so more plainly than a label
+              inside a list called "Accepted Papers" could. */}
+          <div className="space-y-5">
+            <div className="space-y-2">
+              <h3 className="text-2xl font-bold">Invited Posters</h3>
+              <p className="text-base leading-relaxed text-foreground/80">
+                {invitedPosters.length} further posters were invited to the
+                workshop rather than submitted for review.
+              </p>
+            </div>
+            <div className="glass rounded-2xl border shadow-lg">
+              <ol className="divide-y divide-border/50 p-2 sm:p-4">
+                {invitedPosters.map((poster, index) => (
+                  <li key={index} className={boardRow}>
+                    {/* Outside the link: the board is where the poster hangs
+                        in the hall, not part of what arXiv is being asked
+                        for. */}
+                    <BoardNumber board={poster.board} className={boardColumn} />
+                    {/* The rest of the row is the target, so the hover
+                        feedback can be the row itself: the title takes the
+                        accent colour and the arXiv chip fills in. The chip
+                        sits where the accepted papers carry their format
+                        badge, which keeps the two lists aligned even though
+                        only this one links out. The negative margins give that
+                        hover box some room without moving the first line off
+                        the chip's baseline. */}
+                    <a
+                      href={poster.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="group -mx-2 -my-2 flex items-start justify-between gap-3 rounded-lg px-2 py-2 transition-colors hover:bg-primary/5 focus-visible:bg-primary/5 focus-visible:outline-none sm:gap-4"
+                    >
+                      <div className="min-w-0 space-y-1">
+                        <h4 className="text-base font-semibold leading-snug transition-colors group-hover:text-primary group-focus-visible:text-primary">
+                          {poster.title}
+                        </h4>
+                        <p className="text-sm leading-snug text-muted-foreground">
+                          {poster.authors}
+                        </p>
+                      </div>
+                      {/* Not uppercased like the format badges: arXiv is a
+                          proper noun and "ARXIV" would misspell it. */}
+                      <span className="inline-flex shrink-0 items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-semibold tracking-wide text-muted-foreground transition-colors group-hover:bg-primary/10 group-hover:text-primary group-focus-visible:bg-primary/10 group-focus-visible:text-primary sm:text-xs">
+                        arXiv
+                        <ExternalLink className="h-3 w-3" />
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </div>
           </div>
         </section>
 
@@ -693,6 +892,16 @@ function Home() {
                   {sponsor.name && (
                     <p className="mt-4 text-center text-sm sm:text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
                       {sponsor.name}
+                    </p>
+                  )}
+                  {/* Sponsors present from a board of their own, so their
+                      number belongs on the card next to their name — the same
+                      chip the two poster lists use, since the run of boards is
+                      one map of the hall and one board is as findable as the
+                      next. */}
+                  {sponsor.board > 0 && (
+                    <p className="mt-3 flex justify-center">
+                      <BoardNumber board={sponsor.board} />
                     </p>
                   )}
                 </>

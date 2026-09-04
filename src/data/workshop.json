@@ -39,6 +39,11 @@
     ],
     "latestNews": [
       {
+        "title": "Poster board numbers announced",
+        "date": "September 4, 2026",
+        "content": "Poster board numbers have been assigned for the poster session. Every accepted paper and invited poster now shows its board next to it on this page, along with the poster size and the setup rules confirmed by the ECCV 2026 organizers."
+      },
+      {
         "title": "Accepted papers announced",
         "date": "August 11, 2026",
         "content": "12 papers have been accepted to the LIMIT Workshop at ECCV 2026. Please see the Accepted Papers section for the full list of titles and authors."
@@ -100,6 +105,7 @@
             "session": "Opening Remarks",
             "presenter": "Ryousuke Yamada",
             "title": "",
+            "location": "",
             "slides": ""
           },
           {
@@ -107,6 +113,7 @@
             "session": "Invited Talk 1",
             "presenter": "Anna Kukleva",
             "title": "",
+            "location": "",
             "slides": ""
           },
           {
@@ -114,6 +121,7 @@
             "session": "Invited Talk 2",
             "presenter": "Ranjay Krishna",
             "title": "",
+            "location": "",
             "slides": ""
           },
           {
@@ -121,6 +129,7 @@
             "session": "Short Break",
             "presenter": "",
             "title": "",
+            "location": "",
             "slides": ""
           },
           {
@@ -128,6 +137,7 @@
             "session": "Oral Presentation 1",
             "presenter": "",
             "title": "Representation-Preserving Federated Self-Supervised Learning with Foundation Models",
+            "location": "",
             "slides": ""
           },
           {
@@ -135,6 +145,7 @@
             "session": "Oral Presentation 2",
             "presenter": "",
             "title": "ADSF: Approximating Diffusion Process through Tracking the Score Function",
+            "location": "",
             "slides": ""
           },
           {
@@ -142,6 +153,7 @@
             "session": "Oral Presentation 3",
             "presenter": "",
             "title": "Efficient Generative Adversarial Networks Using Linear Additive-Attention Transformers",
+            "location": "",
             "slides": ""
           },
           {
@@ -149,6 +161,7 @@
             "session": "Oral Presentation 4",
             "presenter": "",
             "title": "RIPE++: Reinforced Keypoint Learning from Positive Pairs Only",
+            "location": "",
             "slides": ""
           },
           {
@@ -156,6 +169,7 @@
             "session": "Invited Talk 3",
             "presenter": "Björn Ommer",
             "title": "",
+            "location": "",
             "slides": ""
           },
           {
@@ -163,6 +177,7 @@
             "session": "Short Break",
             "presenter": "",
             "title": "",
+            "location": "",
             "slides": ""
           },
           {
@@ -170,6 +185,7 @@
             "session": "Invited Talk 4",
             "presenter": "Yunzhu Li (Remote)",
             "title": "",
+            "location": "",
             "slides": ""
           },
           {
@@ -177,13 +193,15 @@
             "session": "Closing Remarks",
             "presenter": "Daichi Otsuka",
             "title": "",
+            "location": "",
             "slides": ""
           },
           {
             "time": "12:00 - 13:00",
-            "session": "Poster Session (20 posters)",
+            "session": "Poster Session",
             "presenter": "",
             "title": "",
+            "location": "Malmömässan Exhibit Hall",
             "slides": ""
           }
         ]
@@ -207,12 +225,24 @@
       },
       "posterPresentation": {
         "title": "Poster Presentation Guidelines",
-        "content": "Posters will be displayed during the designated poster session.",
-        "guidelines": [
-          "Maximum poster size: A0 (841mm x 1189mm)",
-          "Portrait orientation is recommended",
-          "Set up your poster 30 minutes before the session starts",
-          "Be present at your poster during the designated session time"
+        "intro": "Practical details for presenters, as confirmed by the ECCV 2026 organizers.",
+        "points": [
+          {
+            "label": "Poster size.",
+            "text": "140 cm × 100 cm (55.12 in × 39.37 in), landscape format. This matches the ECCV 2026 main conference standard. Please note the landscape orientation when preparing your poster."
+          },
+          {
+            "label": "Location.",
+            "text": "All poster boards are in the Malmömässan Exhibit Hall, and every board is numbered."
+          },
+          {
+            "label": "Board number.",
+            "text": "Every paper has an assigned board number, shown next to it in the Accepted Papers and Invited Posters lists below. Please check the number assigned to your poster and put it up on that board only."
+          },
+          {
+            "label": "Setup and takedown.",
+            "text": "Please do not put your poster up before your time slot, and take it down at the end of the session."
+          }
         ]
       },
       "technicalRequirements": {
@@ -277,24 +307,27 @@
   },
   "sponsors": {
     "title": "Our Sponsors",
-    "intro": "The 4th LIMIT Workshop at ECCV 2026 is made possible by the sponsors below. We thank them for their commitment to this workshop and to the researchers and practitioners it brings together.",
+    "intro": "The 4th LIMIT Workshop at ECCV 2026 is made possible by the sponsors below. We thank them for their commitment to this workshop and to the researchers and practitioners it brings together. Each of them also presents from a board of their own at the poster session.",
     "sponsors": [
       {
         "name": "Sansan",
         "logo": "/sponsors/sansan.png",
         "url": "https://www.corp-sansan.com/",
+        "board": 5,
         "padding": 56
       },
       {
         "name": "SB Intuitions",
         "logo": "/sponsors/sb-intuitions.png",
         "url": "https://www.sbintuitions.co.jp/en/",
+        "board": 10,
         "padding": 24
       },
       {
         "name": "CADDi",
         "logo": "/sponsors/caddi.png",
         "url": "https://caddi.com/en-us/",
+        "board": 15,
         "padding": 72
       }
     ]
