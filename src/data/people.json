@@ -117,61 +117,73 @@
       {
         "title": "Representation-Preserving Federated Self-Supervised Learning with Foundation Models",
         "authors": "Ozgu Goksu, Daniela Ivanova, Nicolas Pugeault",
+        "board": 1,
         "type": "Oral"
       },
       {
         "title": "ADSF: Approximating Diffusion Process through Tracking the Score Function",
         "authors": "Preeti Mukherjee, Shayok Bagchi, Jagannath Prabhakaran, Siddhant Prakash, Chaoyue Liu",
+        "board": 2,
         "type": "Oral"
       },
       {
         "title": "Efficient Generative Adversarial Networks Using Linear Additive-Attention Transformers",
         "authors": "Emilio Alejandro Morales-Juárez, Gibran Fuentes-Pineda",
+        "board": 3,
         "type": "Oral"
       },
       {
         "title": "RIPE++: Reinforced Keypoint Learning from Positive Pairs Only",
         "authors": "Johannes Künzel, Peter Eisert, Anna Hilsmann",
+        "board": 4,
         "type": "Oral"
       },
       {
         "title": "ES-VP: Energy-Shaped Dynamic Low-Rank Visual Prompting for Efficient Model Adaptation",
         "authors": "Can Jin, Ying Li, Jingchen Sun, Hongwu Peng, Jiahui Zhao, Yang Zhou, Lei Li, Dimitris N. Metaxas",
+        "board": 6,
         "type": "Poster"
       },
       {
         "title": "Recursive Block-Diagonal Coupling for Resource-Efficient Training of Vision Models",
         "authors": "Maxim Henry, Marc Van Droogenbroeck, Adrien Deliege, Sébastien Piérard",
+        "board": 7,
         "type": "Poster"
       },
       {
         "title": "Performance-Carbon Trade-Offs across Architectural Biases in Shear Flow Forecasting",
         "authors": "Sophia N. Wilson, Jens H. Christensen, Raghavendra Selvan",
+        "board": 8,
         "type": "Poster"
       },
       {
         "title": "Resource-Efficient Neural Architecture Search for Medical Image Segmentation Using Monte Carlo Tree Search",
         "authors": "Liping Meng, Jintao Ma, Jiangtao Ma, Lingxiang Hu, Kaiyuan Gong, Yixuan Wu, Xi Jia, Yunyun Zhang, Dun Li",
+        "board": 9,
         "type": "Poster"
       },
       {
         "title": "Gloss-Free Representation Learning for Cross-Dataset Sign Spotting",
         "authors": "Oğuz Akif Tüfekcioğlu, Ezgi Ekin, Mustafa Kaan Çevik, Hacer Yalim Keles",
+        "board": 11,
         "type": "Poster"
       },
       {
         "title": "VideoLLMs Conditioned on Visual Scene Graphs: A Global-Local Approach",
         "authors": "Ananth Kalyanasundaram, Aswanth Krishnan",
+        "board": 12,
         "type": "Poster"
       },
       {
         "title": "Multimodal Feature Co-Distillation for Unsupervised Action Recognition",
         "authors": "Philip Zimmermann, Ulas Sureyya Bingol, Urs Waldmann, Andreas Lamprecht, Simon Burger, Bastian Goldluecke, Manuel Stein",
+        "board": 13,
         "type": "Poster"
       },
       {
         "title": "A Controlled Study of Self-Supervised Image and Video Pretraining under Limited Resources",
         "authors": "Brunó B. Englert, Gijs Dubbelman",
+        "board": 14,
         "type": "Poster"
       }
     ],
@@ -179,21 +191,25 @@
       {
         "title": "IDeaL: Data-Free Multi-Teacher Distillation via Improved Dead Leaves",
         "authors": "Feyza Yavuz, Mert Bülent Sarıyıldız, Diane Larlus",
+        "board": 16,
         "url": "https://arxiv.org/abs/2608.24759"
       },
       {
         "title": "PADFormer: Pose-agnostic Anomaly Detection from Sparse View Images",
         "authors": "Ruiqi Wang, Yiming Qian, Fenggen Yu, Yuxuan Lu, Dakuo Wang, Hao Zhang, Jing Huang",
+        "board": 17,
         "url": "https://arxiv.org/abs/2608.04210"
       },
       {
         "title": "ELT: Elastic Looped Transformers for Visual Generation",
         "authors": "Sahil Goyal, Swayam Agrawal, Gautham Govind Anil, Prateek Jain, Sujoy Paul, Aditya Kusupati",
+        "board": 18,
         "url": "https://arxiv.org/abs/2604.09168"
       },
       {
         "title": "See & Sniff: Learning Visuo-Olfactory Representations",
         "authors": "Seongyu Kim, Seungwoo Lee, Hyeonggon Ryu, Joon Son Chung, Arda Senocak",
+        "board": 19,
         "url": "https://arxiv.org/abs/2606.27307"
       }
     ],
