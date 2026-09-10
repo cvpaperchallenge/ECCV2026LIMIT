@@ -86,6 +86,7 @@ class Award:
     authors: list[str]
     conference: str
     conference_full_name: str
+    workshop_full_name: str
     signatory_name: str
     signatory_role: str
     date: str
@@ -133,6 +134,7 @@ def load_award() -> Award:
             r"\s*workshop\s*$", "", workshop["home"]["subtitle"], flags=re.I
         ).strip(),
         conference_full_name=certificate["conferenceFullName"],
+        workshop_full_name=certificate["workshopFullName"],
         signatory_name=signatory["name"],
         signatory_role=signatory["role"],
         date=event["date"],
@@ -467,9 +469,13 @@ def build_certificate(
             anchor="middle",
         )
     )
+    # Which edition this was. The workshop has run at ICCV 2023, CVPR 2024 and
+    # ICCV 2025 before this one, and a certificate that says only "the LIMIT
+    # Workshop" leaves a reader in a few years unable to tell which. The
+    # ordinal is the part of the name that dates the award.
     parts.append(
         text_element(
-            f"LIMIT Workshop · {award.location}",
+            f"{award.workshop_full_name} · {award.location}",
             centre,
             200,
             15,
