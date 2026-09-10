@@ -223,3 +223,7 @@ $RECYCLE.BIN/
 
 # build output
 build/
+
+# python bytecode, from the asset scripts under scripts/
+__pycache__/
+*.py[cod]

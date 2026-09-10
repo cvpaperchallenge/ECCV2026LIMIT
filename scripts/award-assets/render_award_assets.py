@@ -172,6 +172,30 @@ def wrap(
     return lines
 
 
+def fit(
+    text: str,
+    width: float,
+    sizes: list[float],
+    max_lines: int,
+    weight: int = 400,
+    style: str = "normal",
+) -> tuple[float, list[str]]:
+    """The largest of `sizes` at which `text` wraps into `max_lines` or fewer.
+
+    Used for the lines whose length is not known until the data is read. The
+    recipient line is three names joined by commas and runs past the margins
+    at the size a single name is set in, but dropping every certificate to the
+    size the longest case needs would make a one-author award look timid.
+    """
+    for size in sizes:
+        lines = wrap(text, width, size, weight, style)
+        if len(lines) <= max_lines:
+            return size, lines
+
+    smallest = sizes[-1]
+    return smallest, wrap(text, width, smallest, weight, style)
+
+
 def slugify(name: str) -> str:
     """`Johannes Künzel` -> `johannes-kunzel`, for a filename that survives
     being emailed around, unzipped on Windows and pasted into a URL."""
@@ -369,7 +393,7 @@ def render_og_card(award: Award, workdir: Path) -> Path:
 CERT_WIDTH, CERT_HEIGHT = 1122.5, 793.7
 
 
-def build_certificate(award: Award, recipient: str, logo_uri: str) -> str:
+def build_certificate(award: Award, recipients: str, logo_uri: str) -> str:
     centre = CERT_WIDTH / 2
     parts: list[str] = []
 
@@ -422,16 +446,34 @@ def build_certificate(award: Award, recipient: str, logo_uri: str) -> str:
     parts.append(
         text_element("is presented to", centre, 356, 19, INK, opacity=0.62, anchor="middle")
     )
-    parts.append(
-        text_element(recipient, centre, 418, 43, INK, weight=700, anchor="middle")
+
+    # The recipients are the paper's authors, named together on one
+    # certificate: the award is to the paper, and splitting it into a copy per
+    # author would issue three documents for one prize.
+    # One line if it can be had at all: a list of names broken across two is
+    # read as two groups of people rather than one author list. The ladder is
+    # fine-grained because this is the certificate's biggest type and a step
+    # down of five points is visible next to the heading above it. Only a
+    # very long author list falls through to wrapping at the smallest size.
+    recipient_size, recipient_lines = fit(
+        recipients, CERT_WIDTH - 260, [43, 40, 38, 36, 34, 32, 30], 1, weight=700
     )
+    y = 418
+    for line in recipient_lines:
+        parts.append(
+            text_element(line, centre, y, recipient_size, INK, weight=700, anchor="middle")
+        )
+        y += recipient_size * 1.18
+
+    y += 12
     parts.append(
-        text_element("for the paper", centre, 470, 19, INK, opacity=0.62, anchor="middle")
+        text_element("for the paper", centre, y, 19, INK, opacity=0.62, anchor="middle")
     )
 
-    title_size = 25
-    title_lines = wrap(award.title, CERT_WIDTH - 260, title_size, weight=400, style="italic")
-    y = 512
+    y += 42
+    title_size, title_lines = fit(
+        award.title, CERT_WIDTH - 260, [25, 22, 20], 2, style="italic"
+    )
     for line in title_lines:
         parts.append(
             text_element(line, centre, y, title_size, INK, style="italic", anchor="middle")
@@ -541,7 +583,7 @@ LOGO_WIDTH_PT = 210
 LOGO_RENDER_WIDTH = int(LOGO_WIDTH_PT / 96 * 300)
 
 
-def render_certificates(award: Award, workdir: Path) -> list[Path]:
+def render_certificates(award: Award, workdir: Path) -> tuple[Path, str]:
     logo = PUBLIC_DIR / "limitlab-logo-black-wide.png"
     if not logo.exists():
         fail(f"missing logo: {logo}")
@@ -560,28 +602,24 @@ def render_certificates(award: Award, workdir: Path) -> list[Path]:
     logo_uri = data_uri(scaled_logo)
 
     CERTIFICATE_DIR.mkdir(parents=True, exist_ok=True)
-    written: list[Path] = []
+    recipients = ", ".join(award.authors)
 
-    for author in award.authors:
-        svg_path = workdir / f"certificate-{slugify(author)}.svg"
-        output = CERTIFICATE_DIR / (
-            f"limit-eccv2026-best-paper-award-{slugify(author)}.pdf"
-        )
-        svg_path.write_text(build_certificate(award, author, logo_uri), "utf-8")
-        run(["rsvg-convert", "-f", "pdf", "-o", str(output), str(svg_path)])
-        written.append(output)
+    svg_path = workdir / "certificate.svg"
+    output = CERTIFICATE_DIR / f"limit-eccv2026-{slugify(award.award)}.pdf"
+    svg_path.write_text(build_certificate(award, recipients, logo_uri), "utf-8")
+    run(["rsvg-convert", "-f", "pdf", "-o", str(output), str(svg_path)])
 
-    return written
+    return output, recipients
 
 
-def write_manifest(award: Award, certificates: list[Path]) -> Path:
-    """Record which file belongs to which recipient, for the page to read.
+def write_manifest(award: Award, certificate: Path, recipients: str) -> Path:
+    """Record the certificate's filename for the page to read.
 
-    The award page offers these as downloads, and it has no way to work out a
+    The award page offers it as a download and has no way to work out the
     filename for itself: it would have to reimplement `slugify` in TypeScript
-    and stay in step with it, and the first accented name that the two spelled
-    differently would be a dead link nobody notices. Writing the names down
-    once, here, where they were decided, removes the second implementation.
+    and stay in step with it. Writing the name down once, here, where it was
+    decided, removes the second implementation and the dead link the first
+    divergence between the two would produce.
     """
     manifest = DATA_DIR / "award-certificates.json"
     payload = {
@@ -590,13 +628,10 @@ def write_manifest(award: Award, certificates: list[Path]) -> Path:
             "Do not edit by hand -- re-run the script instead."
         ),
         "award": award.award,
-        "certificates": [
-            {
-                "recipient": recipient,
-                "file": f"/{path.relative_to(PUBLIC_DIR).as_posix()}",
-            }
-            for recipient, path in zip(award.authors, certificates)
-        ],
+        "certificate": {
+            "recipients": recipients,
+            "file": f"/{certificate.relative_to(PUBLIC_DIR).as_posix()}",
+        },
     }
     manifest.write_text(
         json.dumps(payload, ensure_ascii=False, indent=2) + "\n", "utf-8"
@@ -611,12 +646,12 @@ def main() -> None:
     with tempfile.TemporaryDirectory() as tmp:
         workdir = Path(tmp)
         card = render_og_card(award, workdir)
-        certificates = render_certificates(award, workdir)
+        certificate, recipients = render_certificates(award, workdir)
 
-    manifest = write_manifest(award, certificates)
+    manifest = write_manifest(award, certificate, recipients)
 
     print(f"{award.award}: {award.title}")
-    for path in [card, *certificates, manifest]:
+    for path in [card, certificate, manifest]:
         print(f"  wrote {path.relative_to(REPO_ROOT)}")
 
 

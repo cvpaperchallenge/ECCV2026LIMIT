@@ -169,7 +169,7 @@ function BestPaperAward() {
     );
   }
 
-  const { certificates } = certificateData;
+  const { certificate } = certificateData;
 
   return (
     <main className="container mx-auto px-6 py-12 space-y-16 xl:max-w-4xl">
@@ -281,38 +281,29 @@ function BestPaperAward() {
         </Button>
       </section>
 
-      {/* Certificates — one per author, so each can be attached to a CV or an
-          application on its own. Hidden if the render script has not been run,
-          which is the state a freshly announced award starts in. */}
-      {certificates.length > 0 && (
+      {/* One certificate, naming all the authors, because the award is to the
+          paper. Hidden if the render script has not been run, which is the
+          state a freshly announced award starts in. */}
+      {certificate.file && (
         <section className="space-y-6">
           <div className="space-y-3">
-            <h2 className="text-2xl font-bold">Certificates</h2>
+            <h2 className="text-2xl font-bold">Certificate</h2>
             <div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
           </div>
           <p className="text-base leading-relaxed text-foreground/80">
-            One certificate per author, as a print-ready A4 PDF.
+            The award certificate, naming all authors of the paper, as a
+            print-ready A4 PDF.
           </p>
-          <ul className="glass rounded-2xl border shadow-lg divide-y divide-border/50 p-2 sm:p-4">
-            {certificates.map((certificate) => (
-              <li
-                key={certificate.file}
-                className="flex flex-wrap items-center justify-between gap-3 px-2 py-4 sm:px-3"
-              >
-                <span className="font-semibold">{certificate.recipient}</span>
-                <Button variant="outline" size="sm" asChild>
-                  <a
-                    href={certificate.file}
-                    download
-                    className="flex items-center gap-2"
-                  >
-                    <Download className="h-4 w-4" aria-hidden="true" />
-                    Download PDF
-                  </a>
-                </Button>
-              </li>
-            ))}
-          </ul>
+          <Button variant="outline" size="lg" asChild>
+            <a
+              href={certificate.file}
+              download
+              className="flex items-center gap-2"
+            >
+              <Download className="h-4 w-4" aria-hidden="true" />
+              Download certificate (PDF)
+            </a>
+          </Button>
         </section>
       )}
 
