@@ -54,3 +54,11 @@ jobs:
       - name: Build
         run: docker compose exec -T frontend yarn build
         working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}
+
+      # After the build, not before: the deep-link suite fetches from
+      # build/client to check that /best-paper-award is prerendered to a file
+      # of its own. Dropping it from `prerender` still builds cleanly and
+      # would only show up as a 404 on a URL someone had already shared.
+      - name: Test
+        run: docker compose exec -T frontend yarn test
+        working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}

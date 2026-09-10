@@ -31,6 +31,7 @@
   },
   "include": [
     "src",
+    "tests",
     ".react-router/types/**/*"
   ]
 }

@@ -13,9 +13,14 @@ import { Link } from "react-router";
 
 import { Button } from "../../components/ui/button";
 import certificateData from "../../data/award-certificates.json";
-import peopleData from "../../data/people.json";
 import workshopData from "../../data/workshop.json";
 import type { Route } from "./+types/BestPaperAward";
+import { awardedPapers } from "@/lib/award";
+import {
+  buildAwardSummary,
+  buildLinkedInCertificationUrl,
+  buildShareTargets,
+} from "@/lib/award-share";
 import { buildMeta, seoDefaults } from "@/lib/seo";
 
 /**
@@ -36,16 +41,12 @@ import { buildMeta, seoDefaults } from "@/lib/seo";
 const AWARD_PATH = "/best-paper-award";
 const AWARD_URL = `${seoDefaults.SITE_URL}${AWARD_PATH}`;
 
+const [awardedPaper] = awardedPapers;
+
 /** Written once here: the meta description, the share text and the page's own
  *  summary line are the same sentence, and it should not be possible to
  *  update one of the three and leave the others behind. */
-const awardedPaper = peopleData.program.acceptedPapers.find(
-  (paper) => "award" in paper && paper.award !== "",
-);
-
-const summary = awardedPaper
-  ? `${awardedPaper.award} at the LIMIT Workshop @ ECCV 2026: “${awardedPaper.title}” by ${awardedPaper.authors}.`
-  : "";
+const summary = awardedPaper ? buildAwardSummary(awardedPaper) : "";
 
 export const meta: Route.MetaFunction = () =>
   buildMeta({
@@ -68,52 +69,22 @@ export const meta: Route.MetaFunction = () =>
   });
 
 /**
- * Share targets. X and Bluesky open a composer with the text already in it;
- * LinkedIn deliberately takes no text, because it reads the destination's
- * Open Graph tags instead and ignores anything passed alongside the URL.
- *
- * Each opens that network's own composer, so the post is written from the
- * author's account and they see it before it goes out. Nothing here posts on
- * anyone's behalf.
+ * Each of these opens that network's own composer, so the post is written
+ * from the author's account and they see it before it goes out. Nothing here
+ * posts on anyone's behalf. The construction is in @/lib/award-share, where
+ * it has tests: an encoding mistake here is invisible until an author clicks
+ * the button and lands on an error.
  */
-const shareTargets = [
-  {
-    name: "X",
-    href: `https://x.com/intent/post?text=${encodeURIComponent(
-      `${summary} #ECCV2026`,
-    )}&url=${encodeURIComponent(AWARD_URL)}`,
-  },
-  {
-    name: "LinkedIn",
-    href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-      AWARD_URL,
-    )}`,
-  },
-  {
-    name: "Bluesky",
-    href: `https://bsky.app/intent/compose?text=${encodeURIComponent(
-      `${summary} ${AWARD_URL}`,
-    )}`,
-  },
-];
+const shareTargets = buildShareTargets(summary, AWARD_URL);
 
-/**
- * LinkedIn's prefilled certification form. The award lands in the Licenses &
- * Certifications section with `certUrl` pointing back here, which is what
- * turns a line on a profile into something a reader can check.
- *
- * `issueMonth` is 1-indexed, unlike almost everything else that handles
- * months, so September is 9 rather than 8.
- */
 const linkedInProfileUrl = awardedPaper
-  ? `https://www.linkedin.com/profile/add?${new URLSearchParams({
-      startTask: "CERTIFICATION_NAME",
+  ? buildLinkedInCertificationUrl({
       name: `${awardedPaper.award} — LIMIT Workshop @ ECCV 2026`,
-      organizationName: "LIMIT Workshop @ ECCV 2026",
-      issueYear: "2026",
-      issueMonth: "9",
+      organization: "LIMIT Workshop @ ECCV 2026",
+      issueYear: 2026,
+      issueMonth: 9,
       certUrl: AWARD_URL,
-    }).toString()}`
+    })
   : "";
 
 /**

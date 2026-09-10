@@ -35,6 +35,7 @@ import workshopData from "../../data/workshop.json";
 import peopleData from "../../data/people.json";
 import type { Route } from "./+types/Home";
 // import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { isAwarded } from "@/lib/award";
 import { buildMeta } from "@/lib/seo";
 import { generateWorkshopStructuredData } from "@/lib/structured-data";
 import { cn } from "@/lib/utils";
@@ -128,19 +129,6 @@ function BoardNumber({
     </span>
   );
 }
-
-/**
- * A prize is recorded on the paper that won it in people.json, not in a list
- * of winners of its own, so the award section and the paper's row in Accepted
- * Papers cannot come to disagree about the title or the authors. Only the
- * winning entry carries the two keys, which is why the union has to be
- * narrowed before either can be read.
- */
-type AcceptedPaper = (typeof peopleData.program.acceptedPapers)[number];
-type AwardedPaper = Extract<AcceptedPaper, { award: string }>;
-
-const isAwarded = (paper: AcceptedPaper): paper is AwardedPaper =>
-  "award" in paper && paper.award !== "";
 
 /** Shared by the two lists, so their board columns cannot drift apart. */
 const boardColumn = "justify-self-start sm:w-full sm:justify-center";
