@@ -524,12 +524,23 @@ def build_certificate(
     )
 
     y += 42
-    title_size, title_lines = fit(
-        award.title, CERT_WIDTH - 260, [25, 22, 20], 2, style="italic"
-    )
+    # Upright and in quotation marks, where a title would normally be set in
+    # italic.
+    #
+    # The italic was reported as running its letters together in Preview. It
+    # could not be reproduced in either librsvg's own output path or poppler,
+    # both of which draw the line correctly, so the cause was never pinned
+    # down -- but this was the only italic on the certificate, and the only
+    # thing that made the line different from the ones around it that render
+    # correctly everywhere. A certificate is a document that has to come out
+    # right in whatever a recipient happens to open it in, years from now, so
+    # the face that is under suspicion is not worth keeping for the sake of a
+    # convention that quotation marks satisfy just as well.
+    quoted_title = f"“{award.title}”"
+    title_size, title_lines = fit(quoted_title, CERT_WIDTH - 260, [25, 22, 20], 2)
     for line in title_lines:
         parts.append(
-            text_element(line, centre, y, title_size, INK, style="italic", anchor="middle")
+            text_element(line, centre, y, title_size, INK, anchor="middle")
         )
         y += title_size * 1.4
 
