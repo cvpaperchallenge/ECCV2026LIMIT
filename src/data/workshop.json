@@ -270,7 +270,14 @@
   "awards": {
     "title": "Best Paper Award",
     "intro": "The LIMIT Workshop Best Paper Award was presented on September 8, 2026, recognising one of the papers accepted to this year's workshop.",
-    "congratulations": "Congratulations to the authors."
+    "congratulations": "Congratulations to the authors.",
+    "certificate": {
+      "conferenceFullName": "The 19th European Conference on Computer Vision — ECCV 2026",
+      "signatory": {
+        "name": "Ryousuke Yamada",
+        "role": "Workshop Chair"
+      }
+    }
   },
   "callForPapers": {
     "title": "Call for Papers",

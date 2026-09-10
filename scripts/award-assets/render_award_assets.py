@@ -85,6 +85,9 @@ class Award:
     title: str
     authors: list[str]
     conference: str
+    conference_full_name: str
+    signatory_name: str
+    signatory_role: str
     date: str
     venue: str
     location: str
@@ -115,6 +118,8 @@ def load_award() -> Award:
 
     winner = winners[0]
     event = workshop["home"]["eventInfo"]
+    certificate = workshop["awards"]["certificate"]
+    signatory = certificate["signatory"]
 
     return Award(
         award=winner["award"],
@@ -127,6 +132,9 @@ def load_award() -> Award:
         conference=re.sub(
             r"\s*workshop\s*$", "", workshop["home"]["subtitle"], flags=re.I
         ).strip(),
+        conference_full_name=certificate["conferenceFullName"],
+        signatory_name=signatory["name"],
+        signatory_role=signatory["role"],
         date=event["date"],
         venue=event["venue"],
         location=event["location"],
@@ -443,11 +451,27 @@ def build_certificate(
         f'width="{LIMIT_WIDTH_PT}" height="{limit_height}"/>'
     )
 
+    # Two lines rather than the one the social card uses: the conference under
+    # its full formal name, then the workshop within it. A certificate is read
+    # once, slowly, by someone deciding whether to believe it, and the venue
+    # spelled out in full is part of what it is asserting. The card is read at
+    # a glance in a feed and keeps the short form.
     parts.append(
         text_element(
-            award.billing,
+            award.conference_full_name,
             centre,
-            186,
+            178,
+            14,
+            INK,
+            opacity=0.58,
+            anchor="middle",
+        )
+    )
+    parts.append(
+        text_element(
+            f"LIMIT Workshop · {award.location}",
+            centre,
+            200,
             15,
             BLUE_11_LIGHT,
             weight=500,
@@ -526,9 +550,10 @@ def build_certificate(
     # the title, so that the attribution and the verification line sit on the
     # same baselines on every certificate however many lines the title took.
     baseline = CERT_HEIGHT - 58
-    signature_rule_y = baseline - 104
-    signature_label_y = baseline - 80
-    divider_y = baseline - 48
+    signature_rule_y = baseline - 112
+    signature_name_y = baseline - 88
+    signature_role_y = baseline - 69
+    divider_y = baseline - 44
     verify_label_y = baseline - 22
     verify_url_y = baseline
 
@@ -543,23 +568,39 @@ def build_certificate(
             "signature block. Reduce title_size in build_certificate()."
         )
 
-    # Who conferred it. A ruled line with the committee named beneath, rather
-    # than a scanned signature: nobody's handwriting should be sitting in a
-    # public repository, and an award from a workshop is granted by its
-    # organisers as a body rather than by any one of them.
+    # Who conferred it, named, with the role that gave them standing to. A
+    # committee named as a body says less than a person does: the reader of a
+    # certificate wants to know who put their name to it.
+    #
+    # The rule stays empty rather than carrying a scanned signature. A
+    # signature image in a public repository is a signature anyone can lift
+    # and paste onto a document of their own, and it buys nothing here — what
+    # makes this checkable is the address printed below it, not the autograph.
+    # The line is left for a wet signature on the printed copy.
     parts.append(
         f'<rect x="{centre - 130}" y="{signature_rule_y}" width="260" height="1" '
         f'fill="{INK}" fill-opacity="0.28"/>'
     )
     parts.append(
         text_element(
-            "LIMIT Workshop Organizing Committee",
+            award.signatory_name,
             centre,
-            signature_label_y,
-            15,
+            signature_name_y,
+            16,
             INK,
-            weight=500,
-            opacity=0.78,
+            weight=700,
+            opacity=0.85,
+            anchor="middle",
+        )
+    )
+    parts.append(
+        text_element(
+            award.signatory_role,
+            centre,
+            signature_role_y,
+            13,
+            INK,
+            opacity=0.6,
             anchor="middle",
         )
     )
