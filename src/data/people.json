@@ -138,7 +138,7 @@
         "board": 4,
         "type": "Oral",
         "award": "Best Paper Award",
-        "url": ""
+        "url": "https://arxiv.org/abs/2608.19693"
       },
       {
         "title": "ES-VP: Energy-Shaped Dynamic Low-Rank Visual Prompting for Efficient Model Adaptation",
