@@ -6,8 +6,10 @@ import {
   FileText,
   Info,
   // CalendarPlus,
+  CircleCheckBig,
   Slack,
   Building2,
+  Trophy,
   UserRound,
 } from "lucide-react";
 import { Link, useLocation } from "react-router";
@@ -127,6 +129,19 @@ function BoardNumber({
   );
 }
 
+/**
+ * A prize is recorded on the paper that won it in people.json, not in a list
+ * of winners of its own, so the award section and the paper's row in Accepted
+ * Papers cannot come to disagree about the title or the authors. Only the
+ * winning entry carries the two keys, which is why the union has to be
+ * narrowed before either can be read.
+ */
+type AcceptedPaper = (typeof peopleData.program.acceptedPapers)[number];
+type AwardedPaper = Extract<AcceptedPaper, { award: string }>;
+
+const isAwarded = (paper: AcceptedPaper): paper is AwardedPaper =>
+  "award" in paper && paper.award !== "";
+
 /** Shared by the two lists, so their board columns cannot drift apart. */
 const boardColumn = "justify-self-start sm:w-full sm:justify-center";
 const boardRow =
@@ -166,6 +181,7 @@ function Home() {
   const oralCount = acceptedPapers.filter(
     (paper) => paper.type === "Oral",
   ).length;
+  const awardedPapers = acceptedPapers.filter(isAwarded);
 
   return (
     <>
@@ -216,6 +232,30 @@ function Home() {
               )}
               <p className="text-sm md:text-lg text-muted-foreground font-medium">
                 {workshopData.home.subtitle}
+              </p>
+            </div>
+
+            {/* Closing status — the workshop has happened, and this is where
+                the page says so. It sits above the date and venue so those two
+                cards read as a record rather than an invitation, which is
+                enough on its own: the rest of the page can stay as it was
+                written.
+
+                Primary colours rather than the muted grey the closed call and
+                the lapsed deadlines take further down — a workshop that took
+                place is good news, a deadline that lapsed is not. Badge and
+                thanks share one flex column so the line reads as the badge's
+                caption instead of drifting off as a fourth title. */}
+            <div className="flex flex-col items-center gap-3">
+              <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-[10px] md:text-[11px] font-semibold uppercase tracking-widest text-primary">
+                <CircleCheckBig
+                  className="h-3.5 w-3.5 shrink-0"
+                  aria-hidden="true"
+                />
+                {workshopData.home.conclusion.badge}
+              </div>
+              <p className="max-w-xl text-sm md:text-base leading-relaxed text-muted-foreground">
+                {workshopData.home.conclusion.thanks}
               </p>
             </div>
 
@@ -411,13 +451,12 @@ function Home() {
 
         {/* Program Section */}
         <section id="program" className="space-y-6">
+          {/* The "Tentative" badge and the "subject to change" note that stood
+              here came off once the workshop ran: a schedule that has already
+              happened cannot change, and either would have contradicted the
+              hero directly. What is left is the record of the morning. */}
           <div className="space-y-3">
-            <div className="flex flex-wrap items-center gap-3">
-              <h2 className="font-bold">Workshop Program</h2>
-              <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary">
-                Tentative
-              </span>
-            </div>
+            <h2 className="font-bold">Workshop Program</h2>
             <div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
           </div>
 
@@ -429,9 +468,8 @@ function Home() {
               aria-hidden="true"
             />
             <span className="leading-relaxed">
-              This program is tentative and subject to change. All times are
-              local to Malmö. The talks take place in Malmömässan C1; the poster
-              session is in the Malmömässan Exhibit Hall.
+              All times are local to Malmö. The talks took place in Malmömässan
+              C1; the poster session was in the Malmömässan Exhibit Hall.
             </span>
           </p>
 
@@ -580,6 +618,88 @@ function Home() {
           </div>
         </section>
 
+        {/* Best Paper Award — a section of its own, immediately above the list
+            the winner is drawn from, so the prize is read before the twelve
+            rows rather than having to be picked out of them.
+
+            It renders only when a paper is actually flagged in people.json, so
+            the section costs nothing on a site whose award has not been
+            decided, and appears the moment one is recorded. Written for any
+            number of winners for the same reason — an honourable mention would
+            be one more flagged paper, not a second block of markup.
+
+            Its own `id` is the point of the section as much as the heading is:
+            it gives the authors a URL that lands on their prize, which is what
+            gets pasted into a post or a CV. */}
+        {awardedPapers.length > 0 && (
+          <section id="award" className="space-y-8">
+            <div className="space-y-3">
+              <h2 className="font-bold">{workshopData.awards.title}</h2>
+              <div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full" />
+            </div>
+
+            <p className="text-lg leading-relaxed text-foreground/90">
+              {workshopData.awards.intro}
+            </p>
+
+            {/* The one card on the page that takes a coloured border and a
+                wash behind it. Everything else here is glass on the cover
+                photo; the prize is the page's single highlight, and it is the
+                contrast with the neighbouring lists that says so. */}
+            <div className="space-y-6">
+              {awardedPapers.map((paper) => (
+                <div
+                  key={paper.title}
+                  className="glass-strong relative overflow-hidden rounded-2xl border border-primary/30 p-8 md:p-10 shadow-lg"
+                >
+                  <div
+                    className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent"
+                    aria-hidden="true"
+                  />
+                  <div className="relative space-y-5">
+                    <div className="flex items-center gap-3">
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary">
+                        <Trophy className="h-5 w-5" aria-hidden="true" />
+                      </span>
+                      <span className="text-[11px] font-semibold uppercase tracking-widest text-primary">
+                        {paper.award}
+                      </span>
+                    </div>
+
+                    <div className="space-y-2">
+                      <h3 className="text-xl md:text-2xl font-bold leading-snug">
+                        {paper.title}
+                      </h3>
+                      <p className="text-base leading-relaxed text-muted-foreground">
+                        {paper.authors}
+                      </p>
+                    </div>
+
+                    <p className="text-base leading-relaxed text-foreground/80">
+                      {workshopData.awards.congratulations}
+                    </p>
+
+                    {/* Dropped until people.json carries a link, the same way
+                        an unannounced speaker's profile button is. */}
+                    {paper.url && (
+                      <Button variant="outline" size="lg" asChild>
+                        <a
+                          href={paper.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="flex items-center gap-2"
+                        >
+                          Read the paper <ExternalLink className="h-4 w-4" />
+                        </a>
+                      </Button>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* Papers and Posters — everything the workshop presents, under one
             heading, with the poster-session logistics at its head.
 
@@ -704,17 +824,30 @@ function Home() {
                           {paper.authors}
                         </p>
                       </div>
-                      {/* The talks are the exception in a list that is mostly
-                          posters, so only they take the accent colour. */}
-                      <span
-                        className={`shrink-0 rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest sm:text-xs ${
-                          paper.type === "Oral"
-                            ? "bg-primary/10 text-primary"
-                            : "bg-muted text-muted-foreground"
-                        }`}
-                      >
-                        {paper.type}
-                      </span>
+                      {/* Format, and the prize above it where there is one, so
+                          the winning row is findable when someone scrolls
+                          straight into this list. The two chips stack rather
+                          than sit side by side: on a phone the pair would
+                          otherwise squeeze the title into a couple of words. */}
+                      <div className="flex shrink-0 flex-col items-end gap-1.5">
+                        {isAwarded(paper) && (
+                          <span className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-primary/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest text-primary sm:text-xs">
+                            <Trophy className="h-3 w-3" aria-hidden="true" />
+                            {paper.award}
+                          </span>
+                        )}
+                        {/* The talks are the exception in a list that is mostly
+                            posters, so only they take the accent colour. */}
+                        <span
+                          className={`rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest sm:text-xs ${
+                            paper.type === "Oral"
+                              ? "bg-primary/10 text-primary"
+                              : "bg-muted text-muted-foreground"
+                          }`}
+                        >
+                          {paper.type}
+                        </span>
+                      </div>
                     </div>
                   </li>
                 ))}
