@@ -679,20 +679,35 @@ function Home() {
                       {workshopData.awards.congratulations}
                     </p>
 
-                    {/* Dropped until people.json carries a link, the same way
-                        an unannounced speaker's profile button is. */}
-                    {paper.url && (
-                      <Button variant="outline" size="lg" asChild>
-                        <a
-                          href={paper.url}
-                          target="_blank"
-                          rel="noreferrer"
+                    {/* The award's own page carries the share links, the
+                        certificates and the address the certificates print
+                        for verification. None of that belongs on a page about
+                        the workshop, but the authors have to be able to find
+                        it, and this row is where they will look. */}
+                    <div className="flex flex-wrap gap-3">
+                      <Button size="lg" asChild>
+                        <Link
+                          to="/best-paper-award"
                           className="flex items-center gap-2"
                         >
-                          Read the paper <ExternalLink className="h-4 w-4" />
-                        </a>
+                          Award page &amp; certificates
+                        </Link>
                       </Button>
-                    )}
+                      {/* Dropped until people.json carries a link, the same
+                          way an unannounced speaker's profile button is. */}
+                      {paper.url && (
+                        <Button variant="outline" size="lg" asChild>
+                          <a
+                            href={paper.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="flex items-center gap-2"
+                          >
+                            Read the paper <ExternalLink className="h-4 w-4" />
+                          </a>
+                        </Button>
+                      )}
+                    </div>
                   </div>
                 </div>
               ))}

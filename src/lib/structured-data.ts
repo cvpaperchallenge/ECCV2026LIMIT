@@ -21,10 +21,7 @@ type WorkshopStructuredData = {
     | "OnlineEventAttendanceMode"
     | "MixedEventAttendanceMode";
   eventStatus?:
-    | "EventScheduled"
-    | "EventCancelled"
-    | "EventPostponed"
-    | "EventRescheduled";
+    "EventScheduled" | "EventCancelled" | "EventPostponed" | "EventRescheduled";
   image?: string;
   url?: string;
 };

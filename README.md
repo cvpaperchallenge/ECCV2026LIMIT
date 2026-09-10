@@ -60,6 +60,20 @@ yarn build
 
 The production output is generated in `build/client/`. This is a fully static site (SPA mode) that can be hosted on any static file server.
 
+`/best-paper-award` is additionally prerendered to its own `index.html` (see `react-router.config.ts`) so that it carries its own Open Graph tags. Social crawlers never run the site's JavaScript, so a route that is meant to be shared needs its metadata present in the HTML as served. Add a path to `prerender` whenever a new route needs to be shareable or indexable in its own right.
+
+### Award Assets
+
+The award social card and the per-author certificates are generated from `src/data/` and committed:
+
+```bash
+python3 scripts/award-assets/render_award_assets.py
+```
+
+Re-run this whenever the award, the paper title, the author list or the workshop details change, and commit the result. It writes `public/best-paper-award-ogp.png`, `public/certificates/*.pdf` and `src/data/award-certificates.json`.
+
+CI does not run it: rendering needs Helvetica Neue plus `rsvg-convert` and `magick` (`brew install librsvg imagemagick`), none of which are in the Linux build container. Committing the output also means the card a crawler fetches cannot change under a link someone has already posted.
+
 ### Lint & Format
 
 ```bash

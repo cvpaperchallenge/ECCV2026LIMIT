@@ -25,6 +25,12 @@ type SeoConfig = {
   path?: string;
   image?: string;
   imageAlt?: string;
+  /**
+   * MIME type of `image`, which some crawlers read before deciding to fetch
+   * it. Defaults to the site card's JPEG; pass "image/png" for a card that is
+   * mostly type over a photograph, where JPEG rings around the letterforms.
+   */
+  imageType?: string;
   type?: string;
   keywords?: string[];
 };
@@ -44,6 +50,7 @@ export function buildMeta(config: SeoConfig = {}): MetaDescriptor[] {
     path,
     image = DEFAULT_IMAGE,
     imageAlt = DEFAULT_IMAGE_ALT,
+    imageType = "image/jpeg",
     type = "website",
     keywords = [],
   } = config;
@@ -69,7 +76,7 @@ export function buildMeta(config: SeoConfig = {}): MetaDescriptor[] {
     { property: "og:image:alt", content: imageAlt },
     { property: "og:image:width", content: "1200" },
     { property: "og:image:height", content: "630" },
-    { property: "og:image:type", content: "image/jpeg" },
+    { property: "og:image:type", content: imageType },
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:title", content: title },
     { name: "twitter:description", content: description },
