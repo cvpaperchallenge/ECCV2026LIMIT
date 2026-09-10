@@ -393,7 +393,9 @@ def render_og_card(award: Award, workdir: Path) -> Path:
 CERT_WIDTH, CERT_HEIGHT = 1122.5, 793.7
 
 
-def build_certificate(award: Award, recipients: str, logo_uri: str) -> str:
+def build_certificate(
+    award: Award, recipients: str, limit_logo_uri: str, eccv_logo_uri: str
+) -> str:
     centre = CERT_WIDTH / 2
     parts: list[str] = []
 
@@ -409,9 +411,36 @@ def build_certificate(award: Award, recipients: str, logo_uri: str) -> str:
         f'fill="none" stroke="{BLUE_9}" stroke-width="0.8" stroke-opacity="0.55"/>'
     )
 
+    # The two marks side by side, ECCV first because the conference is the
+    # larger context and reading order puts it there. They are separated by a
+    # hairline and sized to a common optical height rather than a common
+    # width, the aspect ratios being nothing like each other.
+    #
+    # Co-branding rather than a single mark, because neither on its own is
+    # accurate: the prize is the workshop's to give, not the conference's, and
+    # the workshop is not a thing that happened independently of ECCV. The
+    # billing line directly beneath resolves it in words.
+    eccv_height = ECCV_WIDTH_PT * ECCV_ASPECT
+    limit_height = LIMIT_WIDTH_PT * LIMIT_ASPECT
+    block_width = ECCV_WIDTH_PT + LOGO_GAP_PT + LIMIT_WIDTH_PT
+    block_left = centre - block_width / 2
+    logo_centre_y = 122
+
     parts.append(
-        f'<image href="{logo_uri}" x="{centre - LOGO_WIDTH_PT / 2}" y="86" '
-        f'width="{LOGO_WIDTH_PT}" height="{LOGO_WIDTH_PT * 484 / 1495}"/>'
+        f'<image href="{eccv_logo_uri}" x="{block_left}" '
+        f'y="{logo_centre_y - eccv_height / 2}" '
+        f'width="{ECCV_WIDTH_PT}" height="{eccv_height}"/>'
+    )
+    divider_x = block_left + ECCV_WIDTH_PT + LOGO_GAP_PT / 2
+    parts.append(
+        f'<rect x="{divider_x}" y="{logo_centre_y - 30}" width="1" height="60" '
+        f'fill="{INK}" fill-opacity="0.16"/>'
+    )
+    parts.append(
+        f'<image href="{limit_logo_uri}" '
+        f'x="{block_left + ECCV_WIDTH_PT + LOGO_GAP_PT}" '
+        f'y="{logo_centre_y - limit_height / 2}" '
+        f'width="{LIMIT_WIDTH_PT}" height="{limit_height}"/>'
     )
 
     parts.append(
@@ -576,37 +605,76 @@ def build_certificate(award: Award, recipients: str, logo_uri: str) -> str:
 """
 
 
-LOGO_WIDTH_PT = 210
-# 300dpi against the printed width, which is the resolution a certificate is
-# ever going to be looked at. The source mark is 1495px wide and embedding it
-# untouched put 180KB of base64 into each PDF for a logo two inches across.
-LOGO_RENDER_WIDTH = int(LOGO_WIDTH_PT / 96 * 300)
+# Printed widths of the two marks, chosen so their heights come out close to
+# each other (66pt and 62pt) despite the aspect ratios being far apart.
+ECCV_WIDTH_PT = 150
+LIMIT_WIDTH_PT = 190
+LOGO_GAP_PT = 60
+
+# Intrinsic proportions: the ECCV logo's SVG viewBox, and the LIMIT.LAB PNG's
+# pixel dimensions.
+ECCV_ASPECT = 189 / 430
+LIMIT_ASPECT = 484 / 1495
+
+
+def logo_render_width(printed_width: float) -> int:
+    """Pixels to rasterise a mark at, for 300dpi at its printed size.
+
+    300dpi is the resolution a certificate is ever going to be looked at, and
+    embedding a mark at its source size is wasted weight: the LIMIT wordmark
+    is 1495px wide and put 180KB of base64 into the PDF for a logo two inches
+    across.
+    """
+    return int(printed_width / 96 * 300)
 
 
 def render_certificates(award: Award, workdir: Path) -> tuple[Path, str]:
-    logo = PUBLIC_DIR / "limitlab-logo-black-wide.png"
-    if not logo.exists():
-        fail(f"missing logo: {logo}")
+    limit_logo = PUBLIC_DIR / "limitlab-logo-black-wide.png"
+    eccv_logo = PUBLIC_DIR / "eccv-navbar-logo.svg"
+    for path in (limit_logo, eccv_logo):
+        if not path.exists():
+            fail(f"missing logo: {path}")
 
-    scaled_logo = workdir / "logo.png"
+    scaled_limit = workdir / "limit-logo.png"
     run(
         [
             "magick",
-            str(logo),
+            str(limit_logo),
             "-resize",
-            f"{LOGO_RENDER_WIDTH}x",
+            f"{logo_render_width(LIMIT_WIDTH_PT)}x",
             "-strip",
-            str(scaled_logo),
+            str(scaled_limit),
         ]
     )
-    logo_uri = data_uri(scaled_logo)
+
+    # The ECCV mark is vector. Rasterising it here rather than nesting the SVG
+    # keeps both logos on the same path through librsvg, and the skyline has
+    # enough fine detail that an unbounded nested SVG is the slower option.
+    scaled_eccv = workdir / "eccv-logo.png"
+    run(
+        [
+            "rsvg-convert",
+            "-f",
+            "png",
+            "-w",
+            str(logo_render_width(ECCV_WIDTH_PT)),
+            "-o",
+            str(scaled_eccv),
+            str(eccv_logo),
+        ]
+    )
 
     CERTIFICATE_DIR.mkdir(parents=True, exist_ok=True)
     recipients = ", ".join(award.authors)
 
     svg_path = workdir / "certificate.svg"
     output = CERTIFICATE_DIR / f"limit-eccv2026-{slugify(award.award)}.pdf"
-    svg_path.write_text(build_certificate(award, recipients, logo_uri), "utf-8")
+    svg_path.write_text(
+        build_certificate(
+            award, recipients, data_uri(scaled_limit), data_uri(scaled_eccv)
+        ),
+        "utf-8",
+    )
     run(["rsvg-convert", "-f", "pdf", "-o", str(output), str(svg_path)])
 
     return output, recipients
