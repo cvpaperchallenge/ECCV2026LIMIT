@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 
 import certificateData from "./award-certificates.json";
+import workshopData from "./workshop.json";
 import { awardedPapers } from "@/lib/award";
 
 /**
@@ -34,6 +35,39 @@ describe("the awarded paper", () => {
 
     expect(paper.url).not.toBe("");
     expect(() => new URL(paper.url)).not.toThrow();
+  });
+});
+
+describe("which edition of the workshop the award belongs to", () => {
+  const { edition, intro, certificate } = workshopData.awards;
+
+  /** "4th" out of "4th LIMIT Workshop @ ECCV 2026". */
+  const ordinal = edition.match(/^\d+(?:st|nd|rd|th)/)?.[0];
+
+  it("is stated in the award's label", () => {
+    expect(ordinal).toBeDefined();
+  });
+
+  /**
+   * The ordinal is written out in several sentences rather than composed from
+   * one field, because each of them is prose and reads differently. That is
+   * fine to write and easy to half-update: whoever prepares the 5th LIMIT
+   * will change the label and the intro and can miss the news item or the
+   * certificate, leaving the site claiming two different editions at once.
+   * This is the check that fails when that happens.
+   */
+  it.each([
+    ["the award intro", () => intro],
+    ["the certificate header", () => certificate.workshopFullName],
+    [
+      "the announcement in Latest News",
+      () =>
+        workshopData.home.latestNews.find((item) =>
+          item.title.includes("Best Paper Award"),
+        )?.content ?? "",
+    ],
+  ])("is the same ordinal in %s", (_, source) => {
+    expect(source()).toContain(ordinal);
   });
 });
 

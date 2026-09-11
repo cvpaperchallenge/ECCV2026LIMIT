@@ -29,12 +29,21 @@ export type ShareTarget = {
  * and the summary shown on the page. One string for all three: they say the
  * same thing, and three copies would be three things to keep in step.
  *
+ * `edition` names which LIMIT this was — "4th LIMIT Workshop @ ECCV 2026" —
+ * and comes from workshop.json rather than being written in here. The
+ * workshop has run four times and this sentence is what a reader of a post
+ * has to date the award by; a hardcoded name would have to be found in the
+ * source and changed for the fifth.
+ *
  * Curly quotes rather than straight ones because this is prose, and it is
  * read as prose in a feed. They survive percent-encoding like any other
  * non-ASCII character.
  */
-export function buildAwardSummary(paper: SummarisablePaper): string {
-  return `${paper.award} at the LIMIT Workshop @ ECCV 2026: “${paper.title}” by ${paper.authors}.`;
+export function buildAwardSummary(
+  paper: SummarisablePaper,
+  edition: string,
+): string {
+  return `${paper.award} at the ${edition}: “${paper.title}” by ${paper.authors}.`;
 }
 
 /**

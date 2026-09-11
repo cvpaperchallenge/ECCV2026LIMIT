@@ -21,19 +21,28 @@ const paper = {
 const AWARD_URL =
   "https://eccv2026-limit-workshop.limitlab.xyz/best-paper-award";
 
+/** Which LIMIT this was. The workshop has run four times, so the summary has
+ *  to say which one, and it comes from workshop.json rather than the lib. */
+const EDITION = "4th LIMIT Workshop @ ECCV 2026";
+
 describe("buildAwardSummary", () => {
   it("names the award, the paper and the authors", () => {
-    const summary = buildAwardSummary(paper);
+    const summary = buildAwardSummary(paper, EDITION);
 
     expect(summary).toContain("Best Paper Award");
     expect(summary).toContain(paper.title);
     expect(summary).toContain(paper.authors);
-    expect(summary).toContain("LIMIT Workshop @ ECCV 2026");
+  });
+
+  it("says which edition of the workshop it was", () => {
+    // "LIMIT Workshop" alone does not say which of the four, and this
+    // sentence is what dates the award in a post or on a profile.
+    expect(buildAwardSummary(paper, EDITION)).toContain("4th LIMIT Workshop");
   });
 });
 
 describe("buildShareTargets", () => {
-  const summary = buildAwardSummary(paper);
+  const summary = buildAwardSummary(paper, EDITION);
   const targets = buildShareTargets(summary, AWARD_URL);
   const byName = Object.fromEntries(targets.map((t) => [t.name, t.href]));
 

@@ -87,6 +87,7 @@ class Award:
     conference: str
     conference_full_name: str
     workshop_full_name: str
+    edition: str
     signatory_name: str
     signatory_role: str
     date: str
@@ -95,9 +96,14 @@ class Award:
 
     @property
     def billing(self) -> str:
-        """`LIMIT Workshop @ ECCV 2026 · Malmö, Sweden`, the one line that
-        says which workshop this was and where, used on both artefacts."""
-        return f"LIMIT Workshop @ {self.conference} · {self.location}"
+        """`4th LIMIT Workshop @ ECCV 2026 · Malmö, Sweden`, the line at the
+        foot of the social card saying which workshop this was and where.
+
+        The ordinal is here for the same reason it is on the certificate: the
+        card is what most people will see of this award, often years later in
+        a search result, and "LIMIT Workshop" alone does not say which of the
+        four it was."""
+        return f"{self.edition} · {self.location}"
 
 
 def load_award() -> Award:
@@ -135,6 +141,7 @@ def load_award() -> Award:
         ).strip(),
         conference_full_name=certificate["conferenceFullName"],
         workshop_full_name=certificate["workshopFullName"],
+        edition=workshop["awards"]["edition"],
         signatory_name=signatory["name"],
         signatory_role=signatory["role"],
         date=event["date"],

@@ -45,7 +45,7 @@
       {
         "title": "Best Paper Award announced",
         "date": "September 8, 2026",
-        "content": "The LIMIT Workshop Best Paper Award goes to \"RIPE++: Reinforced Keypoint Learning from Positive Pairs Only\" by Johannes Künzel, Peter Eisert and Anna Hilsmann. Congratulations to the authors, and thank you to everyone who presented at the workshop."
+        "content": "The Best Paper Award of the 4th LIMIT Workshop goes to \"RIPE++: Reinforced Keypoint Learning from Positive Pairs Only\" by Johannes Künzel, Peter Eisert and Anna Hilsmann. Congratulations to the authors, and thank you to everyone who presented at the workshop."
       },
       {
         "title": "Poster board numbers announced",
@@ -269,7 +269,8 @@
   },
   "awards": {
     "title": "Best Paper Award",
-    "intro": "The LIMIT Workshop Best Paper Award was presented on September 8, 2026, recognising one of the papers accepted to this year's workshop.",
+    "edition": "4th LIMIT Workshop @ ECCV 2026",
+    "intro": "The Best Paper Award of the 4th LIMIT Workshop was presented on September 8, 2026, recognising one of the papers accepted this year.",
     "congratulations": "Congratulations to the authors.",
     "certificate": {
       "conferenceFullName": "The 19th European Conference on Computer Vision — ECCV 2026",

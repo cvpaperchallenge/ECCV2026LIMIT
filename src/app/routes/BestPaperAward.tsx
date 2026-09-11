@@ -43,16 +43,22 @@ const AWARD_URL = `${seoDefaults.SITE_URL}${AWARD_PATH}`;
 
 const [awardedPaper] = awardedPapers;
 
+/** "4th LIMIT Workshop @ ECCV 2026". Which edition this was belongs in the
+ *  award's own text and not only on the certificate: the workshop has run
+ *  four times, and a post or a CV line saying just "LIMIT Workshop" does not
+ *  say which. Held in workshop.json so the fifth is a data change. */
+const { edition } = workshopData.awards;
+
 /** Written once here: the meta description, the share text and the page's own
  *  summary line are the same sentence, and it should not be possible to
  *  update one of the three and leave the others behind. */
-const summary = awardedPaper ? buildAwardSummary(awardedPaper) : "";
+const summary = awardedPaper ? buildAwardSummary(awardedPaper, edition) : "";
 
 export const meta: Route.MetaFunction = () =>
   buildMeta({
     title: awardedPaper
-      ? `${awardedPaper.award} — LIMIT Workshop @ ECCV 2026`
-      : "Award — LIMIT Workshop @ ECCV 2026",
+      ? `${awardedPaper.award} — ${edition}`
+      : `Award — ${edition}`,
     description: summary,
     path: AWARD_PATH,
     // The card built by scripts/award-assets/render_award_assets.py, naming
@@ -79,7 +85,10 @@ const shareTargets = buildShareTargets(summary, AWARD_URL);
 
 const linkedInProfileUrl = awardedPaper
   ? buildLinkedInCertificationUrl({
-      name: `${awardedPaper.award} — LIMIT Workshop @ ECCV 2026`,
+      // The certification's name is what appears on the profile, so it
+      // carries the edition; the issuer is the workshop as a body, which does
+      // not gain an ordinal by running a fourth time.
+      name: `${awardedPaper.award} — ${edition}`,
       organization: "LIMIT Workshop @ ECCV 2026",
       issueYear: 2026,
       issueMonth: 9,
