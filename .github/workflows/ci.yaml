@@ -1,13 +1,18 @@
 name: lint-and-test
 permissions: {}
+# No path filter. There was one, listing src, environments, the workflows and
+# the two package files, and it had already fallen behind the repository: a
+# pull request touching only react-router.config.ts skipped CI entirely, and
+# that file holds `prerender`, whose removal is the exact regression
+# tests/deep-link.test.ts exists to catch. tests/, tsconfig and the generated
+# assets under public/ were outside it too.
+#
+# Keeping such a list correct means remembering to extend it every time the
+# layout changes, and the cost of forgetting is a green pull request that was
+# never checked. The whole job is a lint, a build and 41 tests, so running it
+# on everything is cheaper than maintaining the list.
 on:
   pull_request:
-    paths:
-      - "src/**"
-      - "environments/**"
-      - ".github/workflows/**"
-      - "package.json"
-      - "yarn.lock"
 defaults:
   run:
     shell: bash
