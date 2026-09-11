@@ -45,6 +45,13 @@ jobs:
         run: docker compose exec -T frontend yarn build
         working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}
 
+      # Gates the upload below. The deep-link suite runs against build/client,
+      # so what it checks is the artifact that is about to be published rather
+      # than a separate build of the same source.
+      - name: Test
+        run: docker compose exec -T frontend yarn test
+        working-directory: ${{ env.DOCKER_COMPOSE_DIRECTORY }}
+
       - name: Stop container
         if: always()
         run: docker compose down

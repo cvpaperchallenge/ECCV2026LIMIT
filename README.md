@@ -60,12 +60,41 @@ yarn build
 
 The production output is generated in `build/client/`. This is a fully static site (SPA mode) that can be hosted on any static file server.
 
+`/best-paper-award` is additionally prerendered to its own `index.html` (see `react-router.config.ts`) so that it carries its own Open Graph tags. Social crawlers never run the site's JavaScript, so a route that is meant to be shared needs its metadata present in the HTML as served. Add a path to `prerender` whenever a new route needs to be shareable or indexable in its own right.
+
+### Award Assets
+
+The award social card and the per-author certificates are generated from `src/data/` and committed:
+
+```bash
+python3 scripts/award-assets/render_award_assets.py
+```
+
+Re-run this whenever the award, the paper title, the author list or the workshop details change, and commit the result. It writes `public/best-paper-award-ogp.png`, `public/certificates/*.pdf` and `src/data/award-certificates.json`.
+
+CI does not run it: rendering needs Helvetica Neue plus `rsvg-convert` and `magick` (`brew install librsvg imagemagick`), none of which are in the Linux build container. Committing the output also means the card a crawler fetches cannot change under a link someone has already posted.
+
 ### Lint & Format
 
 ```bash
 yarn lint      # ESLint + Prettier check
 yarn format    # Auto-format
 ```
+
+### Tests
+
+```bash
+yarn build && yarn test   # run once
+yarn test:watch           # re-run on change
+```
+
+`yarn build` first, because one suite works on the build output rather than on `src`:
+
+- `src/lib/award-share.test.ts` — the share and LinkedIn add-to-profile URLs. Whether a share button opens a composer or an error is decided by a query string that is unreadable once encoded, so each parameter is asserted after decoding.
+- `src/data/award-assets.test.ts` — the generated card and certificate against the data they were rendered from. These files are committed, so they can silently fall behind `people.json`; nothing else in the build looks inside a PDF.
+- `tests/deep-link.test.ts` — serves `build/client` with GitHub Pages' routing rules and fetches `/best-paper-award` over HTTP, checking the redirect, the Open Graph tags, and that the card and certificate it points at are actually served. Removing the path from `prerender` still builds cleanly and would otherwise surface as a 404 on a URL that had already been shared.
+
+That last suite mimics GitHub Pages rather than being it, so it proves the build output has the right shape, not that the deployment is healthy. Checking the live URL and refreshing the social caches is still a step after the push.
 
 ### Docker
 

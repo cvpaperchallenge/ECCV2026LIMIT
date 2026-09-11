@@ -136,7 +136,9 @@
         "title": "RIPE++: Reinforced Keypoint Learning from Positive Pairs Only",
         "authors": "Johannes Künzel, Peter Eisert, Anna Hilsmann",
         "board": 4,
-        "type": "Oral"
+        "type": "Oral",
+        "award": "Best Paper Award",
+        "url": "https://arxiv.org/abs/2608.19693"
       },
       {
         "title": "ES-VP: Energy-Shaped Dynamic Low-Rank Visual Prompting for Efficient Model Adaptation",
