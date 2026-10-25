@@ -178,3 +178,5 @@ To show/hide sections (e.g., Program, Invited Speakers), comment out or uncommen
 - **3D Graphics**: [OGL](https://oframe.github.io/ogl/) (WebGL)
 - **Build Tool**: [Vite 6](https://vite.dev/)
 - **Linting**: ESLint + Prettier
+
+コンテナの再ビルド前に[セキュリティ確認手順](environments/SECURITY.md)を確認してください。
